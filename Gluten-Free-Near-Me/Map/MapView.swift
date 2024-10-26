@@ -11,14 +11,18 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var controller = MapController()
+    let cameraBounds = MapCameraBounds(
+        minimumDistance: 1,
+        maximumDistance: 100000
+    )
+    let userPosition = MapCameraPosition.userLocation(fallback: .automatic)
+
     
     var body: some View {
-        if let loc = controller.location {
-            Map {
-                
-            }
-            Text("\(loc)")
-        } else {
+        Map(initialPosition: userPosition, bounds: cameraBounds, interactionModes: .all) {
+            UserAnnotation()
+        }.mapControls {
+            MapUserLocationButton()
         }
     }
 }
