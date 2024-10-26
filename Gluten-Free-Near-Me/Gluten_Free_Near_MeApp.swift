@@ -11,7 +11,7 @@ import SwiftUI
 struct Gluten_Free_Near_MeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MasterView()
         }
     }
 }

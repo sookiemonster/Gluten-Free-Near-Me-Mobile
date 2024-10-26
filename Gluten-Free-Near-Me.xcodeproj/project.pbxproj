@@ -8,17 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		056719E92CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719E82CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift */; };
-		056719EB2CCC743600CF3AB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719EA2CCC743600CF3AB2 /* ContentView.swift */; };
+		056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719EA2CCC743600CF3AB2 /* MasterView.swift */; };
 		056719ED2CCC743700CF3AB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 056719EC2CCC743700CF3AB2 /* Assets.xcassets */; };
 		056719F02CCC743700CF3AB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 056719EF2CCC743700CF3AB2 /* Preview Assets.xcassets */; };
+		056719F72CCC753800CF3AB2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719F62CCC753800CF3AB2 /* MapView.swift */; };
+		056719FA2CCC768900CF3AB2 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719F92CCC768900CF3AB2 /* MapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		056719E52CCC743600CF3AB2 /* Gluten-Free-Near-Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gluten-Free-Near-Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		056719E82CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gluten_Free_Near_MeApp.swift; sourceTree = "<group>"; };
-		056719EA2CCC743600CF3AB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		056719EA2CCC743600CF3AB2 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		056719EC2CCC743700CF3AB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		056719EF2CCC743700CF3AB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		056719F62CCC753800CF3AB2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		056719F92CCC768900CF3AB2 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		05B9F5F82CCC833D0070AFC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +56,10 @@
 		056719E72CCC743600CF3AB2 /* Gluten-Free-Near-Me */ = {
 			isa = PBXGroup;
 			children = (
+				05B9F5F82CCC833D0070AFC4 /* Info.plist */,
+				056719F82CCC767600CF3AB2 /* Map */,
 				056719E82CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift */,
-				056719EA2CCC743600CF3AB2 /* ContentView.swift */,
+				056719EA2CCC743600CF3AB2 /* MasterView.swift */,
 				056719EC2CCC743700CF3AB2 /* Assets.xcassets */,
 				056719EE2CCC743700CF3AB2 /* Preview Content */,
 			);
@@ -65,6 +72,15 @@
 				056719EF2CCC743700CF3AB2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		056719F82CCC767600CF3AB2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				056719F62CCC753800CF3AB2 /* MapView.swift */,
+				056719F92CCC768900CF3AB2 /* MapController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				056719EB2CCC743600CF3AB2 /* ContentView.swift in Sources */,
+				056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */,
+				056719FA2CCC768900CF3AB2 /* MapController.swift in Sources */,
 				056719E92CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift in Sources */,
+				056719F72CCC753800CF3AB2 /* MapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +293,10 @@
 				DEVELOPMENT_TEAM = 278U28JWXF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Gluten-Free-Near-Me/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app needs access to your location to find restaurants nearby";
+				INFOPLIST_KEY_NSLocationUsageDescription = "The app needs access to your location to find restaurants nearby";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app needs access to your location to find restaurants nearby";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +326,10 @@
 				DEVELOPMENT_TEAM = 278U28JWXF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Gluten-Free-Near-Me/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app needs access to your location to find restaurants nearby";
+				INFOPLIST_KEY_NSLocationUsageDescription = "The app needs access to your location to find restaurants nearby";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app needs access to your location to find restaurants nearby";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
