@@ -12,7 +12,9 @@
 		056719ED2CCC743700CF3AB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 056719EC2CCC743700CF3AB2 /* Assets.xcassets */; };
 		056719F02CCC743700CF3AB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 056719EF2CCC743700CF3AB2 /* Preview Assets.xcassets */; };
 		056719F72CCC753800CF3AB2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719F62CCC753800CF3AB2 /* MapView.swift */; };
-		056719FA2CCC768900CF3AB2 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719F92CCC768900CF3AB2 /* MapController.swift */; };
+		056719FA2CCC768900CF3AB2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719F92CCC768900CF3AB2 /* LocationManager.swift */; };
+		05B9F5FD2CCC94DC0070AFC4 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */; };
+		05B9F5FF2CCC96140070AFC4 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F5FE2CCC96140070AFC4 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +24,10 @@
 		056719EC2CCC743700CF3AB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		056719EF2CCC743700CF3AB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		056719F62CCC753800CF3AB2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		056719F92CCC768900CF3AB2 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		056719F92CCC768900CF3AB2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		05B9F5F82CCC833D0070AFC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
+		05B9F5FE2CCC96140070AFC4 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		056719E72CCC743600CF3AB2 /* Gluten-Free-Near-Me */ = {
 			isa = PBXGroup;
 			children = (
+				05B9F5FB2CCC94C90070AFC4 /* Restaurants */,
 				05B9F5F82CCC833D0070AFC4 /* Info.plist */,
 				056719F82CCC767600CF3AB2 /* Map */,
 				056719E82CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift */,
@@ -78,9 +83,18 @@
 			isa = PBXGroup;
 			children = (
 				056719F62CCC753800CF3AB2 /* MapView.swift */,
-				056719F92CCC768900CF3AB2 /* MapController.swift */,
+				056719F92CCC768900CF3AB2 /* LocationManager.swift */,
+				05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */,
+				05B9F5FE2CCC96140070AFC4 /* Place.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		05B9F5FB2CCC94C90070AFC4 /* Restaurants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Restaurants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +167,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B9F5FD2CCC94DC0070AFC4 /* SearchButton.swift in Sources */,
 				056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */,
-				056719FA2CCC768900CF3AB2 /* MapController.swift in Sources */,
+				056719FA2CCC768900CF3AB2 /* LocationManager.swift in Sources */,
+				05B9F5FF2CCC96140070AFC4 /* Place.swift in Sources */,
 				056719E92CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift in Sources */,
 				056719F72CCC753800CF3AB2 /* MapView.swift in Sources */,
 			);

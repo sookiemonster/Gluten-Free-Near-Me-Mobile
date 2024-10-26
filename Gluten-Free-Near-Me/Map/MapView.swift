@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 struct MapView: View {
-    @StateObject private var controller = MapController()
+    @StateObject private var controller = LocationManager()
     let cameraBounds = MapCameraBounds(
         minimumDistance: 1,
         maximumDistance: 100000

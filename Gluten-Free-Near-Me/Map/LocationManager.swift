@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class MapController : NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var hasLocationAuthorization:Bool = false;
     private let manager = CLLocationManager();
     var location:CLLocationCoordinate2D?
