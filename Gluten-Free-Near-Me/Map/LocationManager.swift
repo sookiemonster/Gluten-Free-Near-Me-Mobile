@@ -7,17 +7,22 @@
 
 import Foundation
 import CoreLocation
+import MapKit
 
 class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var hasLocationAuthorization:Bool = false;
+    @Published var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 40.93, longitude: -79.3),
+        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    )
+    
     private let manager = CLLocationManager();
-    var location:CLLocationCoordinate2D?
     
     override init() {
         super.init()
         manager.delegate = self
         updateAuth()
-        manager.startUpdatingLocation()
+        centerOnUser()
     }
     
     func updateAuth() {
@@ -33,7 +38,17 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
+    func centerOnUser(){
+        manager.startUpdatingLocation()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.first?.coordinate
+        guard let location = locations.last else { return }
+        
+        manager.stopUpdatingLocation()
+        region = MKCoordinateRegion(
+            center: location.coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        )
     }
 }

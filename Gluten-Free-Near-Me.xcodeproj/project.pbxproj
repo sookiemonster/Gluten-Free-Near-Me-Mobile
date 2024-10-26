@@ -11,10 +11,15 @@
 		056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719EA2CCC743600CF3AB2 /* MasterView.swift */; };
 		056719ED2CCC743700CF3AB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 056719EC2CCC743700CF3AB2 /* Assets.xcassets */; };
 		056719F02CCC743700CF3AB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 056719EF2CCC743700CF3AB2 /* Preview Assets.xcassets */; };
-		056719F72CCC753800CF3AB2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719F62CCC753800CF3AB2 /* MapView.swift */; };
+		056719F72CCC753800CF3AB2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719F62CCC753800CF3AB2 /* MapViewController.swift */; };
 		056719FA2CCC768900CF3AB2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056719F92CCC768900CF3AB2 /* LocationManager.swift */; };
 		05B9F5FD2CCC94DC0070AFC4 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */; };
 		05B9F5FF2CCC96140070AFC4 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F5FE2CCC96140070AFC4 /* Place.swift */; };
+		05B9F6012CCC982C0070AFC4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6002CCC982C0070AFC4 /* HomeView.swift */; };
+		05B9F6032CCC996D0070AFC4 /* RestaurantStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6022CCC996D0070AFC4 /* RestaurantStack.swift */; };
+		05B9F6052CCC99EC0070AFC4 /* RestaurantOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6042CCC99EC0070AFC4 /* RestaurantOverview.swift */; };
+		05B9F6072CCC9F8B0070AFC4 /* RequestLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6062CCC9F8B0070AFC4 /* RequestLocation.swift */; };
+		05B9F6092CCCA39D0070AFC4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6082CCCA39D0070AFC4 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,11 +28,16 @@
 		056719EA2CCC743600CF3AB2 /* MasterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		056719EC2CCC743700CF3AB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		056719EF2CCC743700CF3AB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		056719F62CCC753800CF3AB2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		056719F62CCC753800CF3AB2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		056719F92CCC768900CF3AB2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		05B9F5F82CCC833D0070AFC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		05B9F5FE2CCC96140070AFC4 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		05B9F6002CCC982C0070AFC4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		05B9F6022CCC996D0070AFC4 /* RestaurantStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantStack.swift; sourceTree = "<group>"; };
+		05B9F6042CCC99EC0070AFC4 /* RestaurantOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantOverview.swift; sourceTree = "<group>"; };
+		05B9F6062CCC9F8B0070AFC4 /* RequestLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLocation.swift; sourceTree = "<group>"; };
+		05B9F6082CCCA39D0070AFC4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,7 @@
 				056719EA2CCC743600CF3AB2 /* MasterView.swift */,
 				056719EC2CCC743700CF3AB2 /* Assets.xcassets */,
 				056719EE2CCC743700CF3AB2 /* Preview Content */,
+				05B9F6002CCC982C0070AFC4 /* HomeView.swift */,
 			);
 			path = "Gluten-Free-Near-Me";
 			sourceTree = "<group>";
@@ -82,10 +93,12 @@
 		056719F82CCC767600CF3AB2 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				056719F62CCC753800CF3AB2 /* MapView.swift */,
+				056719F62CCC753800CF3AB2 /* MapViewController.swift */,
 				056719F92CCC768900CF3AB2 /* LocationManager.swift */,
 				05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */,
 				05B9F5FE2CCC96140070AFC4 /* Place.swift */,
+				05B9F6062CCC9F8B0070AFC4 /* RequestLocation.swift */,
+				05B9F6082CCCA39D0070AFC4 /* MapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -93,6 +106,8 @@
 		05B9F5FB2CCC94C90070AFC4 /* Restaurants */ = {
 			isa = PBXGroup;
 			children = (
+				05B9F6022CCC996D0070AFC4 /* RestaurantStack.swift */,
+				05B9F6042CCC99EC0070AFC4 /* RestaurantOverview.swift */,
 			);
 			path = Restaurants;
 			sourceTree = "<group>";
@@ -167,12 +182,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B9F6052CCC99EC0070AFC4 /* RestaurantOverview.swift in Sources */,
 				05B9F5FD2CCC94DC0070AFC4 /* SearchButton.swift in Sources */,
+				05B9F6072CCC9F8B0070AFC4 /* RequestLocation.swift in Sources */,
+				05B9F6092CCCA39D0070AFC4 /* MapView.swift in Sources */,
+				05B9F6012CCC982C0070AFC4 /* HomeView.swift in Sources */,
 				056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */,
 				056719FA2CCC768900CF3AB2 /* LocationManager.swift in Sources */,
+				05B9F6032CCC996D0070AFC4 /* RestaurantStack.swift in Sources */,
 				05B9F5FF2CCC96140070AFC4 /* Place.swift in Sources */,
 				056719E92CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift in Sources */,
-				056719F72CCC753800CF3AB2 /* MapView.swift in Sources */,
+				056719F72CCC753800CF3AB2 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
