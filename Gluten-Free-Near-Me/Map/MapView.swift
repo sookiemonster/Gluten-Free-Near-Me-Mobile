@@ -9,20 +9,29 @@ import SwiftUI
 import UIKit
 import MapKit
 
-struct MapView: View {
-    @StateObject private var controller = LocationManager()
-    let cameraBounds = MapCameraBounds(
+extension MapCameraBounds {
+    static let config = MapCameraBounds(
         minimumDistance: 1,
         maximumDistance: 100000
     )
-    let userPosition = MapCameraPosition.userLocation(fallback: .automatic)
+}
 
+struct MapView: View {
+    @State private var position:MapCameraPosition = MapCameraPosition.userLocation(fallback: .automatic)
     
+    @StateObject private var manager = LocationManager()
+
     var body: some View {
-        Map(initialPosition: userPosition, bounds: cameraBounds, interactionModes: .all) {
+        Map(position: $position, bounds: .config, interactionModes: .all) {
             UserAnnotation()
         }.mapControls {
             MapUserLocationButton()
+        }
+        
+        Button {
+            manager.panTo(position:$position)
+        } label: {
+            Text("Wumbo")
         }
     }
 }
