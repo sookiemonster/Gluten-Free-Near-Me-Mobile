@@ -8,14 +8,48 @@
 import SwiftUI
 
 struct RestaurantOverview: View {
-//    private var
-    // We need an environment variable for the mappositon prolly
+    let restaurant:Restaurant
+    
+    func getColor() -> Color {
+        switch (restaurant.ref) {
+        case .comments: return Color(.yellow)
+        case .description: return Color(.blue)
+        case .menu: return Color(.green)
+        default: return Color(.black)
+        }
+    }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Briefing(restaurant: restaurant)
+            Spacer()
+            SaveButton(saved: restaurant.isSaved)
+        }.padding()
+        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+        .background(getColor())
+        .cornerRadius(10)
+    }
+}
+
+struct Briefing: View {
+    let restaurant:Restaurant
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(restaurant.name)
+                .font(.title3)
+                .fontWeight(.bold)
+            Text(restaurant.description)
+                .font(.subheadline)
+        }
+        .onTapGesture {
+            // pan on map
+            // open restaurant card
+        }
     }
 }
 
 #Preview {
-    RestaurantOverview()
+    RestaurantOverview(restaurant: .somePlace)
+        .frame(maxWidth: .infinity).padding()
 }

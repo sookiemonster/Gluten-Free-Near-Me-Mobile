@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct SaveButton: View {
+    @State private var saved:Bool;
+    
+    init(saved:Bool) {
+        self._saved = State(initialValue: saved)
+    }
+    
+    func toggle() { saved = !saved }
+    func renderedSymbol() -> String {
+        return "heart" + ((saved) ? ".fill" : "")
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            toggle()
+        } label: {
+            Image(systemName: renderedSymbol() ).font(.largeTitle)
+                .foregroundColor(.white)
+        }.symbolEffect(.bounce, value: saved)
+        
     }
 }
 
 #Preview {
-    SaveButton()
+    SaveButton(saved: false)
 }
