@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchButton: View {
-    @Binding var restaurants:[Place];
+//    @Binding var restaurants:[Place];
     func requestNearby() { return; }
     
     var body: some View {
@@ -19,7 +19,7 @@ struct SearchButton: View {
                 .fontWeight(.bold)
                 .tint(.white)
         }
-        .padding([.top, .bottom], 10)
+        .padding([.top, .bottom], 12)
         .padding([.leading, .trailing], 30)
         .background(.opague)
         .cornerRadius(50.0)
@@ -28,7 +28,8 @@ struct SearchButton: View {
 
 #Preview {
     VStack { 
-        SearchButton(restaurants: .constant([]))
+//        SearchButton(restaurants: .constant([]))
+        SearchButton()
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .background(.gray)
