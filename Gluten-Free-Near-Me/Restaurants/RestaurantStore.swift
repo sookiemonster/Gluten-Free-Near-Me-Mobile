@@ -11,13 +11,19 @@ import SwiftUI
 
 enum Mentioner : Int8 {
     case none = 0
-    case comments = 1
+    case reviews = 1
     case menu = 2
     case description = 3
 }
 
 struct Item {
     var name:String
+}
+
+struct Review : Identifiable {
+    let id = UUID()
+    let author:String
+    let body:String
 }
 
 struct Restaurant : Identifiable {
@@ -28,14 +34,24 @@ struct Restaurant : Identifiable {
     let rating: Double
     let ref:Mentioner
 //    var items:[Item]?
+    var reviews:[Review]?
     var isSaved:Bool
     
     func getColor() -> Color {
         switch (ref) {
-        case .comments: return Color(.yellow)
+        case .reviews: return Color(.yellow)
         case .description: return Color(.blue)
         case .menu: return Color(.green)
         default: return Color(.black)
+        }
+    }
+    
+    func getBodyLabel() -> String {
+        switch ref {
+        case .reviews: return "Reviews Mention:";
+        case .description: return "Self-Described as: "
+        case .menu: return "Menu Items: "
+        case .none: return ""
         }
     }
 }
@@ -52,7 +68,8 @@ extension Restaurant {
         name: "Pizza Hut",
         description: "Not actually gluten free. lol",
         rating: 4.5,
-        ref: .comments,
+        ref: .reviews,
+        reviews: [Review(author: "The Hut", body: "Yeah lol it ain't gluten free.")],
         isSaved: false
     )
     static let sample_place_2 = Restaurant(
@@ -68,7 +85,7 @@ extension Restaurant {
         name: "Wendys",
         description: "Another fictional demo-description",
         rating: 4.5,
-        ref: .comments,
+        ref: .reviews,
         isSaved: false
     )
     static let sample_place_4 = Restaurant(
@@ -84,7 +101,7 @@ extension Restaurant {
         name: "Bakery",
         description: "Another fictional demo-description",
         rating: 4.5,
-        ref: .comments,
+        ref: .reviews,
         isSaved: false
     )
     static let sample_place_6 = Restaurant(

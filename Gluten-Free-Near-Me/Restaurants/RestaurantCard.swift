@@ -7,22 +7,36 @@
 
 import SwiftUI
 
+extension Text {
+    func quotation() -> some View {
+        // Add quotation marks via the computed style (because quotes detract from code readability)
+        return Text("\"\(self)\"")
+    }
+}
+
 struct CardBody: View {
     let restaurant:Restaurant
-
-    func LabelText() -> String {
-        switch restaurant.ref {
-        case .comments: return "Reviews Mention:";
-        case .description: return "Self-Described as: "
-        case .menu: return "Menu Items: "
-        case .none: return ""
+    
+    @ViewBuilder
+    func reviewList() -> some View {
+        VStack {
+            ForEach(restaurant.reviews ?? []) { review in
+                HStack(spacing: 0) { Text(review.author + " - ").bold(); Text(review.body).quotation() }
+            }
         }
     }
     
     var body : some View {
-        Text(LabelText())
-            .font(.title3)
+        Text(restaurant.getBodyLabel())
+            .font(.body)
             .foregroundColor(restaurant.getColor())
+            .bold()
+            .underline()
+        Spacer().frame(height: 5)
+        switch restaurant.ref {
+        case .reviews: reviewList()
+        default: EmptyView()
+        }
     }
 }
 
@@ -38,6 +52,7 @@ struct RestaurantCard: View {
         VStack(alignment: .leading) {
             CardHeader(restaurant: restaurant)
             Ratings(rating: restaurant.rating)
+            Spacer().frame(height: 20)
             CardBody(restaurant: restaurant)
         }
         .padding(getSquarePadding())
