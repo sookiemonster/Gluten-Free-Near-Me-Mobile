@@ -10,15 +10,6 @@ import SwiftUI
 struct RestaurantOverview: View {
     let restaurant:Restaurant
     
-    func getColor() -> Color {
-        switch (restaurant.ref) {
-        case .comments: return Color(.yellow)
-        case .description: return Color(.blue)
-        case .menu: return Color(.green)
-        default: return Color(.black)
-        }
-    }
-    
     var body: some View {
         HStack {
             Briefing(restaurant: restaurant)
@@ -26,7 +17,7 @@ struct RestaurantOverview: View {
             SaveButton(saved: restaurant.isSaved)
         }.padding()
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        .background(getColor())
+        .background(restaurant.getColor())
         .cornerRadius(10)
     }
 }
@@ -50,6 +41,6 @@ struct Briefing: View {
 }
 
 #Preview {
-    RestaurantOverview(restaurant: .somePlace)
+    RestaurantOverview(restaurant: .sample_place_1)
         .frame(maxWidth: .infinity).padding()
 }

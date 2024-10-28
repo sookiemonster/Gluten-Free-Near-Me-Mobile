@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 enum Mentioner : Int8 {
     case none = 0
@@ -19,16 +20,24 @@ struct Item {
     var name:String
 }
 
-struct Restaurant {
-//    var id:UUID
-//    var id:UUID
-    var loc:CLLocationCoordinate2D
-    var name:String
-    var description:String
-    var rating: Double
-    var ref:Mentioner
-    var items:[Item]?
+struct Restaurant : Identifiable {
+    let id = UUID()
+    let loc:CLLocationCoordinate2D
+    let name:String
+    let description:String
+    let rating: Double
+    let ref:Mentioner
+//    var items:[Item]?
     var isSaved:Bool
+    
+    func getColor() -> Color {
+        switch (ref) {
+        case .comments: return Color(.yellow)
+        case .description: return Color(.blue)
+        case .menu: return Color(.green)
+        default: return Color(.black)
+        }
+    }
 }
 
 struct RestaurantStore {
@@ -38,5 +47,62 @@ struct RestaurantStore {
 
 
 extension Restaurant {
-    static let somePlace = Restaurant( loc: CLLocationCoordinate2D(latitude: 40.70, longitude: -73.87), name: "Pizza Hut", description: "Not actually gluten free. lol", rating: 4.5, ref: .comments, isSaved: false)
+    static let sample_place_1 = Restaurant(
+        loc: CLLocationCoordinate2D(latitude: 40.70, longitude: -73.87),
+        name: "Pizza Hut",
+        description: "Not actually gluten free. lol",
+        rating: 4.5,
+        ref: .comments,
+        isSaved: false
+    )
+    static let sample_place_2 = Restaurant(
+        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        name: "Mama Jones",
+        description: "Another fictional demo-description",
+        rating: 4.5,
+        ref: .description,
+        isSaved: false
+    )
+    static let sample_place_3 = Restaurant(
+        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        name: "Wendys",
+        description: "Another fictional demo-description",
+        rating: 4.5,
+        ref: .comments,
+        isSaved: false
+    )
+    static let sample_place_4 = Restaurant(
+        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        name: "SomeWhere",
+        description: "Another fictional demo-description",
+        rating: 4.5,
+        ref: .description,
+        isSaved: false
+    )
+    static let sample_place_5 = Restaurant(
+        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        name: "Bakery",
+        description: "Another fictional demo-description",
+        rating: 4.5,
+        ref: .comments,
+        isSaved: false
+    )
+    static let sample_place_6 = Restaurant(
+        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        name: "Daniel's Deli",
+        description: "Another fictional demo-description",
+        rating: 4.5,
+        ref: .description,
+        isSaved: false
+    )
+}
+
+extension RestaurantStore {
+    static let sample_places = [
+        Restaurant.sample_place_1,
+        Restaurant.sample_place_2,
+        Restaurant.sample_place_3,
+        Restaurant.sample_place_4,
+        Restaurant.sample_place_5,
+        Restaurant.sample_place_6]
 }

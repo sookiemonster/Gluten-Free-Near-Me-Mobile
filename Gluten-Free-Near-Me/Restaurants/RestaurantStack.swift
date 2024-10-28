@@ -7,12 +7,36 @@
 
 import SwiftUI
 
+enum ViewMode {
+    case compact
+    case expanded
+}
+
 struct RestaurantStack: View {
+    @State private var mode:ViewMode = .compact
+    let restaurants:[Restaurant];
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        ScrollView {
+            LazyVStack {
+                ForEach(restaurants) { place in
+                    switch mode {
+                    case .compact:
+                        RestaurantOverview(restaurant: place)
+                    case .expanded:
+                        RestaurantCard(restaurant: place)
+                    }
+                }
+            }
+            .padding()
+        }
     }
 }
 
 #Preview {
-    RestaurantStack()
+    RestaurantStack(restaurants: RestaurantStore.sample_places)
+        .frame(width: UIScreen.main.bounds.width / 2)
+        .frame(height: UIScreen.main.bounds.height / 4)
+        .background(.gray)
 }
