@@ -23,7 +23,7 @@ struct SaveButton: View {
         Button {
             toggle()
         } label: {
-            Image(systemName: renderedSymbol() ).font(.largeTitle)
+            Image(systemName: renderedSymbol() ).font(.title)
                 .foregroundColor(.white)
         }.symbolEffect(.bounce, value: saved)
         

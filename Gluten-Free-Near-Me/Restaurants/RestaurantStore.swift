@@ -48,8 +48,8 @@ struct Restaurant : Identifiable {
     
     func getBodyLabel() -> String {
         switch ref {
-        case .reviews: return "Reviews Mention:";
-        case .description: return "Self-Described as: "
+        case .reviews: return "Reviews Mention GF:";
+        case .description: return "Self-Described as GF: "
         case .menu: return "Menu Items: "
         case .none: return ""
         }
@@ -69,13 +69,18 @@ extension Restaurant {
         description: "Not actually gluten free. lol",
         rating: 4.5,
         ref: .reviews,
-        reviews: [Review(author: "The Hut", body: "Yeah lol it ain't gluten free.")],
+        reviews: [
+            Review(author: "The Hut", body: "Yeah lol it ain't gluten free."),
+            Review(author: "Someone2", body: "Yeah lol it ain't gluten free."),
+            Review(author: "Some3", body: "Yeah lol it ain't gluten free."),
+            Review(author: "Somen4", body: "Yeah lol it ain't gluten free.")
+                 ],
         isSaved: false
     )
     static let sample_place_2 = Restaurant(
         loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
         name: "Mama Jones",
-        description: "Another fictional demo-description",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         rating: 4.5,
         ref: .description,
         isSaved: false

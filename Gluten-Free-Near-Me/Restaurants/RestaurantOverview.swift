@@ -32,6 +32,8 @@ struct Briefing: View {
                 .fontWeight(.bold)
             Text(restaurant.description)
                 .font(.subheadline)
+                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                .truncationMode(/*@START_MENU_TOKEN@*/.tail/*@END_MENU_TOKEN@*/)
         }
         .onTapGesture {
             // pan on map
