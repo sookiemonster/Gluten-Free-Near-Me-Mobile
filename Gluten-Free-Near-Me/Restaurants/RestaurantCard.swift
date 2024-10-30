@@ -40,7 +40,10 @@ struct CardBody: View {
     
     @ViewBuilder
     func renderDescription() -> some View {
-        Text(restaurant.description).quotation()
+        Text(restaurant.description)
+            .italic()
+            .lineLimit(3)
+            .truncationMode(/*@START_MENU_TOKEN@*/.tail/*@END_MENU_TOKEN@*/)
     }
     
     var body : some View {
@@ -59,19 +62,19 @@ struct RestaurantCard: View {
     
     func getSquarePadding() -> CGFloat {
         // Cap padding at 10px or being responsive
-        return max(10, min(UIScreen.main.bounds.height / 30, UIScreen.main.bounds.width / 30))
+        return max(20, min(UIScreen.main.bounds.height / 20, UIScreen.main.bounds.width / 20))
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 4) {
             CardHeader(restaurant: restaurant)
-            Ratings(rating: restaurant.rating)
+            RatingView(rating: restaurant.rating, size: 18)
             Spacer().frame(height: 20)
             CardBody(restaurant: restaurant)
         }
         .padding(getSquarePadding())
         .background()
-        .cornerRadius(15)
+        .cornerRadius(30)
     }
 }
 
@@ -93,25 +96,19 @@ struct CardHeader : View {
                 .bold()
             Spacer()
             SaveButton(saved: restaurant.isSaved)
-            ShareButton(link: URL(string:"https:://ibm.com"))
+            ShareButton(link: restaurant.link)
         }
     }
 }
 
-struct Ratings: View {
-    let rating:Double;
-    var body: some View {
-        Text("RATINGS")
-    }
-}
-
 struct ShareButton: View {
-    let link:URL?
+    let link:String?
     
     var body : some View {
         if let href = link {
             Button {
                 // share link, or prompt to open on GGL maps
+                let redirect = URL(string: href);
             } label: {
                 Image(systemName: "square.and.arrow.up").font(.title)
                     .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)

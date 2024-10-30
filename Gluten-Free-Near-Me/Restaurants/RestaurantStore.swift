@@ -36,6 +36,7 @@ struct Restaurant : Identifiable {
 //    var items:[Item]?
     var reviews:[Review]?
     var isSaved:Bool
+    var link:String?
     
     func getColor() -> Color {
         switch (ref) {
