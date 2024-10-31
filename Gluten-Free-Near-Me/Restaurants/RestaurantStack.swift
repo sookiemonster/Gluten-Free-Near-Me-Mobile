@@ -14,6 +14,7 @@ enum ViewMode {
 
 struct RestaurantStack: View {
     @State private var mode:ViewMode = .compact
+    @EnvironmentObject var manager:LocationManager;
     let restaurants:[Restaurant];
     
     var body: some View {
@@ -29,9 +30,9 @@ struct RestaurantStack: View {
                     }
                 }
             }
-            .padding()
-            .background(.opague)
         }
+        .padding()
+        .background(.opague)
     }
 }
 

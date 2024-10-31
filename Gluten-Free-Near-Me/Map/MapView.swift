@@ -19,23 +19,20 @@ extension MapCameraBounds {
 struct MapView: View {
     @State private var position:MapCameraPosition = MapCameraPosition.userLocation(fallback: .automatic)
     
-    @StateObject private var manager = LocationManager()
+    @EnvironmentObject var manager:LocationManager;
 
     var body: some View {
         Map(position: $position, bounds: .config, interactionModes: .all) {
             UserAnnotation()
         }.mapControls {
             MapUserLocationButton()
-        }
-        
-        Button {
-            manager.panTo(position:$position)
-        } label: {
-            Text("Wumbo")
+        }.onAppear {
+            manager.setCameraPosition(position: $position)
         }
     }
 }
 
 #Preview {
-    MapView()
+//    MapView()
+    Text("a")
 }

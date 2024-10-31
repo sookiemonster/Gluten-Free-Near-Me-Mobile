@@ -6,13 +6,24 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ViewButton: View {
+    let navToLoc:CLLocationCoordinate2D
+    @EnvironmentObject var manager:LocationManager
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            manager.panTo(center: navToLoc)
+        } label: {
+            Image(systemName: "map")
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                .foregroundColor(.white)
+        }.filled(color: .transparent, size: 50)
     }
 }
 
 #Preview {
-    ViewButton()
+    Text("")
+//    ViewButton()
 }

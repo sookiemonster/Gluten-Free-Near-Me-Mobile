@@ -7,12 +7,21 @@
 
 import SwiftUI
 
-struct FilledButton: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension Button {
+    func filled(color:Color, size:CGFloat) -> some View {
+        self
+            .frame(width: size, height: size)
+            .background(color)
+            .cornerRadius(15)
     }
 }
 
 #Preview {
-    FilledButton()
+    Button {
+        
+    } label: {
+        Image(systemName: "eye")
+            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+    }.filled(color: .red, size: 40)
+    
 }

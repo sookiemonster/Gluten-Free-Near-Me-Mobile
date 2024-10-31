@@ -16,6 +16,7 @@ extension MKCoordinateRegion {
 
 class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var hasLocationAuthorization:Bool = false;
+    private var cameraPosition:Binding<MapCameraPosition>?
     private let manager = CLLocationManager();
     var location:CLLocationCoordinate2D?
     
@@ -33,19 +34,34 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         updateAuth()
+        #if DEBUG
         switch status {
         case .notDetermined: print("undetermined auth"); break;
         default : print("some other auth"); break;
         }
+        #endif
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = locations.first?.coordinate
     }
     
-    func panTo(position:Binding<MapCameraPosition>) {
-        print("wah")
-        print(position.wrappedValue)
-        position.wrappedValue = MapCameraPosition.region(.somewhere)
+    func setCameraPosition(position:Binding<MapCameraPosition>) {
+        self.cameraPosition = position
+    }
+    
+    func panTo(center:CLLocationCoordinate2D) {
+        guard cameraPosition != nil else { return ;}
+        #if DEBUG
+        print(center)
+        print()
+        #endif
+        
+        let newCamera = MKCoordinateRegion(
+            center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        withAnimation() {
+            cameraPosition!.wrappedValue = MapCameraPosition.region(newCamera)
+        }
     }
 }

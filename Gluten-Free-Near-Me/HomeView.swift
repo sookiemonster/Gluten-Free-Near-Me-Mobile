@@ -9,23 +9,36 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showRestaurants = true;
+    private var platform:UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    
+    func onPad() -> Bool { return platform == .pad }
+    func onPhone() -> Bool { return platform == .phone }
+    
     var body: some View {
         ZStack {
-            MapView()
-            VStack() {
-                Spacer()
-                SearchButton()
-                    .padding()
-//                RestaurantStack(restaurants: RestaurantStore.sample_places)
+            ZStack {
+                MapView()
+                VStack() {
+                    if (!showRestaurants) { Spacer() }
+                    SearchButton()
+                        .padding()
+                    if (showRestaurants && onPad()) {
+                        Spacer()
+                        RestaurantStack(restaurants: RestaurantStore.sample_places)
+                            .frame(maxHeight: UIScreen.main.bounds.height / 3)
+                    }
+                    if (showRestaurants && onPhone()) { Spacer() }
+                }
             }
-        }.sheet(isPresented: $showRestaurants) {
-            RestaurantStack(restaurants: RestaurantStore.sample_places)
-                .padding([.top], 5)
-                .presentationDetents([.fraction(0.2), .fraction(0.6)])
-                .presentationBackgroundInteraction(.enabled)
-                .interactiveDismissDisabled()
+            if (onPhone()) {
+                ZStack{}.sheet(isPresented: $showRestaurants) {
+                RestaurantStack(restaurants: RestaurantStore.sample_places)
+                    .presentationDetents([.fraction(0.2), .fraction(0.6)])
+                    .presentationBackgroundInteraction(.enabled)
+                    .interactiveDismissDisabled()
+                }
+            }
         }
-        
     }
 }
 

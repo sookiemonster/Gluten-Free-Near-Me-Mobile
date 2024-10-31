@@ -25,7 +25,9 @@ struct SaveButton: View {
         } label: {
             Image(systemName: renderedSymbol() ).font(.title)
                 .foregroundColor(.white)
-        }.symbolEffect(.bounce, value: saved)
+        }.filled(color: .transparent, size: 50)
+        .symbolEffect(.bounce, value: saved)
+        
         
     }
 }

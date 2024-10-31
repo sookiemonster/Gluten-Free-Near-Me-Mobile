@@ -9,11 +9,14 @@ import SwiftUI
 
 struct RestaurantOverview: View {
     let restaurant:Restaurant
+    @EnvironmentObject var manager:LocationManager;
     
     var body: some View {
-        HStack {
+            
+        HStack (spacing: 15) {
             Briefing(restaurant: restaurant)
             Spacer()
+            ViewButton(navToLoc: restaurant.loc)
             SaveButton(saved: restaurant.isSaved)
         }.padding()
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -32,12 +35,11 @@ struct Briefing: View {
                 .fontWeight(.bold)
             Text(restaurant.description)
                 .font(.subheadline)
-                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
-                .truncationMode(/*@START_MENU_TOKEN@*/.tail/*@END_MENU_TOKEN@*/)
+                .lineLimit(2)
+                .truncationMode(.tail)
         }
         .onTapGesture {
-            // pan on map
-            // open restaurant card
+            
         }
     }
 }

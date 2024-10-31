@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct MasterView: View {
+    @StateObject var manager = LocationManager()
+
     var body: some View {
         TabView() {
-            MapView()
-        }
+            HomeView()
+        }.environmentObject(manager)
     }
 }
 
