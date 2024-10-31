@@ -18,7 +18,7 @@ struct ViewButton: View {
         } label: {
             Image(systemName: "map")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.white)
+                .foregroundColor(.text)
         }.filled(color: .transparent, size: 50)
     }
 }

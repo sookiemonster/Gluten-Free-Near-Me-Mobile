@@ -21,7 +21,7 @@ extension Button {
         
     } label: {
         Image(systemName: "eye")
-            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            .foregroundColor(.blue)
     }.filled(color: .red, size: 40)
     
 }

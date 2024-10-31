@@ -33,7 +33,7 @@ struct HomeView: View {
             if (onPhone()) {
                 ZStack{}.sheet(isPresented: $showRestaurants) {
                 RestaurantStack(restaurants: RestaurantStore.sample_places)
-                    .presentationDetents([.fraction(0.2), .fraction(0.6)])
+                        .presentationDetents([.fraction(0.01), .fraction(0.2), .fraction(0.6)])
                     .presentationBackgroundInteraction(.enabled)
                     .interactiveDismissDisabled()
                 }
