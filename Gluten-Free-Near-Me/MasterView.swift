@@ -9,11 +9,14 @@ import SwiftUI
 
 struct MasterView: View {
     @StateObject var manager = LocationManager()
+    @StateObject var observer = RestaurantObserver()
 
     var body: some View {
         TabView() {
             HomeView()
         }.environmentObject(manager)
+        .environmentObject(observer)
+        
     }
 }
 

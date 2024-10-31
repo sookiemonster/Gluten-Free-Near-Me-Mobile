@@ -9,14 +9,13 @@ import SwiftUI
 
 struct RestaurantOverview: View {
     let restaurant:Restaurant
-    @EnvironmentObject var manager:LocationManager;
     
     var body: some View {
             
         HStack (spacing: 15) {
             Briefing(restaurant: restaurant)
             Spacer()
-            ViewButton(navToLoc: restaurant.loc)
+            ViewButton(restaurant: restaurant)
             SaveButton(saved: restaurant.isSaved)
         }.padding()
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)

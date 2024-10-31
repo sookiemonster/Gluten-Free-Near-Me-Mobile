@@ -5,14 +5,22 @@
 //  Created by Daniel S. on 10/30/24.
 //
 
-import SwiftUI
+import Foundation
 
-struct RestaurantObserver: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class RestaurantObserver : ObservableObject {
+    @Published var selected:Restaurant?
+    
+    init(selected:Restaurant? = nil) {
+        self.selected = selected
     }
-}
-
-#Preview {
-    RestaurantObserver()
+    
+    func select(target:Restaurant) {
+        self.selected = target
+        print(target.name)
+    }
+    
+    func deselect() {
+        self.selected = nil
+        print("deselect")
+    }
 }

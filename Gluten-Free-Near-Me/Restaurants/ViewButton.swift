@@ -9,12 +9,14 @@ import SwiftUI
 import MapKit
 
 struct ViewButton: View {
-    let navToLoc:CLLocationCoordinate2D
+    let restaurant:Restaurant
     @EnvironmentObject var manager:LocationManager
+    @EnvironmentObject var observer:RestaurantObserver
     
     var body: some View {
         Button {
-            manager.panTo(center: navToLoc)
+            manager.panTo(center: restaurant.loc)
+            observer.select(target: restaurant)
         } label: {
             Image(systemName: "map")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
