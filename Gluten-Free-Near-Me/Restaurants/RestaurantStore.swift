@@ -40,8 +40,8 @@ struct Restaurant : Identifiable {
     
     func getColor() -> Color {
         switch (ref) {
-        case .reviews: return Color(.yellow)
-        case .description: return Color(.blue)
+        case .reviews: return Color("ReviewColor")
+        case .description: return Color("DescriptionColor")
         case .menu: return Color(.green)
         default: return Color(.black)
         }
