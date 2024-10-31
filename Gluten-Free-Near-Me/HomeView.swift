@@ -43,11 +43,12 @@ struct HomeView: View {
                     if (observer.isFocused()) {
                         RestaurantCard(restaurant: .sample_place_1)
                             .padding()
+                            .transition(.opacity.combined(with: .move(edge: .top)))
                     }
                     Spacer()
                     SearchButton()
                         .padding()
-                }
+                }.animation(.easeOut(duration: 0.25), value: observer.isFocused())
             }
             .sheet(isPresented: $showRestaurants) {
                 RestaurantStack(restaurants: RestaurantStore.sample_places)

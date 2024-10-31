@@ -17,7 +17,7 @@ struct SearchButton: View {
         } label: {
             Text("Search Here")
                 .fontWeight(.bold)
-                .tint(.white)
+                .tint(.text)
         }
         .padding([.top, .bottom], 12)
         .padding([.leading, .trailing], 30)
