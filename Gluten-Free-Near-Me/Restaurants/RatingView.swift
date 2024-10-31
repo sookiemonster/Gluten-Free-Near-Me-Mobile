@@ -15,7 +15,7 @@ struct RatingView: View {
     private var fractional:Double
     private var whole:UInt8
     
-    init(rating:Double, size:CGFloat=30, color:Color = Color(.white)) {
+    init(rating:Double, size:CGFloat=30, color:Color = Color(.text)) {
         let clamped = min(max(rating, 0.0), 5.0)
         self.rating = rating
         self.whole = UInt8(floor(clamped))
@@ -38,7 +38,6 @@ struct RatingView: View {
                             .foregroundColor(color)
                             .frame(width: size)
                         Rectangle()
-//                            .trim(from: 0, to: 0.5)
                             .offset(CGSize(width: fractional * size, height: 0.0))
                             .rotationEffect(.degrees(180))
                             .frame(width: size, height: size)

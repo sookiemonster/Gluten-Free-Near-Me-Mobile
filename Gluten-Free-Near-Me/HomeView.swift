@@ -17,31 +17,43 @@ struct HomeView: View {
     func onPhone() -> Bool { return platform == .phone }
     
     var body: some View {
-        ZStack {
+        if (onPad()) {
             ZStack {
                 MapView()
-                VStack() {
+                VStack {
                     if (!showRestaurants) { Spacer() }
-                    SearchButton()
-                        .padding()
-                    if (observer.isFocused() && onPad()) {
+                    SearchButton().padding()
+                    
+                    if (observer.isFocused()) {
                         RestaurantCard(restaurant: .sample_place_1)
                             .padding()
                     }
-                    if (showRestaurants && onPad()) {
+                    
+                    if (showRestaurants) {
+                        Spacer()
                         RestaurantStack(restaurants: RestaurantStore.sample_places)
                             .frame(maxHeight: UIScreen.main.bounds.height / 3)
                     }
-                    if (showRestaurants && onPhone()) { Spacer() }
                 }
             }
-            if (onPhone()) {
-                ZStack{}.sheet(isPresented: $showRestaurants) {
+        } else if (onPhone()) {
+            ZStack {
+                MapView()
+                VStack() {
+                    if (observer.isFocused()) {
+                        RestaurantCard(restaurant: .sample_place_1)
+                            .padding()
+                    }
+                    Spacer()
+                    SearchButton()
+                        .padding()
+                }
+            }
+            .sheet(isPresented: $showRestaurants) {
                 RestaurantStack(restaurants: RestaurantStore.sample_places)
-                        .presentationDetents([.fraction(0.01), .fraction(0.2), .fraction(0.6)])
+                    .presentationDetents([.fraction(0.01), .fraction(0.2), .fraction(0.6)])
                     .presentationBackgroundInteraction(.enabled)
                     .interactiveDismissDisabled()
-                }
             }
         }
     }
