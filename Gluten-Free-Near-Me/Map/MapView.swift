@@ -39,7 +39,7 @@ struct MapView: View {
             guard let target = observer.selected else { return; }
             
             let newCenter = context.region.center
-            if (isCloseBy(p1: target.loc, p2: newCenter)) {
+            if (!isCloseBy(p1: target.loc, p2: newCenter)) {
                 observer.deselect()
             }
         }

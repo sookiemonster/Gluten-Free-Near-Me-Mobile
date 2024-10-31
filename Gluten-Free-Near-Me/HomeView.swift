@@ -11,6 +11,8 @@ struct HomeView: View {
     @State private var showRestaurants = true;
     private var platform:UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
+    @EnvironmentObject var observer:RestaurantObserver
+    
     func onPad() -> Bool { return platform == .pad }
     func onPhone() -> Bool { return platform == .phone }
     
@@ -22,8 +24,11 @@ struct HomeView: View {
                     if (!showRestaurants) { Spacer() }
                     SearchButton()
                         .padding()
+                    if (observer.isFocused() && onPad()) {
+                        RestaurantCard(restaurant: .sample_place_1)
+                            .padding()
+                    }
                     if (showRestaurants && onPad()) {
-                        Spacer()
                         RestaurantStack(restaurants: RestaurantStore.sample_places)
                             .frame(maxHeight: UIScreen.main.bounds.height / 3)
                     }

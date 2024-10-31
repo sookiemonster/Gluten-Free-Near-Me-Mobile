@@ -23,4 +23,8 @@ class RestaurantObserver : ObservableObject {
         self.selected = nil
         print("deselect")
     }
+    
+    func isFocused() -> Bool {
+        return selected != nil
+    }
 }
