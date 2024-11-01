@@ -14,6 +14,18 @@ extension View {
     }
 }
 
+extension View {
+    func fillParent() -> some View {
+        self
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
+    }
+    
+    func fillWidth(alignment:Alignment = .center) -> some View {
+        self
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: alignment)
+    }
+}
+
 #Preview {
     Circle()
         .opague()
