@@ -26,6 +26,7 @@
 		05B9F6072CCC9F8B0070AFC4 /* RequestLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6062CCC9F8B0070AFC4 /* RequestLocation.swift */; };
 		05B9F6092CCCA39D0070AFC4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6082CCCA39D0070AFC4 /* MapView.swift */; };
 		05FB99022CD5141C006F3BB8 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99012CD5141C006F3BB8 /* Styling.swift */; };
+		05FB99042CD53FA0006F3BB8 /* RestaurantMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99032CD53FA0006F3BB8 /* RestaurantMarker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		05B9F6062CCC9F8B0070AFC4 /* RequestLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLocation.swift; sourceTree = "<group>"; };
 		05B9F6082CCCA39D0070AFC4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		05FB99012CD5141C006F3BB8 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
+		05FB99032CD53FA0006F3BB8 /* RestaurantMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMarker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */,
 				05B9F6062CCC9F8B0070AFC4 /* RequestLocation.swift */,
 				05B9F6082CCCA39D0070AFC4 /* MapView.swift */,
+				05FB99032CD53FA0006F3BB8 /* RestaurantMarker.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				0598D73C2CD31E870001FC1B /* FilledButton.swift in Sources */,
 				056719FA2CCC768900CF3AB2 /* LocationManager.swift in Sources */,
 				05B9F6032CCC996D0070AFC4 /* RestaurantStack.swift in Sources */,
+				05FB99042CD53FA0006F3BB8 /* RestaurantMarker.swift in Sources */,
 				056719E92CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
