@@ -25,8 +25,9 @@ struct HomeView: View {
                     SearchButton().padding()
                     
                     if (observer.isFocused()) {
-                        RestaurantCard(restaurant: .sample_place_1)
+                        RestaurantCard(restaurant: observer.selected!)
                             .padding()
+                            .transition(.opacity.combined(with: .move(edge: .leading)))
                     }
                     
                     if (showRestaurants) {
@@ -34,7 +35,7 @@ struct HomeView: View {
                         RestaurantStack(restaurants: RestaurantStore.sample_places)
                             .frame(maxHeight: UIScreen.main.bounds.height / 3)
                     }
-                }
+                }.animation(.easeInOut(duration: 0.2), value: observer.isFocused())
             }
         } else if (onPhone()) {
             ZStack {

@@ -24,8 +24,8 @@ struct MapView: View {
 //    @EnvironmentObject var store:RestaurantStore;
     
     func isCloseBy(p1:CLLocationCoordinate2D, p2:CLLocationCoordinate2D) -> Bool {
-        let TOLERANCE = 0.00005
-        return (p1.latitude - p2.latitude) < TOLERANCE && (p1.longitude - p2.longitude) < TOLERANCE
+        let TOLERANCE = 0.0005
+        return abs(p1.latitude - p2.latitude) < TOLERANCE && abs(p1.longitude - p2.longitude) < TOLERANCE
     }
     
     @MapContentBuilder
@@ -58,6 +58,10 @@ struct MapView: View {
             
             let newCenter = context.region.center
             let mapCenteredAtRestaurant = isCloseBy(p1: target.loc, p2: newCenter)
+            
+            print("Centered?: ", mapCenteredAtRestaurant)
+            print("MapCenter: ", newCenter)
+            print("TargetCenter: ", target.loc)
             if (manager.isAnimating && mapCenteredAtRestaurant) {
                 manager.completeAnimation();
             } else if (!manager.isAnimating && !mapCenteredAtRestaurant) {
