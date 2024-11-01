@@ -33,12 +33,13 @@ struct MapView: View {
         ForEach (toMap) { place in
             Annotation(LocalizedStringKey(stringLiteral: place.name), coordinate: place.loc) {
                 Image(systemName: "fork.knife.circle.fill")
-                    .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+                    .renderingMode(.template)
+                    .foregroundStyle(place.getColor(),.text)
                     .font(.title)
                     .onTapGesture {
                         manager.panTo(center: place.loc)
                         observer.select(target: place)
-                    }
+                    }.padding(5) // Make selection easier
             }
         }
     }
