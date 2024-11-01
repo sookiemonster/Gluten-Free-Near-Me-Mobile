@@ -25,6 +25,7 @@
 		05B9F6052CCC99EC0070AFC4 /* RestaurantOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6042CCC99EC0070AFC4 /* RestaurantOverview.swift */; };
 		05B9F6072CCC9F8B0070AFC4 /* RequestLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6062CCC9F8B0070AFC4 /* RequestLocation.swift */; };
 		05B9F6092CCCA39D0070AFC4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9F6082CCCA39D0070AFC4 /* MapView.swift */; };
+		05FB99022CD5141C006F3BB8 /* Styling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99012CD5141C006F3BB8 /* Styling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		05B9F6042CCC99EC0070AFC4 /* RestaurantOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantOverview.swift; sourceTree = "<group>"; };
 		05B9F6062CCC9F8B0070AFC4 /* RequestLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLocation.swift; sourceTree = "<group>"; };
 		05B9F6082CCCA39D0070AFC4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		05FB99012CD5141C006F3BB8 /* Styling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styling.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		056719E72CCC743600CF3AB2 /* Gluten-Free-Near-Me */ = {
 			isa = PBXGroup;
 			children = (
+				05FB99012CD5141C006F3BB8 /* Styling.swift */,
 				05B9F5FB2CCC94C90070AFC4 /* Restaurants */,
 				05B9F5F82CCC833D0070AFC4 /* Info.plist */,
 				056719F82CCC767600CF3AB2 /* Map */,
@@ -209,6 +212,7 @@
 				0598D7382CD2967D0001FC1B /* RatingView.swift in Sources */,
 				05B9F6012CCC982C0070AFC4 /* HomeView.swift in Sources */,
 				056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */,
+				05FB99022CD5141C006F3BB8 /* Styling.swift in Sources */,
 				0598D73C2CD31E870001FC1B /* FilledButton.swift in Sources */,
 				056719FA2CCC768900CF3AB2 /* LocationManager.swift in Sources */,
 				05B9F6032CCC996D0070AFC4 /* RestaurantStack.swift in Sources */,

@@ -32,7 +32,7 @@ struct RestaurantStack: View {
             }
         }
         .padding()
-        .background(.opague)
+        .background()
     }
 }
 
