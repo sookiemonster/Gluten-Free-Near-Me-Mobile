@@ -16,6 +16,8 @@ extension MKCoordinateRegion {
 
 class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var hasLocationAuthorization:Bool = false;
+    @Published var isAnimating:Bool = true;
+    
     private var cameraPosition:Binding<MapCameraPosition>?
     private let manager = CLLocationManager();
     var location:CLLocationCoordinate2D?
@@ -60,8 +62,14 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate {
         let newCamera = MKCoordinateRegion(
             center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
+        self.isAnimating = true;
         withAnimation() {
             cameraPosition!.wrappedValue = MapCameraPosition.region(newCamera)
         }
+    }
+    
+    func completeAnimation() {
+        print("completed anim")
+        self.isAnimating = false;
     }
 }

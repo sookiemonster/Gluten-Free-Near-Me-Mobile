@@ -16,12 +16,12 @@ class RestaurantObserver : ObservableObject {
     
     func select(target:Restaurant) {
         self.selected = target
-        print(target.name)
+        print("select: " + target.name)
     }
     
     func deselect() {
         self.selected = nil
-        print("deselect")
+        print("deselecting...")
     }
     
     func isFocused() -> Bool {

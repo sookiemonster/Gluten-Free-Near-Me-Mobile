@@ -79,7 +79,7 @@ extension Restaurant {
         isSaved: false
     )
     static let sample_place_2 = Restaurant(
-        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        loc: CLLocationCoordinate2D(latitude: 40.7054, longitude: -73.865),
         name: "Mama Jones",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         rating: 4.5,
@@ -87,7 +87,7 @@ extension Restaurant {
         isSaved: false
     )
     static let sample_place_3 = Restaurant(
-        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.868),
         name: "Wendys",
         description: "Another fictional demo-description",
         rating: 4.5,
@@ -95,7 +95,7 @@ extension Restaurant {
         isSaved: false
     )
     static let sample_place_4 = Restaurant(
-        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        loc: CLLocationCoordinate2D(latitude: 40.707, longitude: -73.865),
         name: "SomeWhere",
         description: "Another fictional demo-description",
         rating: 4.5,
@@ -111,7 +111,7 @@ extension Restaurant {
         isSaved: false
     )
     static let sample_place_6 = Restaurant(
-        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.865),
+        loc: CLLocationCoordinate2D(latitude: 40.705, longitude: -73.863),
         name: "Daniel's Deli",
         description: "Another fictional demo-description",
         rating: 4.5,

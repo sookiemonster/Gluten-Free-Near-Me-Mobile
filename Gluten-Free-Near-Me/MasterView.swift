@@ -30,8 +30,7 @@ struct MasterView: View {
                 .navOption(name: "Profile", iconString: "person.fill")
         }
         .environmentObject(manager)
-        .environmentObject(observer)
-        
+        .environmentObject(observer)        
     }
 }
 

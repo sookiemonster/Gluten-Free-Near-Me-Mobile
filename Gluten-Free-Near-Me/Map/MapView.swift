@@ -34,7 +34,7 @@ struct MapView: View {
             Annotation(LocalizedStringKey(stringLiteral: place.name), coordinate: place.loc) {
                 Image(systemName: "fork.knife.circle.fill")
                     .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-                    .font(.largeTitle)
+                    .font(.title)
                     .onTapGesture {
                         manager.panTo(center: place.loc)
                         observer.select(target: place)
@@ -53,13 +53,17 @@ struct MapView: View {
         }.onAppear {
             manager.setCameraPosition(position: $position)
         }
-        .onMapCameraChange(frequency: .onEnd) { context in
+        .onMapCameraChange(frequency: .continuous) { context in
             guard let target = observer.selected else { return; }
             
             let newCenter = context.region.center
-            if (!isCloseBy(p1: target.loc, p2: newCenter)) {
+            let mapCenteredAtRestaurant = isCloseBy(p1: target.loc, p2: newCenter)
+            if (manager.isAnimating && mapCenteredAtRestaurant) {
+                manager.completeAnimation();
+            } else if (!manager.isAnimating && !mapCenteredAtRestaurant) {
                 observer.deselect()
             }
+            
         }
     }
 }
