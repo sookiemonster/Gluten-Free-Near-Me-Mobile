@@ -7,15 +7,16 @@
 
 import SwiftUI
 
-enum ViewMode {
-    case compact
-    case expanded
-}
-
 struct RestaurantStack: View {
-    @State private var mode:ViewMode = .compact
     @EnvironmentObject var manager:LocationManager;
+    
+    @Binding var mode:DrillDownMode;
     let restaurants:[Restaurant];
+    
+    init(restaurants:[Restaurant], mode:Binding<DrillDownMode> = .constant(.compact)) {
+        self.restaurants = restaurants
+        self._mode = mode
+    }
     
     var body: some View {
         
@@ -31,14 +32,11 @@ struct RestaurantStack: View {
                 }
             }
         }
-        .padding()
-        .background()
+//        .padding()
+//        .background()
     }
 }
 
 #Preview {
     RestaurantStack(restaurants: RestaurantStore.sample_places)
-        .frame(width: UIScreen.main.bounds.width / 2)
-        .frame(height: UIScreen.main.bounds.height / 4)
-        .background(.gray)
 }

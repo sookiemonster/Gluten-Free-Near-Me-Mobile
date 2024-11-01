@@ -17,18 +17,21 @@ struct SavedHeader: View {
                 .bold()
             DrillDownSelector(selected: $detailMode)
         }.fillWidth(alignment: .leading)
-            .padding(30)
     }
 }
 
 struct SavedView: View {
     @State private var detailMode:DrillDownMode = .compact;
     
+    let restaurants:[Restaurant] = RestaurantStore.sample_places
+    
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             SavedHeader(detailMode: $detailMode)
-            Spacer()
-        }.fillParent()
+            RestaurantStack(restaurants: restaurants, mode: $detailMode)
+        }
+        .padding(20)
+        .fillParent()
     }
 }
 

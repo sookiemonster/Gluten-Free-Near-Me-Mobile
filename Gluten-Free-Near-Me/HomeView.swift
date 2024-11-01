@@ -53,6 +53,7 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showRestaurants) {
                 RestaurantStack(restaurants: RestaurantStore.sample_places)
+                    .padding()
                     .presentationDetents([.fraction(0.01), .fraction(0.2), .fraction(0.6)])
                     .presentationBackgroundInteraction(.enabled)
                     .interactiveDismissDisabled()
