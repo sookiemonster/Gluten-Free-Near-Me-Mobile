@@ -37,9 +37,6 @@ struct Briefing: View {
                 .lineLimit(2)
                 .truncationMode(.tail)
         }
-        .onTapGesture {
-            
-        }
     }
 }
 

@@ -21,7 +21,7 @@ struct SavedHeader: View {
 }
 
 struct SavedView: View {
-    @State private var detailMode:DrillDownMode = .expanded;
+    @State private var detailMode:DrillDownMode = .compact;
     
     let restaurants:[Restaurant] = RestaurantStore.sample_places
     

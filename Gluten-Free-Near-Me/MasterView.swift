@@ -7,30 +7,54 @@
 
 import SwiftUI
 
-extension View {
-    func navOption(name:String, iconString:String) -> some View {
-        self
-            .tabItem {
-                Label(name, systemImage: iconString)
-            }
+struct NavButton : View {
+    let name:String
+    let iconString:String
+    
+    var body : some View {
+        Button {
+            print("a")
+        } label: {
+            Label(name, systemImage: iconString)
+                .font(.title2)
+        }.fillWidth()
     }
+}
+enum Tab:UInt8 {
+    case home
+    case saved
+    case profile
 }
 
 struct MasterView: View {
     @StateObject var manager = LocationManager()
     @StateObject var observer = RestaurantObserver()
+    @State var tab:Tab = .home
 
     var body: some View {
-        TabView() {
-            HomeView()
-                .navOption(name: "Home", iconString: "house.fill")
-            Text("Saved")
-                .navOption(name: "Saved", iconString: "heart")
-            Text("Settings")
-                .navOption(name: "Profile", iconString: "person.fill")
+        NavigationStack {
+            ZStack {
+                HomeView()
+                
+                switch tab {
+                case .home: EmptyView()
+                case .saved: SavedView().opaque()
+                case .profile:
+                    Text("Settings")
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    HStack {
+                        NavButton(name: "Home", iconString: "house.fill")
+                        NavButton(name: "Saved", iconString: "heart")
+                        NavButton(name: "Profile", iconString: "person.fill")
+                    }
+                }
+            }.toolbarBackground(.visible, for: .bottomBar)
         }
         .environmentObject(manager)
-        .environmentObject(observer)        
+        .environmentObject(observer) 
     }
 }
 

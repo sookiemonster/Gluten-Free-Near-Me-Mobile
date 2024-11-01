@@ -19,7 +19,6 @@ struct RestaurantStack: View {
     }
     
     var body: some View {
-        
         ScrollView {
             LazyVStack {
                 ForEach(restaurants) { place in
@@ -32,8 +31,6 @@ struct RestaurantStack: View {
                 }
             }
         }
-//        .padding()
-//        .background()
     }
 }
 

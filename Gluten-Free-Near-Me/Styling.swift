@@ -8,9 +8,10 @@
 import SwiftUI
 
 extension View {
-    func opague() -> some View{
+    func opaque() -> some View{
         self
             .background(.ultraThinMaterial)
+            
     }
 }
 
@@ -28,5 +29,5 @@ extension View {
 
 #Preview {
     Circle()
-        .opague()
+        .opaque()
 }
