@@ -32,6 +32,9 @@
 		05FB990B2CD5F09A006F3BB8 /* NavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB990A2CD5F09A006F3BB8 /* NavButton.swift */; };
 		05FB990D2CD5F194006F3BB8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB990C2CD5F194006F3BB8 /* SettingsView.swift */; };
 		05FB99112CD5F333006F3BB8 /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99102CD5F333006F3BB8 /* TabManager.swift */; };
+		05FB99152CD6A85F006F3BB8 /* AccountViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99142CD6A85F006F3BB8 /* AccountViewer.swift */; };
+		05FB99172CD6AAF1006F3BB8 /* ColorSetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */; };
+		05FB99192CD6AB06006F3BB8 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,9 @@
 		05FB990A2CD5F09A006F3BB8 /* NavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButton.swift; sourceTree = "<group>"; };
 		05FB990C2CD5F194006F3BB8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		05FB99102CD5F333006F3BB8 /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
+		05FB99142CD6A85F006F3BB8 /* AccountViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewer.swift; sourceTree = "<group>"; };
+		05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetterView.swift; sourceTree = "<group>"; };
+		05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +110,7 @@
 				056719EC2CCC743700CF3AB2 /* Assets.xcassets */,
 				056719EE2CCC743700CF3AB2 /* Preview Content */,
 				05B9F6002CCC982C0070AFC4 /* HomeView.swift */,
-				05FB990C2CD5F194006F3BB8 /* SettingsView.swift */,
+				05FB99132CD6A84E006F3BB8 /* Settings */,
 				05FB99012CD5141C006F3BB8 /* Styling.swift */,
 			);
 			path = "Gluten-Free-Near-Me";
@@ -162,6 +168,17 @@
 				05FB990A2CD5F09A006F3BB8 /* NavButton.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		05FB99132CD6A84E006F3BB8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				05FB990C2CD5F194006F3BB8 /* SettingsView.swift */,
+				05FB99142CD6A85F006F3BB8 /* AccountViewer.swift */,
+				05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */,
+				05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FB99192CD6AB06006F3BB8 /* PreferenceManager.swift in Sources */,
 				0584D7262CCDF40F00AA3ECA /* RestaurantCard.swift in Sources */,
 				05B9F6052CCC99EC0070AFC4 /* RestaurantOverview.swift in Sources */,
 				0598D73A2CD31D470001FC1B /* ViewButton.swift in Sources */,
@@ -247,6 +265,8 @@
 				0598D7382CD2967D0001FC1B /* RatingView.swift in Sources */,
 				05B9F6012CCC982C0070AFC4 /* HomeView.swift in Sources */,
 				056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */,
+				05FB99152CD6A85F006F3BB8 /* AccountViewer.swift in Sources */,
+				05FB99172CD6AAF1006F3BB8 /* ColorSetterView.swift in Sources */,
 				05FB99022CD5141C006F3BB8 /* Styling.swift in Sources */,
 				05FB99062CD5406A006F3BB8 /* SavedView.swift in Sources */,
 				0598D73C2CD31E870001FC1B /* FilledButton.swift in Sources */,
