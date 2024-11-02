@@ -94,19 +94,18 @@
 		056719E72CCC743600CF3AB2 /* Gluten-Free-Near-Me */ = {
 			isa = PBXGroup;
 			children = (
-				05FB990A2CD5F09A006F3BB8 /* NavButton.swift */,
-				05FB99012CD5141C006F3BB8 /* Styling.swift */,
-				05B9F5FB2CCC94C90070AFC4 /* Restaurants */,
 				05B9F5F82CCC833D0070AFC4 /* Info.plist */,
 				056719F82CCC767600CF3AB2 /* Map */,
+				05FB99122CD5F562006F3BB8 /* Navigation */,
+				05FB99072CD542B8006F3BB8 /* Saved */,
+				05B9F5FB2CCC94C90070AFC4 /* Restaurants */,
 				056719E82CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift */,
 				056719EA2CCC743600CF3AB2 /* MasterView.swift */,
 				056719EC2CCC743700CF3AB2 /* Assets.xcassets */,
 				056719EE2CCC743700CF3AB2 /* Preview Content */,
 				05B9F6002CCC982C0070AFC4 /* HomeView.swift */,
-				05FB99072CD542B8006F3BB8 /* Saved */,
 				05FB990C2CD5F194006F3BB8 /* SettingsView.swift */,
-				05FB99102CD5F333006F3BB8 /* TabManager.swift */,
+				05FB99012CD5141C006F3BB8 /* Styling.swift */,
 			);
 			path = "Gluten-Free-Near-Me";
 			sourceTree = "<group>";
@@ -154,6 +153,15 @@
 				05FB99082CD542C0006F3BB8 /* DrillDownSelector.swift */,
 			);
 			path = Saved;
+			sourceTree = "<group>";
+		};
+		05FB99122CD5F562006F3BB8 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				05FB99102CD5F333006F3BB8 /* TabManager.swift */,
+				05FB990A2CD5F09A006F3BB8 /* NavButton.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

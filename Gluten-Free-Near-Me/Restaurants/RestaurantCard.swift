@@ -95,7 +95,7 @@ struct CardHeader : View {
                 .font(.title)
                 .bold()
             Spacer()
-            SaveButton(saved: restaurant.isSaved)
+            SaveButton(name: restaurant.name, saved: restaurant.isSaved)
             ShareButton(link: restaurant.link)
         }
     }
