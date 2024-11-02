@@ -15,13 +15,14 @@ extension Text {
 }
 
 struct CardBody: View {
+    @EnvironmentObject var prefManager:PreferenceManager
     let restaurant:Restaurant
     
     @ViewBuilder
     func renderLabel() -> some View {
         Text(restaurant.getBodyLabel())
             .font(.body)
-            .foregroundColor(restaurant.getColor())
+            .foregroundColor(restaurant.getColor(prefManager: prefManager))
             .bold()
             .underline()
     }

@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct RestaurantMarker: View {
+    @EnvironmentObject var prefManager:PreferenceManager
+    
     let restaurant:Restaurant
     var body: some View {
         Image(systemName: "fork.knife.circle.fill")
             .renderingMode(.template)
-            .foregroundStyle(restaurant.getColor(),.text)
+            .foregroundStyle(restaurant.getColor(prefManager: prefManager),.text)
             .font(.title)
             .padding(5)
     }
