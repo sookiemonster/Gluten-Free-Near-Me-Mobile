@@ -19,21 +19,21 @@ struct RestaurantStack: View {
     }
     
     var body: some View {
-        
         ScrollView {
             LazyVStack {
                 ForEach(restaurants) { place in
                     switch mode {
                     case .compact:
                         RestaurantOverview(restaurant: place)
+                            .transition(.slide)
+          
                     case .expanded:
                         RestaurantCard(restaurant: place)
+                            .transition(.opacity)
                     }
                 }
             }
         }
-//        .padding()
-//        .background()
     }
 }
 

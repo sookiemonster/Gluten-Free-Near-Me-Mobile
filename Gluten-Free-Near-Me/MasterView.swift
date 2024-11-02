@@ -7,30 +7,32 @@
 
 import SwiftUI
 
-extension View {
-    func navOption(name:String, iconString:String) -> some View {
-        self
-            .tabItem {
-                Label(name, systemImage: iconString)
-            }
-    }
-}
-
 struct MasterView: View {
     @StateObject var manager = LocationManager()
     @StateObject var observer = RestaurantObserver()
+    @StateObject var tabManager = TabManager()
 
     var body: some View {
-        TabView() {
-            HomeView()
-                .navOption(name: "Home", iconString: "house.fill")
-            Text("Saved")
-                .navOption(name: "Saved", iconString: "heart")
-            Text("Settings")
-                .navOption(name: "Profile", iconString: "person.fill")
+        NavigationStack() {
+            ZStack {
+                HomeView()
+                
+                if (tabManager.selectedTab == .saved) {
+                    SavedView()
+                        .opaque()
+                        .transition(.opacity)
+                        .zIndex(3)
+                }
+                
+                if (tabManager.selectedTab == .profile) {
+                    SettingsView()
+                }
+            }
+            .navigationToolbar()
         }
         .environmentObject(manager)
-        .environmentObject(observer)        
+        .environmentObject(observer) 
+        .environmentObject(tabManager)
     }
 }
 

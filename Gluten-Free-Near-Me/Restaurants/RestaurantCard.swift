@@ -31,7 +31,7 @@ struct CardBody: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(restaurant.reviews ?? []) { review in
-                    HStack(spacing: 0) { Text(review.author + " - ").bold(); Text(review.body).quotation() }
+                    HStack(alignment: .top, spacing: 0) { Text(review.author + " - ").bold(); Text(review.body).quotation() }
                 }
             }
         }
@@ -90,12 +90,12 @@ struct RestaurantCard: View {
 struct CardHeader : View {
     let restaurant:Restaurant
     var body: some View {
-        HStack {
+        HStack{
             Text(restaurant.name)
                 .font(.title)
                 .bold()
             Spacer()
-            SaveButton(saved: restaurant.isSaved)
+            SaveButton(name: restaurant.name, saved: restaurant.isSaved)
             ShareButton(link: restaurant.link)
         }
     }
