@@ -71,13 +71,14 @@ struct ColorSetterView: View {
                 .frame(width: 40)
                 .onAppear {
                     setInitialColor()
-                }
+                }.padding(.trailing, 10)
             renderReset()
                 .confirmationDialog("Reset to Default?", isPresented: $showConfirmation) {
                     Button("Yes") {
                         withAnimation {
-                            prefManager.set(colorCategory: modifying, color: prefManager.getDefault(colorCategory: modifying))
                             picked = prefManager.getDefault(colorCategory: modifying)
+                            
+                            prefManager.reset(colorCategory: modifying)
                         }
                     }
                     Button("No") {}

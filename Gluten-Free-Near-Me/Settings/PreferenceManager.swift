@@ -12,54 +12,66 @@ import Combine
 class PreferenceManager : ObservableObject {
     @Environment(\.self) var env
     
-    @AppStorage("userReviewColor") var rawReviewColor:Int = -1
-    @AppStorage("userDescriptionColor") var rawDescriptionColor:Int = -1
-    @AppStorage("userMenuColor") var rawMenuColor:Int = -1
+    @AppStorage("userReviewColor") var rawReviewColor:String = ""
+    @AppStorage("userDescriptionColor") var rawDescriptionColor:String = ""
+    @AppStorage("userMenuColor") var rawMenuColor:String = ""
     
     @Published var reviewColor:Color = Color(.defaultReview)
     @Published var descriptionColor:Color = Color(.defaultDescription)
     @Published var menuColor:Color = Color(.defaultMenu)
     
-    func parseColorInt(colorInt:Int) -> Color {
-        if (colorInt < 0x000000 || colorInt > 0xFFFFFF) { return .black }
+    func stringToColor(colorString:String) -> Color {
+        if (colorString.isEmpty) { return .black }
         
-        // Mask the components of the stored raw value & normalize to [0.0, 1.0]
-        let r_comp:CGFloat = CGFloat(colorInt & 0xFF0000) / 0xFF0000;
-        let g_comp:CGFloat = CGFloat(colorInt & 0x00FF00) / 0x00FF00;
-        let b_comp:CGFloat = CGFloat(colorInt & 0x0000FF) / 0x0000FF;
+        let r:CGFloat = CGFloat(Int(colorString.prefix(3)) ?? 0) / 255.0
+        let g:CGFloat = CGFloat(Int(colorString.prefix(6).suffix(3)) ?? 0) / 255.0
+        let b:CGFloat = CGFloat(Int(colorString.suffix(3)) ?? 0) / 255.0
         
-        return Color(red:r_comp, green: g_comp, blue: b_comp)
+        return Color(.sRGB, red:r, green: g, blue: b)
     }
     
-    func parseColor(color:Color) -> Int {
+    func padZeroes(val:Int, target_length:Int) -> String {
+        var padded = String(val)
+        while (padded.count < target_length) { padded = "0" + padded }
+        return padded;
+    }
+    
+    func colorToString(color:Color) -> String {
         let actual = color.resolve(in: env)
         
-        return Int(actual.red * 0xFF0000) + Int(actual.green * 0x00FF00) + Int(actual.blue * 0x0000FF)
+        let r = padZeroes(val: Int(actual.red * 255.0), target_length: 3)
+        let g = padZeroes(val: Int(actual.green * 255.0), target_length: 3)
+        let b = padZeroes(val: Int(actual.blue * 255.0), target_length: 3)
+        
+        return r + g + b
     }
     
     init() {
-        if (rawReviewColor > 0) { reviewColor = parseColorInt(colorInt: rawReviewColor) }
-        if (rawDescriptionColor > 0) { descriptionColor = parseColorInt(colorInt: rawDescriptionColor) }
-        if (rawMenuColor > 0) { menuColor = parseColorInt(colorInt: rawMenuColor) }
+        if (!rawReviewColor.isEmpty) { reviewColor = stringToColor(colorString: rawReviewColor) }
+        if (!rawDescriptionColor.isEmpty) { descriptionColor = stringToColor(colorString: rawDescriptionColor) }
+        if (!rawMenuColor.isEmpty) { menuColor = stringToColor(colorString: rawMenuColor) }
     }
     
-    func set(colorCategory:Mentioner, color:Color) -> Void {
-        let colorInt:Int = parseColor(color: color)
-        
-        if (colorInt < 0x000000 || colorInt > 0xFFFFFF) { return }
-        
+    func set(colorCategory:Mentioner, color:Color? = nil) -> Void {
+        var stringified:String = "";
+        var newColor:Color = getDefault(colorCategory: colorCategory)
+        if let received = color {
+            stringified = colorToString(color: received)
+            newColor = received
+        }
+    
         switch colorCategory {
         case .reviews: 
-            rawReviewColor = colorInt;
-            reviewColor = color;
+            rawReviewColor = stringified;
+            reviewColor = newColor;
             return;
         case .description:
-            rawDescriptionColor = colorInt;
-            descriptionColor = color;
+            rawDescriptionColor = stringified;
+            descriptionColor = newColor;
             return;
         case .menu:
-            rawMenuColor = colorInt;
-            menuColor = color;
+            rawMenuColor = stringified;
+            menuColor = newColor;
             return;
         default: return;
         }
@@ -81,5 +93,9 @@ class PreferenceManager : ObservableObject {
         case .menu: return Color(.defaultMenu)
         default: return .black;
         }
+    }
+    
+    func reset(colorCategory:Mentioner) -> Void {
+        set(colorCategory: colorCategory, color: nil)
     }
 }
