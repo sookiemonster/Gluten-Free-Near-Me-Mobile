@@ -35,6 +35,7 @@
 		05FB99152CD6A85F006F3BB8 /* AccountViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99142CD6A85F006F3BB8 /* AccountViewer.swift */; };
 		05FB99172CD6AAF1006F3BB8 /* ColorSetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */; };
 		05FB99192CD6AB06006F3BB8 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */; };
+		05FB991B2CD6EF08006F3BB8 /* SaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		05FB99142CD6A85F006F3BB8 /* AccountViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewer.swift; sourceTree = "<group>"; };
 		05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetterView.swift; sourceTree = "<group>"; };
 		05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,12 +107,12 @@
 				05FB99122CD5F562006F3BB8 /* Navigation */,
 				05FB99072CD542B8006F3BB8 /* Saved */,
 				05B9F5FB2CCC94C90070AFC4 /* Restaurants */,
-				056719E82CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift */,
+				05FB99132CD6A84E006F3BB8 /* Settings */,
 				056719EA2CCC743600CF3AB2 /* MasterView.swift */,
+				056719E82CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift */,
 				056719EC2CCC743700CF3AB2 /* Assets.xcassets */,
 				056719EE2CCC743700CF3AB2 /* Preview Content */,
 				05B9F6002CCC982C0070AFC4 /* HomeView.swift */,
-				05FB99132CD6A84E006F3BB8 /* Settings */,
 				05FB99012CD5141C006F3BB8 /* Styling.swift */,
 			);
 			path = "Gluten-Free-Near-Me";
@@ -157,6 +159,7 @@
 			children = (
 				05FB99052CD5406A006F3BB8 /* SavedView.swift */,
 				05FB99082CD542C0006F3BB8 /* DrillDownSelector.swift */,
+				05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */,
 			);
 			path = Saved;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */,
 				05FB99152CD6A85F006F3BB8 /* AccountViewer.swift in Sources */,
 				05FB99172CD6AAF1006F3BB8 /* ColorSetterView.swift in Sources */,
+				05FB991B2CD6EF08006F3BB8 /* SaveManager.swift in Sources */,
 				05FB99022CD5141C006F3BB8 /* Styling.swift in Sources */,
 				05FB99062CD5406A006F3BB8 /* SavedView.swift in Sources */,
 				0598D73C2CD31E870001FC1B /* FilledButton.swift in Sources */,

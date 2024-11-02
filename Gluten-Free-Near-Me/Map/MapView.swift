@@ -12,7 +12,7 @@ import MapKit
 extension MapCameraBounds {
     static let config = MapCameraBounds(
         minimumDistance: 1,
-        maximumDistance: 100000
+        maximumDistance: 10000
     )
 }
 
