@@ -14,7 +14,8 @@ struct SettingsView: View {
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .bold()
             AccountViewer(username: "sampleUser", email: "email")
-            ColorSetterView()
+            ColorSetterView(name: "GF Reviews", modifying: .reviews)
+            ColorSetterView(name: "GF Descriptions", modifying: .description)
         }
         .fillParent(alignment: .leading)
         .padding()

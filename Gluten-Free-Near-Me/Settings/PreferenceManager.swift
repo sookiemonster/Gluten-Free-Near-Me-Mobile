@@ -51,14 +51,35 @@ class PreferenceManager : ObservableObject {
         switch colorCategory {
         case .reviews: 
             rawReviewColor = colorInt;
-            reviewColor = color
+            reviewColor = color;
+            return;
         case .description:
             rawDescriptionColor = colorInt;
-            descriptionColor = color
+            descriptionColor = color;
+            return;
         case .menu:
             rawMenuColor = colorInt;
-            menuColor = color
+            menuColor = color;
+            return;
         default: return;
+        }
+    }
+    
+    func getStored(colorCategory:Mentioner) -> Color {
+        switch colorCategory {
+        case .reviews: return reviewColor
+        case .description: return descriptionColor
+        case .menu: return menuColor
+        default: return .black;
+        }
+    }
+    
+    func getDefault(colorCategory:Mentioner) -> Color {
+        switch colorCategory {
+        case .reviews: return Color(.defaultReview)
+        case .description: return Color(.defaultDescription)
+        case .menu: return Color(.defaultMenu)
+        default: return .black;
         }
     }
 }
