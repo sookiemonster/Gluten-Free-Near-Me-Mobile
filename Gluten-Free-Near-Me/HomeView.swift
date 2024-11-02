@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var showRestaurants = false;
+    @State private var showRestaurants = true;
     private var platform:UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
     @EnvironmentObject var observer:RestaurantObserver

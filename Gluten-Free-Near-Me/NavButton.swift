@@ -1,0 +1,55 @@
+//
+//  Navigation.swift
+//  Gluten-Free-Near-Me
+//
+//  Created by Daniel S. on 11/2/24.
+//
+
+import SwiftUI
+
+struct NavButton : View {
+    @Binding var tab:Tab
+    let name:String
+    let iconString:String
+    let targetTab:Tab
+    
+    var body : some View {
+        Button {
+            withAnimation(.linear(duration: 0.13)) {
+                tab = targetTab
+            }
+        } label: {
+            if (tab == targetTab) {
+                Label(name, systemImage: iconString + ".fill")
+                    .font(.title2)
+                    .foregroundColor(.accentColor)
+            } else {
+                Label(name, systemImage: iconString)
+                    .font(.title2)
+                    .foregroundColor(.text)
+                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+            }
+        }.fillWidth()
+    }
+}
+
+extension View {
+    func navigationToolbar(tab:Binding<Tab>) -> some View {
+        self
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                HStack {
+                    NavButton(tab: tab, name: "Home", iconString: "house", targetTab: .home)
+                    NavButton(tab: tab, name: "Saved", iconString: "heart", targetTab: .saved)
+                    NavButton(tab: tab, name: "Profile", iconString: "person", targetTab: .profile)
+                }
+            }
+        }.toolbarBackground(.visible, for: .bottomBar)
+    }
+}
+
+enum Tab:UInt8 {
+    case home
+    case saved
+    case profile
+}
