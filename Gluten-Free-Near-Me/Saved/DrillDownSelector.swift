@@ -31,7 +31,9 @@ struct DrillDownSelector: View {
         Menu {
             ForEach(DrillDownMode.allCases, id: \.self) { mode in
                 Button {
-                    selected = mode
+                    withAnimation {
+                        selected = mode
+                    }
                 } label: {
                     Text(mode.rawValue)
                 }

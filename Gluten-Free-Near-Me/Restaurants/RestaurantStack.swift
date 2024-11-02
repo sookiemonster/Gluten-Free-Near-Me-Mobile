@@ -25,8 +25,11 @@ struct RestaurantStack: View {
                     switch mode {
                     case .compact:
                         RestaurantOverview(restaurant: place)
+                            .transition(.slide)
+          
                     case .expanded:
                         RestaurantCard(restaurant: place)
+                            .transition(.opacity)
                     }
                 }
             }
