@@ -13,9 +13,7 @@ extension View {
             .background(.ultraThinMaterial)
             
     }
-}
-
-extension View {
+    
     func fillParent(alignment:Alignment = .center) -> some View {
         self
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .leading)
@@ -24,6 +22,13 @@ extension View {
     func fillWidth(alignment:Alignment = .center) -> some View {
         self
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: alignment)
+    }
+    
+    func responsiveSquarePadding(scale:Double) -> some View {
+        self
+            .padding(
+                min(UIScreen.main.bounds.width * scale, UIScreen.main.bounds.height * scale)
+            )
     }
 }
 

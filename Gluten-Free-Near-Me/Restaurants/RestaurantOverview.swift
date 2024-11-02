@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RestaurantOverview: View {
+    @EnvironmentObject var prefManager:PreferenceManager
     let restaurant:Restaurant
     
     var body: some View {
@@ -19,7 +20,7 @@ struct RestaurantOverview: View {
             SaveButton(name: restaurant.name, saved: restaurant.isSaved)
         }.padding()
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        .background(restaurant.getColor())
+        .background(restaurant.getColor(prefManager: prefManager))
         .cornerRadius(10)
     }
 }

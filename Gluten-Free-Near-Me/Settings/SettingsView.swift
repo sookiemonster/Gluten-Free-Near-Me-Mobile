@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct SettingsView: View {
+    let showAccount:Bool = false;
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Settings")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .bold()
-            AccountViewer(username: "sampleUser", email: "email")
-            ColorSetterView()
+            if (showAccount) {
+                AccountViewer(username: "sampleUser", email: "email")
+                    .padding(.bottom, 20)
+            }
+            VStack {
+                
+                ColorSetterView(name: "GF Reviews", modifying: .reviews)
+                Divider()
+                ColorSetterView(name: "GF Descriptions", modifying: .description)
+            }
+            Spacer()
         }
         .fillParent(alignment: .leading)
-        .padding()
+        .responsiveSquarePadding(scale: 0.1)
         .opaque()
     }
 }

@@ -38,11 +38,11 @@ struct Restaurant : Identifiable {
     var isSaved:Bool
     var link:String?
     
-    func getColor() -> Color {
+    func getColor(prefManager:PreferenceManager) -> Color {
         switch (ref) {
-        case .reviews: return Color("ReviewColor")
-        case .description: return Color("DescriptionColor")
-        case .menu: return Color(.green)
+        case .reviews: return prefManager.reviewColor
+        case .description: return prefManager.descriptionColor
+        case .menu: return prefManager.menuColor
         default: return Color(.black)
         }
     }
