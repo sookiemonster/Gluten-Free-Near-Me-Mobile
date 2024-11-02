@@ -10,28 +10,29 @@ import SwiftUI
 struct MasterView: View {
     @StateObject var manager = LocationManager()
     @StateObject var observer = RestaurantObserver()
-    @State var tab:Tab = .home
+    @StateObject var tabManager = TabManager()
 
     var body: some View {
         NavigationStack() {
             ZStack {
                 HomeView()
                 
-                if (tab == .saved) {
+                if (tabManager.selectedTab == .saved) {
                     SavedView()
                         .opaque()
                         .transition(.opacity)
                         .zIndex(3)
                 }
                 
-                if (tab == .profile) {
+                if (tabManager.selectedTab == .profile) {
                     SettingsView()
                 }
             }
-            .navigationToolbar(tab: $tab)
+            .navigationToolbar()
         }
         .environmentObject(manager)
         .environmentObject(observer) 
+        .environmentObject(tabManager)
     }
 }
 

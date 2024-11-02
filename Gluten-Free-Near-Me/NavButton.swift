@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NavButton : View {
-    @Binding var tab:Tab
+    @EnvironmentObject var tabManager:TabManager;
     let name:String
     let iconString:String
     let targetTab:Tab
@@ -16,10 +16,10 @@ struct NavButton : View {
     var body : some View {
         Button {
             withAnimation(.linear(duration: 0.13)) {
-                tab = targetTab
+                tabManager.select(newTab: targetTab)
             }
         } label: {
-            if (tab == targetTab) {
+            if (tabManager.selectedTab == targetTab) {
                 Label(name, systemImage: iconString + ".fill")
                     .font(.title2)
                     .foregroundColor(.accentColor)
@@ -34,14 +34,14 @@ struct NavButton : View {
 }
 
 extension View {
-    func navigationToolbar(tab:Binding<Tab>) -> some View {
+    func navigationToolbar() -> some View {
         self
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 HStack {
-                    NavButton(tab: tab, name: "Home", iconString: "house", targetTab: .home)
-                    NavButton(tab: tab, name: "Saved", iconString: "heart", targetTab: .saved)
-                    NavButton(tab: tab, name: "Profile", iconString: "person", targetTab: .profile)
+                    NavButton(name: "Home", iconString: "house", targetTab: .home)
+                    NavButton(name: "Saved", iconString: "heart", targetTab: .saved)
+                    NavButton(name: "Profile", iconString: "person", targetTab: .profile)
                 }
             }
         }.toolbarBackground(.visible, for: .bottomBar)

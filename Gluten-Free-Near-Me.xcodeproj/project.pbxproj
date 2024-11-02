@@ -31,6 +31,7 @@
 		05FB99092CD542C0006F3BB8 /* DrillDownSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99082CD542C0006F3BB8 /* DrillDownSelector.swift */; };
 		05FB990B2CD5F09A006F3BB8 /* NavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB990A2CD5F09A006F3BB8 /* NavButton.swift */; };
 		05FB990D2CD5F194006F3BB8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB990C2CD5F194006F3BB8 /* SettingsView.swift */; };
+		05FB99112CD5F333006F3BB8 /* TabManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99102CD5F333006F3BB8 /* TabManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		05FB99082CD542C0006F3BB8 /* DrillDownSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillDownSelector.swift; sourceTree = "<group>"; };
 		05FB990A2CD5F09A006F3BB8 /* NavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButton.swift; sourceTree = "<group>"; };
 		05FB990C2CD5F194006F3BB8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		05FB99102CD5F333006F3BB8 /* TabManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				05B9F6002CCC982C0070AFC4 /* HomeView.swift */,
 				05FB99072CD542B8006F3BB8 /* Saved */,
 				05FB990C2CD5F194006F3BB8 /* SettingsView.swift */,
+				05FB99102CD5F333006F3BB8 /* TabManager.swift */,
 			);
 			path = "Gluten-Free-Near-Me";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				05FB99042CD53FA0006F3BB8 /* RestaurantMarker.swift in Sources */,
 				05FB99092CD542C0006F3BB8 /* DrillDownSelector.swift in Sources */,
 				056719E92CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift in Sources */,
+				05FB99112CD5F333006F3BB8 /* TabManager.swift in Sources */,
 				05FB990D2CD5F194006F3BB8 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
