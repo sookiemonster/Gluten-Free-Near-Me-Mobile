@@ -22,11 +22,17 @@ class LocationManager : NSObject, ObservableObject, CLLocationManagerDelegate {
     private let manager = CLLocationManager();
     var location:CLLocationCoordinate2D?
     
+    var viewportRegion:MKCoordinateRegion?
+    
     override init() {
         super.init()
         manager.delegate = self
         updateAuth()
         manager.startUpdatingLocation()
+    }
+    
+    func getViewport() -> MapCameraPosition? {
+        return cameraPosition?.wrappedValue;
     }
     
     func updateAuth() {

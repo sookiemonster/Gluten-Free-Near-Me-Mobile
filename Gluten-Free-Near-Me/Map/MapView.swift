@@ -53,6 +53,7 @@ struct MapView: View {
             manager.setCameraPosition(position: $position)
         }
         .onMapCameraChange(frequency: .continuous) { context in
+            manager.viewportRegion = context.region
             guard let target = observer.selected else { return; }
             
             let newCenter = context.region.center

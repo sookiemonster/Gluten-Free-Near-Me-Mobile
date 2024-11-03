@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SearchButton: View {
 //    @Binding var restaurants:[Place];
-    func requestNearby() { return; }
+    @EnvironmentObject var manager:LocationManager;
     
     var body: some View {
         Button {
-            requestNearby()
+            manager.searchViewport()
         } label: {
             Text("Search Here")
                 .fontWeight(.bold)
