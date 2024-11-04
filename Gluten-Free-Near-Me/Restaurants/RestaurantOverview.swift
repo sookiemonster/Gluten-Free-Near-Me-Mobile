@@ -20,8 +20,8 @@ struct RestaurantOverview: View {
             SaveButton(name: restaurant.name, saved: restaurant.isSaved)
         }.padding()
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-        .cornerRadius(10)
         .background(restaurant.getColor(prefManager: prefManager))
+        .cornerRadius(10)
     }
 }
 
