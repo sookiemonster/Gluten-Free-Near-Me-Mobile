@@ -26,8 +26,17 @@ struct Review : Identifiable {
     let body:String
 }
 
-struct Restaurant : Identifiable {
+struct Restaurant : Identifiable, Hashable {
+    static func == (lhs: Restaurant, rhs: Restaurant) -> Bool {
+        return lhs.googURI == rhs.googURI
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(googURI)
+    }
+    
     let id = UUID()
+    var googURI:String = "DEMO"
     let loc:CLLocationCoordinate2D
     let name:String
     let description:String

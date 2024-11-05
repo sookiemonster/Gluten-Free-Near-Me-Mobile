@@ -36,6 +36,7 @@
 		05FB99192CD6AB06006F3BB8 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */; };
 		05FB991B2CD6EF08006F3BB8 /* SaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */; };
 		05FB991F2CD6F134006F3BB8 /* SearchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */; };
+		05FB99252CD930E0006F3BB8 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99242CD930E0006F3BB8 /* StoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
 		05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHandler.swift; sourceTree = "<group>"; };
+		05FB99242CD930E0006F3BB8 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				0598D7392CD31D470001FC1B /* ViewButton.swift */,
 				0598D73B2CD31E870001FC1B /* FilledButton.swift */,
 				0598D73D2CD329B90001FC1B /* RestaurantObserver.swift */,
+				05FB99242CD930E0006F3BB8 /* StoreManager.swift */,
 			);
 			path = Restaurants;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05FB99192CD6AB06006F3BB8 /* PreferenceManager.swift in Sources */,
+				05FB99252CD930E0006F3BB8 /* StoreManager.swift in Sources */,
 				0584D7262CCDF40F00AA3ECA /* RestaurantCard.swift in Sources */,
 				05B9F6052CCC99EC0070AFC4 /* RestaurantOverview.swift in Sources */,
 				0598D73A2CD31D470001FC1B /* ViewButton.swift in Sources */,
