@@ -55,11 +55,9 @@ struct PositionalSheet<Content: View>: View {
             .gesture(DragGesture()
                 .onChanged({ action in
                     if (animating) { return; }
-                    else { print("firing"); print(action)}
                     animating = true;
                     let dy = action.translation.height
                     withAnimation(anim_config) {
-                        
                         if (dy > 0) { collapse() }
                         else { grow() }
                     }

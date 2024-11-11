@@ -41,7 +41,7 @@ struct CardBody: View {
     
     @ViewBuilder
     func renderDescription() -> some View {
-        Text(restaurant.description)
+        Text(restaurant.googDescription)
             .italic()
             .lineLimit(3)
             .truncationMode(/*@START_MENU_TOKEN@*/.tail/*@END_MENU_TOKEN@*/)

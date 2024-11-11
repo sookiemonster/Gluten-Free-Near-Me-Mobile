@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 import SwiftUI
+import SwiftData
 
 enum Mentioner : Int8 {
     case none = 0
@@ -26,7 +27,8 @@ struct Review : Identifiable {
     let body:String
 }
 
-struct Restaurant : Identifiable, Hashable {
+@Model
+class Restaurant : Identifiable, Hashable {
     static func == (lhs: Restaurant, rhs: Restaurant) -> Bool {
         return lhs.googURI == rhs.googURI
     }
@@ -35,18 +37,30 @@ struct Restaurant : Identifiable, Hashable {
         hasher.combine(googURI)
     }
     
+    init(googURI:String, name:String, googDescription:String, rating:Double, ref:Mentioner, reviews:[Review] = [], loc:CLLocationCoordinate2D, link:String = "") {
+        self.googURI = googURI
+        self.name = name
+        self.googDescription = googDescription
+        self.rating = rating
+        self.ref = ref
+        self.reviews = reviews
+        self.loc = loc
+        self.link = link
+    }
+    
     let id = UUID()
-    var googURI:String = "DEMO"
+    let googURI:String
     let loc:CLLocationCoordinate2D
     let name:String
-    let description:String
+    let googDescription:String
     let rating: Double
     let ref:Mentioner
-//    var items:[Item]?
+    let link:String
     var reviews:[Review]?
     var isSaved:Bool
-    var link:String?
-    
+}
+
+extension Restaurant {
     func getColor(prefManager:PreferenceManager) -> Color {
         switch (ref) {
         case .reviews: return prefManager.reviewColor
