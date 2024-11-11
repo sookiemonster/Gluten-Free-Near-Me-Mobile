@@ -12,6 +12,8 @@ struct MasterView: View {
     @StateObject var observer = RestaurantObserver()
     @StateObject var tabManager = TabManager()
     @StateObject var prefManager = PreferenceManager()
+    
+    @State var show:Bool = false
 
     var body: some View {
         NavigationStack() {
@@ -29,6 +31,9 @@ struct MasterView: View {
                 }
             }
             .navigationToolbar()
+            .sheet(isPresented: $show, content: {
+                Text("what")
+            })
         }
         .environmentObject(manager)
         .environmentObject(observer) 

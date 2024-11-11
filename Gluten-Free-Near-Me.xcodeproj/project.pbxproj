@@ -37,6 +37,7 @@
 		05FB991B2CD6EF08006F3BB8 /* SaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */; };
 		05FB991F2CD6F134006F3BB8 /* SearchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */; };
 		05FB99252CD930E0006F3BB8 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99242CD930E0006F3BB8 /* StoreManager.swift */; };
+		05FB99282CE1B1E3006F3BB8 /* PositionalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
 		05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHandler.swift; sourceTree = "<group>"; };
 		05FB99242CD930E0006F3BB8 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionalSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		056719E72CCC743600CF3AB2 /* Gluten-Free-Near-Me */ = {
 			isa = PBXGroup;
 			children = (
+				05FB99262CE1B1B3006F3BB8 /* PositionalSheet */,
 				05B9F5F82CCC833D0070AFC4 /* Info.plist */,
 				056719F82CCC767600CF3AB2 /* Map */,
 				05FB99122CD5F562006F3BB8 /* Navigation */,
@@ -185,6 +188,14 @@
 				05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		05FB99262CE1B1B3006F3BB8 /* PositionalSheet */ = {
+			isa = PBXGroup;
+			children = (
+				05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */,
+			);
+			path = PositionalSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +293,7 @@
 				05B9F6032CCC996D0070AFC4 /* RestaurantStack.swift in Sources */,
 				05FB99042CD53FA0006F3BB8 /* RestaurantMarker.swift in Sources */,
 				05FB99092CD542C0006F3BB8 /* DrillDownSelector.swift in Sources */,
+				05FB99282CE1B1E3006F3BB8 /* PositionalSheet.swift in Sources */,
 				056719E92CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift in Sources */,
 				05FB99112CD5F333006F3BB8 /* TabManager.swift in Sources */,
 				05FB990D2CD5F194006F3BB8 /* SettingsView.swift in Sources */,
