@@ -49,15 +49,11 @@ struct HomeView: View {
                     Spacer()
                     SearchButton()
                         .padding()
+                    Spacer()
+                    PositionalSheet() {
+                        RestaurantStack(restaurants: RestaurantStore.sample_places)
+                    }
                 }.animation(.easeInOut(duration: 0.2), value: observer.isFocused())
-            }
-            .sheet(isPresented: $showRestaurants) {
-                RestaurantStack(restaurants: RestaurantStore.sample_places)
-                    .padding()
-                    .presentationDetents([.fraction(0.01), .fraction(0.2), .fraction(0.6)])
-                    .presentationBackgroundInteraction(.enabled)
-                    .interactiveDismissDisabled()
-                
             }
         }
     }

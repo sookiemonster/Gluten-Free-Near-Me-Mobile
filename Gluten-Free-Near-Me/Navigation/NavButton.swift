@@ -44,7 +44,8 @@ extension View {
                     NavButton(name: "Profile", iconString: "person", targetTab: .profile)
                 }
             }
-        }.toolbarBackground(.visible, for: .bottomBar)
+        }
+        .toolbarBackground(.visible, for: .bottomBar)
     }
 }
 

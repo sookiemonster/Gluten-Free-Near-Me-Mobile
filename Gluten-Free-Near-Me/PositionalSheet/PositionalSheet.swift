@@ -10,15 +10,13 @@ import SwiftUI
 struct PositionalSheet<Content: View>: View {
     var content: Content
     var positions:[CGFloat]
-    let offset:CGFloat
-    let handle_collision_height:CGFloat = 50;
+    let handle_collision_height:CGFloat = 40;
     let anim_config:Animation = .bouncy(duration: 0.3);
     @State private var rendered_position:Int = 0
-    @State private var animating:Bool = true
+    @State private var animating:Bool = false
     
-    init(offset: CGFloat, positions: [CGFloat] = [1.0, 0.5, 0.3], @ViewBuilder content: () -> Content) {
+    init(positions: [CGFloat] = [1.0, 0.5, 0.3], @ViewBuilder content: () -> Content) {
         self.content = content()
-        self.offset = offset
         self.positions = positions
         
         if (positions.isEmpty) {
@@ -50,12 +48,14 @@ struct PositionalSheet<Content: View>: View {
         }
         .fillWidth()
         .contentShape(Rectangle())
+            .frame(height: handle_collision_height)
             .onTapGesture {
                 withAnimation(anim_config) { cycle() }
             }
             .gesture(DragGesture()
                 .onChanged({ action in
                     if (animating) { return; }
+                    else { print("firing"); print(action)}
                     animating = true;
                     let dy = action.translation.height
                     withAnimation(anim_config) {
@@ -74,21 +74,25 @@ struct PositionalSheet<Content: View>: View {
         GeometryReader { geometry in
             VStack {
                 Handle()
-                ScrollView {
-                    content
+                if (positions[rendered_position] != 1.0) {
+                    ScrollView {
+                        content
+                    }
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
+                    .padding([.leading, .trailing], 10)
+                    .frame(width: geometry.size.width, height: geometry.size.height * (1 - positions[rendered_position]))
                 }
             }
         .fillWidth()
-        .opaque()
-        .offset(y: (-1 * handle_collision_height) + geometry.size.height * positions[rendered_position])
+        .background(.thinMaterial)
+        .offset(y: -1 * handle_collision_height)
+        .offset(y: geometry.size.height * positions[rendered_position])
         }
-        .ignoresSafeArea()
-        .offset(y: -20)
     }
 }
 
 #Preview {
-    PositionalSheet(offset: -20) {
+    PositionalSheet() {
         Text("aaa")
     }
 }
