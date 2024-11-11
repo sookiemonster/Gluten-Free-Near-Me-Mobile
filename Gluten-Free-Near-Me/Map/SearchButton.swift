@@ -21,8 +21,9 @@ struct SearchButton: View {
         }
         .padding([.top, .bottom], 12)
         .padding([.leading, .trailing], 30)
-        .background(.opague)
-        .cornerRadius(50.0)
+        .opaque()
+        .clipShape(Capsule())
+        .overlay(Capsule().stroke(Color.text).opacity(0.2))
     }
 }
 

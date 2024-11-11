@@ -45,10 +45,12 @@ struct HomeView: View {
                         RestaurantCard(restaurant: observer.selected!)
                             .padding()
                             .transition(.opacity.combined(with: .move(edge: .leading)))
+                    } else {
+                        Spacer()
+                        SearchButton()
+                            .padding()
+                            .animation(.easeInOut(duration: 0.2), value: observer.isFocused())
                     }
-                    Spacer()
-                    SearchButton()
-                        .padding()
                     Spacer()
                     PositionalSheet() {
                         RestaurantStack(restaurants: RestaurantStore.sample_places)
