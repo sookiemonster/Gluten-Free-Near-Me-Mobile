@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SavedHeader: View {
     @Binding var detailMode:DrillDownMode;
@@ -22,13 +23,16 @@ struct SavedHeader: View {
 
 struct SavedView: View {
     @State private var detailMode:DrillDownMode = .compact;
+    @Environment(\.modelContext) var modelContext;
     
-    let restaurants:[Restaurant] = RestaurantStore.sample_places
+    @Query(filter: #Predicate<Restaurant> { place in
+        place.isSaved
+    }) var savedRestaurants:[Restaurant];
     
     var body: some View {
         VStack(spacing: 20) {
             SavedHeader(detailMode: $detailMode)
-            RestaurantStack(restaurants: restaurants, mode: $detailMode)
+            RestaurantStack(restaurants: savedRestaurants, mode: $detailMode, showUnsaved: false)
         }
         .padding(20)
         .fillParent()

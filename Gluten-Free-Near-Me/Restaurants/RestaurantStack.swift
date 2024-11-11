@@ -12,24 +12,29 @@ struct RestaurantStack: View {
     
     @Binding var mode:DrillDownMode;
     let restaurants:[Restaurant];
+    let showUnsaved:Bool;
     
-    init(restaurants:[Restaurant], mode:Binding<DrillDownMode> = .constant(.compact)) {
+    init(restaurants:[Restaurant], mode:Binding<DrillDownMode> = .constant(.compact), showUnsaved:Bool = true) {
+        print("INITING STACK")
         self.restaurants = restaurants
         self._mode = mode
+        self.showUnsaved = showUnsaved
     }
     
     var body: some View {
         ScrollView {
             LazyVStack {
                 ForEach(restaurants) { place in
-                    switch mode {
-                    case .compact:
-                        RestaurantOverview(restaurant: place)
-                            .transition(.slide)
-          
-                    case .expanded:
-                        RestaurantCard(restaurant: place)
-                            .transition(.opacity)
+                    if (showUnsaved || place.isSaved) {
+                        switch mode {
+                        case .compact:
+                            RestaurantOverview(restaurant: place)
+                                .transition(.slide.combined(with: .opacity))
+                            
+                        case .expanded:
+                            RestaurantCard(restaurant: place)
+                                .transition(.opacity)
+                        }
                     }
                 }
             }

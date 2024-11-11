@@ -34,7 +34,6 @@
 		05FB99152CD6A85F006F3BB8 /* AccountViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99142CD6A85F006F3BB8 /* AccountViewer.swift */; };
 		05FB99172CD6AAF1006F3BB8 /* ColorSetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */; };
 		05FB99192CD6AB06006F3BB8 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */; };
-		05FB991B2CD6EF08006F3BB8 /* SaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */; };
 		05FB991F2CD6F134006F3BB8 /* SearchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */; };
 		05FB99252CD930E0006F3BB8 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99242CD930E0006F3BB8 /* StoreManager.swift */; };
 		05FB99282CE1B1E3006F3BB8 /* PositionalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */; };
@@ -70,7 +69,6 @@
 		05FB99142CD6A85F006F3BB8 /* AccountViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewer.swift; sourceTree = "<group>"; };
 		05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetterView.swift; sourceTree = "<group>"; };
 		05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
-		05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
 		05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHandler.swift; sourceTree = "<group>"; };
 		05FB99242CD930E0006F3BB8 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionalSheet.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			children = (
 				05FB99052CD5406A006F3BB8 /* SavedView.swift */,
 				05FB99082CD542C0006F3BB8 /* DrillDownSelector.swift */,
-				05FB991A2CD6EF08006F3BB8 /* SaveManager.swift */,
 			);
 			path = Saved;
 			sourceTree = "<group>";
@@ -285,7 +282,6 @@
 				056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */,
 				05FB99152CD6A85F006F3BB8 /* AccountViewer.swift in Sources */,
 				05FB99172CD6AAF1006F3BB8 /* ColorSetterView.swift in Sources */,
-				05FB991B2CD6EF08006F3BB8 /* SaveManager.swift in Sources */,
 				05FB99022CD5141C006F3BB8 /* Styling.swift in Sources */,
 				05FB99062CD5406A006F3BB8 /* SavedView.swift in Sources */,
 				0598D73C2CD31E870001FC1B /* FilledButton.swift in Sources */,

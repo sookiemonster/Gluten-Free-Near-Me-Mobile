@@ -17,7 +17,7 @@ struct RestaurantOverview: View {
             Briefing(restaurant: restaurant)
             Spacer()
             ViewButton(restaurant: restaurant)
-            SaveButton(name: restaurant.name, saved: restaurant.isSaved)
+            SaveButton(restaurant: restaurant)
         }.padding()
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .background(restaurant.getColor(prefManager: prefManager))
