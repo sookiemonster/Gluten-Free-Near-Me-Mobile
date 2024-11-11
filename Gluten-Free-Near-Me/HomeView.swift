@@ -17,46 +17,24 @@ struct HomeView: View {
     func onPhone() -> Bool { return platform == .phone }
     
     var body: some View {
-        if (onPad()) {
-            ZStack {
-                MapView()
-                VStack {
-                    if (!showRestaurants) { Spacer() }
-                    SearchButton().padding()
-                    
-                    if (observer.isFocused()) {
-                        RestaurantCard(restaurant: observer.selected!)
-                            .padding()
-                            .transition(.opacity.combined(with: .move(edge: .leading)))
-                    }
-                    
-                    if (showRestaurants) {
-                        Spacer()
-                        RestaurantStack(restaurants: RestaurantStore.sample_places)
-                            .frame(maxHeight: UIScreen.main.bounds.height / 3)
-                    }
-                }.animation(.easeInOut(duration: 0.2), value: observer.isFocused())
-            }
-        } else if (onPhone()) {
-            ZStack {
-                MapView()
-                VStack() {
-                    if (observer.isFocused()) {
-                        RestaurantCard(restaurant: observer.selected!)
-                            .padding()
-                            .transition(.opacity.combined(with: .move(edge: .leading)))
-                    } else {
-                        Spacer()
-                        SearchButton()
-                            .padding()
-                            .animation(.easeInOut(duration: 0.2), value: observer.isFocused())
-                    }
+        ZStack {
+            MapView()
+            VStack() {
+                if (observer.isFocused()) {
+                    RestaurantCard(restaurant: observer.selected!)
+                        .padding()
+                        .transition(.opacity.combined(with: .move(edge: .leading)))
+                } else {
                     Spacer()
-                    PositionalSheet() {
-                        RestaurantStack(restaurants: RestaurantStore.sample_places)
-                    }
-                }.animation(.easeInOut(duration: 0.2), value: observer.isFocused())
-            }
+                    SearchButton()
+                        .padding()
+                        .animation(.easeInOut(duration: 0.2), value: observer.isFocused())
+                }
+                Spacer()
+                PositionalSheet() {
+                    RestaurantStack(restaurants: RestaurantStore.sample_places)
+                }
+            }.animation(.easeInOut(duration: 0.2), value: observer.isFocused())
         }
     }
 }
