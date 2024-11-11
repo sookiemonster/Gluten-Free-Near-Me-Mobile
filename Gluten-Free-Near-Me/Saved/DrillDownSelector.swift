@@ -20,7 +20,8 @@ struct DrillDownLabel : View {
             Text(content)
                 .bold()
                 .tint(.accentColor)
-        }
+            Spacer()
+        }.fillWidth()
     }
 }
 

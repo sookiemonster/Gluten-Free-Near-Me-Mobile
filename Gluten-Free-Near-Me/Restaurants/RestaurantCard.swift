@@ -81,7 +81,7 @@ struct RestaurantCard: View {
 
 #Preview {
     ZStack {
-        RestaurantCard(restaurant: .sample_place_2)
+        RestaurantCard(restaurant: .sample_place_1)
     }
     .padding()
     .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -16,7 +16,7 @@ struct ViewButton: View {
     
     var body: some View {
         Button {
-            manager.panTo(center: restaurant.loc)
+            manager.panTo(center: restaurant.loc())
             observer.select(target: restaurant)
             tabManager.select(newTab: .home)
         } label: {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MasterView: View {
     @StateObject var manager = LocationManager()
@@ -39,6 +40,7 @@ struct MasterView: View {
         .environmentObject(observer) 
         .environmentObject(tabManager)
         .environmentObject(prefManager)
+        .modelContainer(for: Restaurant.self)
     }
 }
 

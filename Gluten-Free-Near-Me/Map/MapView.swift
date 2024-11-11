@@ -32,10 +32,10 @@ struct MapView: View {
     @MapContentBuilder
     func RestaurantAnnotations(toMap:[Restaurant]) -> some MapContent {
         ForEach (toMap) { place in
-            Annotation(LocalizedStringKey(stringLiteral: place.name), coordinate: place.loc) {
+            Annotation(LocalizedStringKey(stringLiteral: place.name), coordinate: place.loc()) {
                 RestaurantMarker(restaurant: place)
                     .onTapGesture {
-                        manager.panTo(center: place.loc)
+                        manager.panTo(center: place.loc())
                         observer.select(target: place)
                     }
             }
@@ -57,7 +57,7 @@ struct MapView: View {
             guard let target = observer.selected else { return; }
             
             let newCenter = context.region.center
-            let mapCenteredAtRestaurant = isCloseBy(p1: target.loc, p2: newCenter)
+            let mapCenteredAtRestaurant = isCloseBy(p1: target.loc(), p2: newCenter)
             
             #if DEBUG
             print("Centered?: ", mapCenteredAtRestaurant)
