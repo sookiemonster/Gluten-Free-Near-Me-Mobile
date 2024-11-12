@@ -15,7 +15,6 @@ struct RestaurantStack: View {
     let showUnsaved:Bool;
     
     init(restaurants:[Restaurant], mode:Binding<DrillDownMode> = .constant(.compact), showUnsaved:Bool = true) {
-        print("INITING STACK")
         self.restaurants = restaurants
         self._mode = mode
         self.showUnsaved = showUnsaved

@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import MapKit
+import SwiftData
 
 extension MapCameraBounds {
     static let config = MapCameraBounds(
@@ -21,7 +22,9 @@ struct MapView: View {
     
     @EnvironmentObject var manager:LocationManager;
     @EnvironmentObject var observer:RestaurantObserver;
-//    @EnvironmentObject var store:RestaurantStore;
+    @Environment(\.modelContext) var modelContext;
+    
+    @Query var savedRestaurants:[Restaurant];
     
     func isCloseBy(p1:CLLocationCoordinate2D, p2:CLLocationCoordinate2D) -> Bool {
         let TOLERANCE = 0.0005
@@ -45,7 +48,7 @@ struct MapView: View {
     var body: some View {
         Map(position: $position, bounds: .config, interactionModes: .all) {
             UserAnnotation()
-            RestaurantAnnotations(toMap: RestaurantStore.sample_places)
+            RestaurantAnnotations(toMap: savedRestaurants)
             
         }.mapControls {
             MapUserLocationButton()

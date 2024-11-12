@@ -25,7 +25,6 @@ struct HomeView: View {
     
     func addDebug() {
         let newres = Restaurant.sample_place_1
-        newres.isSaved = true;
         modelContext.insert(newres)
     }
     
@@ -33,7 +32,16 @@ struct HomeView: View {
         ZStack {
             MapView()
             VStack() {
-                Button("what") { addDebug() }
+                Button("RESET") {
+                    do  {
+                        try modelContext.delete(model: Restaurant.self)
+                    } catch {
+                        print("Failed to clear.")
+                    }
+                }.background(.red)
+                Button("Add") {
+                    addDebug()
+                }.background(.red)
                 if (observer.isFocused()) {
                     RestaurantCard(restaurant: observer.selected!)
                         .padding()
