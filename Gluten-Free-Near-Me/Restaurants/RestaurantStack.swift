@@ -41,6 +41,6 @@ struct RestaurantStack: View {
     }
 }
 
-#Preview {
-    RestaurantStack(restaurants: RestaurantStore.sample_places)
-}
+//#Preview {
+//    RestaurantStack(restaurants: RestaurantStore.sample_places)
+//}

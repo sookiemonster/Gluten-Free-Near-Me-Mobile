@@ -17,6 +17,15 @@ struct RestaurantMarker: View {
             .foregroundStyle(restaurant.getColor(prefManager: prefManager),.text)
             .font(.title)
             .padding(5)
+            .overlay {
+                if (restaurant.isSaved) {
+                    Image(systemName: "heart.circle.fill")
+                        .renderingMode(.template)
+                        .foregroundStyle(.text, restaurant.getColor(prefManager: prefManager))
+                        .font(.subheadline)
+                        .offset(x: 12, y: -13)
+                } 
+            }
     }
 }
 

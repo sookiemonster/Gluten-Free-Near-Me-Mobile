@@ -32,16 +32,18 @@ struct HomeView: View {
         ZStack {
             MapView()
             VStack() {
-                Button("RESET") {
-                    do  {
-                        try modelContext.delete(model: Restaurant.self)
-                    } catch {
-                        print("Failed to clear.")
-                    }
-                }.background(.red)
-                Button("Add") {
-                    addDebug()
-                }.background(.red)
+//                Button("RESET") {
+//                    do  {
+//                        try modelContext.delete(model: Restaurant.self)
+//                    } catch {
+//                        print("Failed to clear.")
+//                    }
+//                }.padding().background(.red).padding()
+//                
+//                Button("Add") {
+//                    addDebug()
+//                }.padding().background(.red).padding()
+                
                 if (observer.isFocused()) {
                     RestaurantCard(restaurant: observer.selected!)
                         .padding()

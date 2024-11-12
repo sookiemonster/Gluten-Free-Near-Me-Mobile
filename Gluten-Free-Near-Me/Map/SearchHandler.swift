@@ -12,6 +12,14 @@ import SwiftUI
 
 extension LocationManager {
     
+    // Annotations
+    // Always render saved restaurants on Map.
+    
+    // Search RestaurantStack
+    // On search, check if any of the googURIs are in the db already
+    // If so, use this version within the stack. Then render these afterwards.
+    // Otherwise, get results via API
+    
     func searchViewport() -> Void {
         // See Apple Docs for Reference: https://developer.apple.com/documentation/mapkit/mklocalsearch/request
         let searchRequest = MKLocalSearch.Request()
