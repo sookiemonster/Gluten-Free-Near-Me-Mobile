@@ -37,6 +37,7 @@
 		05FB991F2CD6F134006F3BB8 /* SearchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */; };
 		05FB99252CD930E0006F3BB8 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99242CD930E0006F3BB8 /* StoreManager.swift */; };
 		05FB99282CE1B1E3006F3BB8 /* PositionalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */; };
+		05FB992B2CE300E3006F3BB8 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB992A2CE300E3006F3BB8 /* ShareButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHandler.swift; sourceTree = "<group>"; };
 		05FB99242CD930E0006F3BB8 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionalSheet.swift; sourceTree = "<group>"; };
+		05FB992A2CE300E3006F3BB8 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				0598D73B2CD31E870001FC1B /* FilledButton.swift */,
 				0598D73D2CD329B90001FC1B /* RestaurantObserver.swift */,
 				05FB99242CD930E0006F3BB8 /* StoreManager.swift */,
+				05FB992A2CE300E3006F3BB8 /* ShareButton.swift */,
 			);
 			path = Restaurants;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				05FB99042CD53FA0006F3BB8 /* RestaurantMarker.swift in Sources */,
 				05FB99092CD542C0006F3BB8 /* DrillDownSelector.swift in Sources */,
 				05FB99282CE1B1E3006F3BB8 /* PositionalSheet.swift in Sources */,
+				05FB992B2CE300E3006F3BB8 /* ShareButton.swift in Sources */,
 				056719E92CCC743600CF3AB2 /* Gluten_Free_Near_MeApp.swift in Sources */,
 				05FB99112CD5F333006F3BB8 /* TabManager.swift in Sources */,
 				05FB990D2CD5F194006F3BB8 /* SettingsView.swift in Sources */,

@@ -97,23 +97,7 @@ struct CardHeader : View {
                 .bold()
             Spacer()
             SaveButton(restaurant: restaurant)
-            ShareButton(link: restaurant.link)
-        }
-    }
-}
-
-struct ShareButton: View {
-    let link:String?
-    
-    var body : some View {
-        if let href = link {
-            Button {
-                // share link, or prompt to open on GGL maps
-                let redirect = URL(string: href);
-            } label: {
-                Image(systemName: "square.and.arrow.up").font(.title)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-            }
+            ShareButton(linkString: restaurant.link)
         }
     }
 }
