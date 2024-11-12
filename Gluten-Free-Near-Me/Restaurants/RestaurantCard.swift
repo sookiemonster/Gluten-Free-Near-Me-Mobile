@@ -63,7 +63,7 @@ struct RestaurantCard: View {
     
     func getSquarePadding() -> CGFloat {
         // Cap padding at 10px or being responsive
-        return max(20, min(UIScreen.main.bounds.height / 20, UIScreen.main.bounds.width / 20))
+        return max(30, min(UIScreen.main.bounds.height / 20, UIScreen.main.bounds.width / 20))
     }
 
     var body: some View {
