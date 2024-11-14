@@ -20,50 +20,38 @@ extension LocationManager {
     // If so, use this version within the stack. Then render these afterwards.
     // Otherwise, get results via API
     
-    func searchViewport() -> Void {
-        // See Apple Docs for Reference: https://developer.apple.com/documentation/mapkit/mklocalsearch/request
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = "restaurant"
-        
-        // Only include food establishments
-        searchRequest.pointOfInterestFilter = .init(including: [.restaurant, .bakery, .foodMarket, .cafe])
-        print("searching")
+    func searchViewport() async -> Void {
         
         guard let viewportRegion = viewportRegion else { return ;}
-        
-        searchRequest.region = viewportRegion
-        let search = MKLocalSearch(request: searchRequest)
-        search.start { (response, error) in
-            guard let response = response else {
-                print("Error retrieving restaurants.")
-                return;
+        print(viewportRegion.center)
+        let searches = DispatchQueue(label: "searches")
+        for index in (1...10) {
+            searches.async {
+                Task {
+                    await searchBy(center: viewportRegion.center, test:index)
+                }
             }
             
-            for item in response.mapItems {
-                getPlaceDetails(place: item)
-            }
         }
     }
 }
 
-
-// For each location, attempt to get its place details
-
-extension MKMapItem {
-    func address() -> String {
-        let name = self.name ?? "";
-        let street = self.placemark.thoroughfare ?? "";
-        let street2 = self.placemark.subThoroughfare ?? "";
-        let city = self.placemark.locality ?? "";
-        let state = self.placemark.administrativeArea ?? "";
-        let zip = self.placemark.postalCode ?? "";
-        return "\(name), \(street2) \(street) \(city) \(state) \(zip)"
-    }
+struct Test :Decodable {
+    let id:Int
+    let name:String
 }
 
-func getPlaceDetails(place:MKMapItem) -> Void {
-    let address = place.address()
-    if (address.isEmpty) { return; }
-    
-    print(address)
+//https://www.swiftwithvincent.com/blog/how-to-write-your-first-api-call-in-swiftß
+func searchBy(center:CLLocationCoordinate2D, test:Int) async -> Void {
+    let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(test)")!
+
+    do {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let decoded = try JSONDecoder().decode(Test.self, from: data)
+        print(decoded.id, decoded.name)
+    } catch {
+        print("err")
+    }
+
+//    return decoded.results
 }

@@ -13,7 +13,11 @@ struct SearchButton: View {
     
     var body: some View {
         Button {
-            manager.searchViewport()
+            DispatchQueue(label: "search").async {
+                Task {
+                    await manager.searchViewport()
+                }
+            }
         } label: {
             Text("Search Here")
                 .fontWeight(.bold)
