@@ -90,12 +90,13 @@ extension Restaurant {
 
 
 extension Restaurant {
-    static let sample_place_1 = Restaurant(
-        googURI: "idawdw", name: "Pizza Hut", googDescription: "Some description", rating: 4.5, ref: Mentioner.reviews, reviews: [
+    static func sample_place_1() -> Restaurant {
+        return Restaurant (googURI: "idawdw", name: "Pizza Hut", googDescription: "Some description", rating: 4.5, ref: Mentioner.reviews, reviews: [
             Review(author: "The Hut", body: "Yeah lol it ain't gluten free."),
             Review(author: "Someone2", body: "Yeah lol it ain't gluten free."),
             Review(author: "Some3", body: "Yeah lol it ain't gluten free."),
             Review(author: "Somen4", body: "Yeah lol it ain't gluten free.")
-        ], lat: 40.70, lng: -73.87
-    )
+        ], lat: 40.70, lng: -73.87, link: "https://pizzahut.com"
+        )
+    }
 }

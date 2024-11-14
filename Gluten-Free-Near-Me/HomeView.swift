@@ -24,25 +24,34 @@ struct HomeView: View {
     
     
     func addDebug() {
-        let newres = Restaurant.sample_place_1
+        print("attempt")
+        print(modelContext.sqliteCommand)
+        
+        let newres:Restaurant = Restaurant.sample_place_1()
         modelContext.insert(newres)
+        
+        do {
+            try modelContext.save()
+        } catch let err {
+            print(err.localizedDescription)
+        }
     }
     
     var body: some View {
         ZStack {
             MapView()
             VStack() {
-//                Button("RESET") {
-//                    do  {
-//                        try modelContext.delete(model: Restaurant.self)
-//                    } catch {
-//                        print("Failed to clear.")
-//                    }
-//                }.padding().background(.red).padding()
-//                
-//                Button("Add") {
-//                    addDebug()
-//                }.padding().background(.red).padding()
+                Button("RESET") {
+                    do  {
+                        try modelContext.delete(model: Restaurant.self)
+                    } catch {
+                        print("Failed to clear.")
+                    }
+                }.padding().background(.red).padding()
+                
+                Button("Add") {
+                    addDebug()
+                }.padding().background(.red).padding()
                 
                 if (observer.isFocused()) {
                     RestaurantCard(restaurant: observer.selected!)

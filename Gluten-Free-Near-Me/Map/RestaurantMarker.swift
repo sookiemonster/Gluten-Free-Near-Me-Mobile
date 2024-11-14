@@ -30,5 +30,5 @@ struct RestaurantMarker: View {
 }
 
 #Preview {
-    RestaurantMarker(restaurant: .sample_place_1)
+    RestaurantMarker(restaurant: .sample_place_1())
 }

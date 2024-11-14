@@ -42,6 +42,6 @@ struct Briefing: View {
 }
 
 #Preview {
-    RestaurantOverview(restaurant: .sample_place_1)
+    RestaurantOverview(restaurant: .sample_place_1())
         .frame(maxWidth: .infinity).padding()
 }
