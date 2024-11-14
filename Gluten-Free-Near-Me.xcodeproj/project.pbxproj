@@ -35,7 +35,7 @@
 		05FB99172CD6AAF1006F3BB8 /* ColorSetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */; };
 		05FB99192CD6AB06006F3BB8 /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */; };
 		05FB991F2CD6F134006F3BB8 /* SearchHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */; };
-		05FB99252CD930E0006F3BB8 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99242CD930E0006F3BB8 /* StoreManager.swift */; };
+		05FB99252CD930E0006F3BB8 /* debug_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99242CD930E0006F3BB8 /* debug_data.swift */; };
 		05FB99282CE1B1E3006F3BB8 /* PositionalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */; };
 		05FB992B2CE300E3006F3BB8 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB992A2CE300E3006F3BB8 /* ShareButton.swift */; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 		05FB99162CD6AAF1006F3BB8 /* ColorSetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSetterView.swift; sourceTree = "<group>"; };
 		05FB99182CD6AB06006F3BB8 /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHandler.swift; sourceTree = "<group>"; };
-		05FB99242CD930E0006F3BB8 /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
+		05FB99242CD930E0006F3BB8 /* debug_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debug_data.swift; sourceTree = "<group>"; };
 		05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionalSheet.swift; sourceTree = "<group>"; };
 		05FB992A2CE300E3006F3BB8 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +106,7 @@
 		056719E72CCC743600CF3AB2 /* Gluten-Free-Near-Me */ = {
 			isa = PBXGroup;
 			children = (
+				05FB992C2CE5AAD1006F3BB8 /* Search */,
 				05FB99262CE1B1B3006F3BB8 /* PositionalSheet */,
 				05B9F5F82CCC833D0070AFC4 /* Info.plist */,
 				056719F82CCC767600CF3AB2 /* Map */,
@@ -135,10 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				056719F92CCC768900CF3AB2 /* LocationManager.swift */,
-				05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */,
 				05B9F6082CCCA39D0070AFC4 /* MapView.swift */,
 				05FB99032CD53FA0006F3BB8 /* RestaurantMarker.swift */,
-				05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -155,7 +154,7 @@
 				0598D7392CD31D470001FC1B /* ViewButton.swift */,
 				0598D73B2CD31E870001FC1B /* FilledButton.swift */,
 				0598D73D2CD329B90001FC1B /* RestaurantObserver.swift */,
-				05FB99242CD930E0006F3BB8 /* StoreManager.swift */,
+				05FB99242CD930E0006F3BB8 /* debug_data.swift */,
 				05FB992A2CE300E3006F3BB8 /* ShareButton.swift */,
 			);
 			path = Restaurants;
@@ -196,6 +195,15 @@
 				05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */,
 			);
 			path = PositionalSheet;
+			sourceTree = "<group>";
+		};
+		05FB992C2CE5AAD1006F3BB8 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */,
+				05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05FB99192CD6AB06006F3BB8 /* PreferenceManager.swift in Sources */,
-				05FB99252CD930E0006F3BB8 /* StoreManager.swift in Sources */,
+				05FB99252CD930E0006F3BB8 /* debug_data.swift in Sources */,
 				0584D7262CCDF40F00AA3ECA /* RestaurantCard.swift in Sources */,
 				05B9F6052CCC99EC0070AFC4 /* RestaurantOverview.swift in Sources */,
 				0598D73A2CD31D470001FC1B /* ViewButton.swift in Sources */,

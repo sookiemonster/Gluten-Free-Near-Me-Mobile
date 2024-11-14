@@ -40,11 +40,30 @@ extension LocationManager {
             }
             
             for item in response.mapItems {
-                if let name = item.name,
-                    let location = item.placemark.location {
-                    print(name, location.coordinate)
-                }
+                getPlaceDetails(place: item)
             }
         }
     }
+}
+
+
+// For each location, attempt to get its place details
+
+extension MKMapItem {
+    func address() -> String {
+        let name = self.name ?? "";
+        let street = self.placemark.thoroughfare ?? "";
+        let street2 = self.placemark.subThoroughfare ?? "";
+        let city = self.placemark.locality ?? "";
+        let state = self.placemark.administrativeArea ?? "";
+        let zip = self.placemark.postalCode ?? "";
+        return "\(name), \(street2) \(street) \(city) \(state) \(zip)"
+    }
+}
+
+func getPlaceDetails(place:MKMapItem) -> Void {
+    let address = place.address()
+    if (address.isEmpty) { return; }
+    
+    print(address)
 }

@@ -23,6 +23,7 @@ struct HomeView: View {
     }) var savedRestaurants:[Restaurant];
     
     
+    #if DEBUG
     func addDebug() {
         print("attempt")
         print(modelContext.sqliteCommand)
@@ -36,23 +37,12 @@ struct HomeView: View {
             print(err.localizedDescription)
         }
     }
+    #endif
     
     var body: some View {
         ZStack {
             MapView()
             VStack() {
-                Button("RESET") {
-                    do  {
-                        try modelContext.delete(model: Restaurant.self)
-                    } catch {
-                        print("Failed to clear.")
-                    }
-                }.padding().background(.red).padding()
-                
-                Button("Add") {
-                    addDebug()
-                }.padding().background(.red).padding()
-                
                 if (observer.isFocused()) {
                     RestaurantCard(restaurant: observer.selected!)
                         .padding()
