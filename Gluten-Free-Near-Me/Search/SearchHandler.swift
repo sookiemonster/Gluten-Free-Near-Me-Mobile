@@ -36,18 +36,13 @@ extension LocationManager {
     }
 }
 
-struct Test :Decodable {
-    let id:Int
-    let name:String
-}
-
 //https://www.swiftwithvincent.com/blog/how-to-write-your-first-api-call-in-swiftß
 func searchBy(center:CLLocationCoordinate2D, test:Int) async -> Void {
     let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(test)")!
 
     do {
         let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded = try JSONDecoder().decode(Test.self, from: data)
+        let decoded = try JSONDecoder().decode(PlacesResponse.self, from: data)
         print(decoded.id, decoded.name)
     } catch {
         print("err")

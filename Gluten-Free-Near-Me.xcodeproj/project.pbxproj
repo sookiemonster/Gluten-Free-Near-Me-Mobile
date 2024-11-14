@@ -38,6 +38,7 @@
 		05FB99252CD930E0006F3BB8 /* debug_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99242CD930E0006F3BB8 /* debug_data.swift */; };
 		05FB99282CE1B1E3006F3BB8 /* PositionalSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */; };
 		05FB992B2CE300E3006F3BB8 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB992A2CE300E3006F3BB8 /* ShareButton.swift */; };
+		05FB99302CE5B874006F3BB8 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FB992F2CE5B874006F3BB8 /* ResponseModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		05FB99242CD930E0006F3BB8 /* debug_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debug_data.swift; sourceTree = "<group>"; };
 		05FB99272CE1B1E3006F3BB8 /* PositionalSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionalSheet.swift; sourceTree = "<group>"; };
 		05FB992A2CE300E3006F3BB8 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
+		05FB992F2CE5B874006F3BB8 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			children = (
 				05B9F5FC2CCC94DC0070AFC4 /* SearchButton.swift */,
 				05FB991E2CD6F134006F3BB8 /* SearchHandler.swift */,
+				05FB992F2CE5B874006F3BB8 /* ResponseModels.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				05FB990B2CD5F09A006F3BB8 /* NavButton.swift in Sources */,
 				0598D7382CD2967D0001FC1B /* RatingView.swift in Sources */,
 				05B9F6012CCC982C0070AFC4 /* HomeView.swift in Sources */,
+				05FB99302CE5B874006F3BB8 /* ResponseModels.swift in Sources */,
 				056719EB2CCC743600CF3AB2 /* MasterView.swift in Sources */,
 				05FB99152CD6A85F006F3BB8 /* AccountViewer.swift in Sources */,
 				05FB99172CD6AAF1006F3BB8 /* ColorSetterView.swift in Sources */,
