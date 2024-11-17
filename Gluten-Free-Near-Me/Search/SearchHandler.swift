@@ -25,28 +25,74 @@ extension LocationManager {
         guard let viewportRegion = viewportRegion else { return ;}
         print(viewportRegion.center)
         let searches = DispatchQueue(label: "searches")
-        for index in (1...10) {
             searches.async {
                 Task {
-                    await searchBy(center: viewportRegion.center, test:index)
+                    await searchBy(center: viewportRegion.center)
                 }
-            }
-            
         }
     }
 }
 
-//https://www.swiftwithvincent.com/blog/how-to-write-your-first-api-call-in-swiftß
-func searchBy(center:CLLocationCoordinate2D, test:Int) async -> Void {
-    let url = URL(string: "https://pokeapi.co/api/v2/pokemon/\(test)")!
+// https://www.swiftwithvincent.com/blog/how-to-write-your-first-api-call-in-swiftß
+// https://curlconverter.com/swift/
+func searchBy(center:CLLocationCoordinate2D) async -> Void {
+    let API_KEY = "NOT GOING TO COMMIT"
+    let jsonData = [
+        "includedTypes": [
+            "restaurant"
+        ],
+        "maxResultCount": 1,
+        "locationRestriction": [
+            "circle": [
+                "center": [
+                    "latitude": center.latitude,
+                    "longitude": center.longitude
+                ],
+                "radius": 500
+            ]
+        ]
+    ] as [String : Any]
+    let data = try! JSONSerialization.data(withJSONObject: jsonData, options: [])
 
-    do {
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let decoded = try JSONDecoder().decode(PlacesResponse.self, from: data)
-        print(decoded.id, decoded.name)
-    } catch {
-        print("err")
+    let url = URL(string: "https://places.googleapis.com/v1/places:searchNearby")!
+    let headers = [
+        "Content-Type": "application/json",
+        "X-Goog-Api-Key": API_KEY,
+        "X-Goog-FieldMask": PlacesResponse.field_mask
+    ]
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.allHTTPHeaderFields = headers
+    request.httpBody = data as Data
+    
+    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        if let error = error {
+            print(error)
+        } else if let data = data {
+            let str = String(data: data, encoding: .utf8)
+            print(str)
+            do {
+                let responseObject = try JSONDecoder().decode(PlacesResponse.self, from: data)
+                parse_response(response: responseObject)
+                if let error = responseObject.error {
+                    print(error.message)
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
 
-//    return decoded.results
+    task.resume()
+}
+
+func parse_response(response:PlacesResponse) -> Void{
+    guard let places = response.places else { return }
+    
+    print(places[0].displayName.text)
+    print(places[0].id)
+    print(places[0].googleMapsUri)
+    print(places[0].rating)
+    print(places[0].id)
 }

@@ -6,7 +6,13 @@
 //
 
 struct PlacesResponse : Decodable {
-    let places:[Place]
+    let places:[Place]?
+    let error:Error?
+}
+
+struct Error: Decodable {
+    let code:Int
+    let message:String
 }
 
 struct TextContainer : Decodable {
@@ -28,18 +34,22 @@ struct ReviewResponse : Decodable {
 }
 
 struct Summary : Decodable {
-    let overview:TextContainer
-    let description:TextContainer
+    let overview:TextContainer?
+    let description:TextContainer?
 }
 
 struct Place : Decodable {
     let displayName:TextContainer   // Display name
-    let placeId:String              // Google Maps Place Id
+    let id:String              // Google Maps Place Id
     let googleMapsUri:String        // Google Maps Link
     let rating:Double               // Rating of the restaurant
     let location:Point              // Location of restaurant
     let editorialSummary:TextContainer        // Basic summary
     let reviews:[ReviewResponse]              // Reviews
-    let generativeSummary:Summary             // Generative summary
-    
+    let generativeSummary:Summary?             // Generative summary
+}
+
+extension PlacesResponse {
+    static let field_mask =
+        "places.displayName,places.id,places.googleMapsUri,places.rating,places.location,places.editorialSummary,places.reviews,places.generativeSummary"
 }
