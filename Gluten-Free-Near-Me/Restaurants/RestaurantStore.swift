@@ -66,6 +66,7 @@ class Restaurant : Identifiable, Hashable {
     let link:String
     var reviews:[Review]?
     var isSaved:Bool
+    var isCurrentSearch = false;
 }
 
 extension Restaurant {
@@ -148,6 +149,23 @@ class RestaurantStore {
             !$0.isSaved
         })
     }
+    
+    func wipe_search() throws -> Void {
+        let context = ModelContext(container)
+        let fetchPreviousSearch = FetchDescriptor<Restaurant> (predicate:
+            #Predicate { res in
+                res.isCurrentSearch
+            }
+        )
+        
+        let staleResults = try context.fetch(fetchPreviousSearch)
+        for restaurant in staleResults {
+            print(restaurant.name)
+            restaurant.isCurrentSearch = false
+        }
+        
+        try context.save()
+    }
 }
 
 class RestaurantManager : ObservableObject {
@@ -177,5 +195,10 @@ class RestaurantManager : ObservableObject {
     func clear_unsaved() {
         do { try database.clear_unsaved() }
         catch { print("could not delete items") }
+    }
+    
+    func wipe_search() {
+        do { try database.wipe_search() }
+        catch { print("could not wipe search results") }
     }
 }

@@ -107,12 +107,14 @@ func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager)
     guard let places = response.places else { return }
     let found = places.map({rankRestaurant(placeInfo: $0)})
     let saved = resManager.getSaved()
+    resManager.wipe_search()
     
     for to_add in found {
         if let pre_existing = saved.first(where: {$0.googURI == to_add.googURI}) {
-            print("exists")
+            pre_existing.isCurrentSearch = true
         } else {
             print("attempting add: ", to_add.name)
+            to_add.isCurrentSearch = true
             resManager.add(restaurant: to_add)
         }
     }

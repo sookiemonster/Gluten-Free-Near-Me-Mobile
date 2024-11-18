@@ -29,7 +29,7 @@ struct Author :Decodable {
 }
 
 struct ReviewResponse : Decodable {
-    let text:TextContainer
+    let text:TextContainer?
     let authorAttribution:Author?
 }
 

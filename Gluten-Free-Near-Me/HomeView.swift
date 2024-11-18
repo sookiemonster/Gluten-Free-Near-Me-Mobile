@@ -18,8 +18,7 @@ struct HomeView: View {
     // Reference: https://www.hackingwithswift.com/quick-start/swiftdata/how-to-use-query-to-read-swiftdata-objects-from-swiftui
     
     @Query(filter: #Predicate<Restaurant> { place in
-//        place.isSaved
-        true
+        place.isCurrentSearch
     }) var savedRestaurants:[Restaurant];
     
     

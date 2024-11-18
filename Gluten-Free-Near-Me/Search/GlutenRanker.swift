@@ -44,8 +44,8 @@ func filterGFReviews(reviews:[ReviewResponse]?) -> [Review] {
     guard let reviews = reviews else { return [] }
     
     return reviews
-        .filter({ ($0.text.text).contains(GF_PATTERN)})
+        .filter({ ($0.text?.text ?? "").contains(GF_PATTERN)})
         .map({
-            Review(author: $0.authorAttribution?.displayName ?? "Anonymous", body: $0.text.text)
+            Review(author: $0.authorAttribution?.displayName ?? "Anonymous", body: $0.text?.text ?? "")
         })
 }
