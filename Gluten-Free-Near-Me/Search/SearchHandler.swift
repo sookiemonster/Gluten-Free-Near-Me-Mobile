@@ -20,14 +20,14 @@ extension LocationManager {
     // If so, use this version within the stack. Then render these afterwards.
     // Otherwise, get results via API
     
-    func searchViewport() async -> Void {
+    func searchViewport(resManager:RestaurantManager) async -> Void {
         
         guard let viewportRegion = viewportRegion else { return ;}
         print(viewportRegion.center)
         let searches = DispatchQueue(label: "searches")
             searches.async {
                 Task {
-                    await searchBy(center: viewportRegion.center)
+                    await searchBy(center: viewportRegion.center, resManager: resManager)
                 }
         }
     }
@@ -35,20 +35,20 @@ extension LocationManager {
 
 // https://www.swiftwithvincent.com/blog/how-to-write-your-first-api-call-in-swiftß
 // https://curlconverter.com/swift/
-func searchBy(center:CLLocationCoordinate2D) async -> Void {
-    let API_KEY = "NOT GOING TO COMMIT"
+func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async -> Void {
+    let API_KEY = "AIzaSyDh0rUuZTKRuz4UUD2_JssNyTT_HSx4fW0"
     let jsonData = [
         "includedTypes": [
             "restaurant"
         ],
-        "maxResultCount": 1,
+        "maxResultCount": 20,
         "locationRestriction": [
             "circle": [
                 "center": [
                     "latitude": center.latitude,
                     "longitude": center.longitude
                 ],
-                "radius": 500
+                "radius": 250
             ]
         ]
     ] as [String : Any]
@@ -74,10 +74,12 @@ func searchBy(center:CLLocationCoordinate2D) async -> Void {
             print(str)
             do {
                 let responseObject = try JSONDecoder().decode(PlacesResponse.self, from: data)
-                extractRestaurants(response: responseObject)
                 if let error = responseObject.error {
                     print(error.message)
+                    return
                 }
+                patchRestaurantModel(response: responseObject, resManager: resManager)
+                print("finished patchng")
             } catch {
                 print(error)
             }
@@ -87,14 +89,17 @@ func searchBy(center:CLLocationCoordinate2D) async -> Void {
     task.resume()
 }
 
-func extractRestaurants(response:PlacesResponse) -> [Restaurant] {
-    guard let places = response.places else { return [] }
+func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager) -> Void {
+    guard let places = response.places else { return }
+    let found = places.map({rankRestaurant(placeInfo: $0)})
+    let saved = resManager.getSaved()
     
-    let place = places[0]
-    
-    // Lookup in DB
-    
-    let construct = Restaurant(googURI: place.googleMapsUri, name: place.displayName.text, googDescription: place.editorialSummary.text, rating: place.rating, ref: .none, lat: place.location.latitude, lng: place.location.longitude)
-    
-    return []
+    for to_add in found {
+        if let pre_existing = saved.first(where: {$0.googURI == to_add.googURI}) {
+            print("exists")
+        } else {
+            print("attempting add: ", to_add.name)
+            resManager.add(restaurant: to_add)
+        }
+    }
 }

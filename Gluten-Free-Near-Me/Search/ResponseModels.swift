@@ -16,7 +16,7 @@ struct Error: Decodable {
 }
 
 struct TextContainer : Decodable {
-    let text:String
+    var text:String = ""
 }
 
 struct Point : Decodable {
@@ -44,8 +44,8 @@ struct Place : Decodable {
     let googleMapsUri:String        // Google Maps Link
     let rating:Double               // Rating of the restaurant
     let location:Point              // Location of restaurant
-    let editorialSummary:TextContainer        // Basic summary
-    let reviews:[ReviewResponse]              // Reviews
+    let editorialSummary:TextContainer?        // Basic summary
+    var reviews:[ReviewResponse] = []               // Reviews
     let generativeSummary:Summary?             // Generative summary
 }
 

@@ -13,9 +13,9 @@ struct MasterView: View {
     @StateObject var observer = RestaurantObserver()
     @StateObject var tabManager = TabManager()
     @StateObject var prefManager = PreferenceManager()
-    
+    @StateObject var resManager = RestaurantManager()
     @State var show:Bool = false
-
+    
     var body: some View {
         NavigationStack() {
             ZStack {
@@ -40,7 +40,8 @@ struct MasterView: View {
         .environmentObject(observer) 
         .environmentObject(tabManager)
         .environmentObject(prefManager)
-        .modelContainer(for: Restaurant.self)
+        .environmentObject(resManager)
+        .modelContainer(resManager.container)
     }
 }
 

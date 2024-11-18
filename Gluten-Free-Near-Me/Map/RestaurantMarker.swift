@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RestaurantMarker: View {
-    @EnvironmentObject var prefManager:PreferenceManager
-    
     let restaurant:Restaurant
+    let prefManager:PreferenceManager
+    
     var body: some View {
         Image(systemName: "fork.knife.circle.fill")
             .renderingMode(.template)
@@ -29,6 +29,3 @@ struct RestaurantMarker: View {
     }
 }
 
-#Preview {
-    RestaurantMarker(restaurant: .sample_place_1())
-}

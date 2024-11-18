@@ -100,3 +100,82 @@ extension Restaurant {
         )
     }
 }
+
+// See: https://blog.jacobstechtavern.com/p/swiftdata-outside-swiftui
+
+
+class RestaurantStore {
+    var container: ModelContainer
+    
+    init() throws {
+        self.container = try ModelContainer(for: Restaurant.self)
+    }
+    
+    func select(googUri:String) throws -> Restaurant? {
+        let context = ModelContext(container)
+        let fetchId = FetchDescriptor<Restaurant> (predicate:
+            #Predicate { res in
+                res.googURI == googUri
+            }
+        )
+        
+        let found = try context.fetch(fetchId)
+        return found.isEmpty ? nil : found[0];
+    }
+    
+    func add_if_not_exists(restaurant:Restaurant) throws -> Void {
+        if try select(googUri: restaurant.googURI) != nil { return }
+        
+        let context = ModelContext(container)
+        context.insert(restaurant)
+        try context.save()
+    }
+    
+    func selectSaved() throws -> [Restaurant] {
+        let context = ModelContext(container)
+        let fetchId = FetchDescriptor<Restaurant> (predicate:
+            #Predicate { res in
+                res.isSaved
+            }
+        )
+        
+        return try context.fetch(fetchId)
+    }
+    
+    func clear_unsaved() throws -> Void {
+        let context = ModelContext(container)
+        try context.delete(model: Restaurant.self, where: #Predicate {
+            !$0.isSaved
+        })
+    }
+}
+
+class RestaurantManager : ObservableObject {
+    let database: RestaurantStore
+    let container: ModelContainer
+
+    init() {
+        self.database = try! RestaurantStore()
+        self.container = database.container
+    }
+    
+    func getSaved() -> [Restaurant] {
+        do {
+            return try database.selectSaved()
+        } catch {
+            return []
+        }
+    }
+    
+    func add(restaurant:Restaurant) {
+        do {
+            try database.add_if_not_exists(restaurant: restaurant)
+            print("successful add.")
+        } catch { print("failed to add") }
+    }
+    
+    func clear_unsaved() {
+        do { try database.clear_unsaved() }
+        catch { print("could not delete items") }
+    }
+}

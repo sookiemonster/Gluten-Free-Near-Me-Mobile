@@ -10,12 +10,14 @@ import SwiftUI
 struct SearchButton: View {
 //    @Binding var restaurants:[Place];
     @EnvironmentObject var manager:LocationManager;
+    @EnvironmentObject var resManager:RestaurantManager;
     
     var body: some View {
         Button {
             DispatchQueue(label: "search").async {
+                resManager.clear_unsaved()
                 Task {
-                    await manager.searchViewport()
+                    await manager.searchViewport(resManager: resManager)
                 }
             }
         } label: {
