@@ -35,8 +35,22 @@ extension LocationManager {
 
 // https://www.swiftwithvincent.com/blog/how-to-write-your-first-api-call-in-swiftß
 // https://curlconverter.com/swift/
+//https://stackoverflow.com/questions/60803515/swift-5-how-to-read-variables-in-plist-files 
 func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async -> Void {
-    let API_KEY = "AIzaSyDh0rUuZTKRuz4UUD2_JssNyTT_HSx4fW0"
+    
+    var API_KEY = ""
+    guard let api_url = Bundle.main.url(forResource: "key", withExtension: "plist") else { return; }
+    
+    do {
+        let key_data = try Data(contentsOf: api_url)
+        let decoded = try PropertyListDecoder().decode(KeyContainer.self, from: key_data)
+        API_KEY = decoded.value
+    } catch {
+        print(error)
+        print("Could not access API key.")
+        return;
+    }
+    
     let jsonData = [
         "includedTypes": [
             "restaurant"
@@ -48,7 +62,7 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async
                     "latitude": center.latitude,
                     "longitude": center.longitude
                 ],
-                "radius": 250
+                "radius": 500
             ]
         ]
     ] as [String : Any]

@@ -15,7 +15,7 @@ func rankRestaurant(placeInfo:Place) -> Restaurant {
     let generativeShort = placeInfo.generativeSummary?.overview?.text ?? ""
     let generativeLong = placeInfo.generativeSummary?.description?.text ?? ""
     
-    let construct = Restaurant(googURI: placeInfo.googleMapsUri, name: placeInfo.displayName.text, googDescription: editorialSummary, rating: placeInfo.rating, ref: .none, lat: placeInfo.location.latitude, lng: placeInfo.location.longitude)
+    let construct = Restaurant(googURI: placeInfo.googleMapsUri, name: placeInfo.displayName.text, googDescription: editorialSummary, rating: (placeInfo.rating ?? -1), ref: .none, lat: placeInfo.location.latitude, lng: placeInfo.location.longitude)
     
     // Check summaries for GF
     if (editorialSummary.contains(GF_PATTERN)) {
@@ -43,5 +43,9 @@ func rankRestaurant(placeInfo:Place) -> Restaurant {
 func filterGFReviews(reviews:[ReviewResponse]?) -> [Review] {
     guard let reviews = reviews else { return [] }
     
-    return reviews.filter({ $0.text.text.contains(GF_PATTERN)}).map({ Review(author: $0.authorAttribution.displayName, body: $0.text.text)} )
+    return reviews
+        .filter({ ($0.text.text).contains(GF_PATTERN)})
+        .map({
+            Review(author: $0.authorAttribution?.displayName ?? "Anonymous", body: $0.text.text)
+        })
 }

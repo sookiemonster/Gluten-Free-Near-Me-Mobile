@@ -30,7 +30,7 @@ struct Author :Decodable {
 
 struct ReviewResponse : Decodable {
     let text:TextContainer
-    let authorAttribution:Author
+    let authorAttribution:Author?
 }
 
 struct Summary : Decodable {
@@ -42,14 +42,18 @@ struct Place : Decodable {
     let displayName:TextContainer   // Display name
     let id:String              // Google Maps Place Id
     let googleMapsUri:String        // Google Maps Link
-    let rating:Double               // Rating of the restaurant
+    let rating:Double?               // Rating of the restaurant
     let location:Point              // Location of restaurant
     let editorialSummary:TextContainer?        // Basic summary
-    var reviews:[ReviewResponse] = []               // Reviews
+    var reviews:[ReviewResponse]?               // Reviews
     let generativeSummary:Summary?             // Generative summary
 }
 
 extension PlacesResponse {
     static let field_mask =
         "places.displayName,places.id,places.googleMapsUri,places.rating,places.location,places.editorialSummary,places.reviews,places.generativeSummary"
+}
+
+struct KeyContainer : Decodable {
+    let value:String
 }
