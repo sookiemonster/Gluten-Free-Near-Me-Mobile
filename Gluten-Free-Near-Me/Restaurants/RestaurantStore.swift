@@ -164,6 +164,21 @@ class RestaurantStore {
         
         try context.save()
     }
+    
+    func flagCurrent(googUri:String) throws {
+        let context = ModelContext(container)
+        let fetchId = FetchDescriptor<Restaurant> (predicate:
+            #Predicate { res in
+                res.googURI == googUri
+            }
+        )
+        
+        let found = try context.fetch(fetchId)
+        if (found.isEmpty) { return; }
+        
+        found[0].isCurrentSearch = true
+        try context.save()
+    }
 }
 
 class RestaurantManager : ObservableObject {
@@ -198,5 +213,10 @@ class RestaurantManager : ObservableObject {
     func wipe_search() {
         do { try database.wipe_search() }
         catch { print("could not wipe search results") }
+    }
+    
+    func considerCurrentSearch(googUri:String) {
+        do { try database.flagCurrent(googUri: googUri); }
+        catch { print("could not flag id \(googUri) as current.")}
     }
 }

@@ -35,9 +35,9 @@ extension LocationManager {
         let searches = DispatchQueue(label: "searches")
             searches.async {
                 Task {
-                    await searchBy(center: left_focus, resManager: resManager)
+//                    await searchBy(center: left_focus, resManager: resManager)
                     await searchBy(center: center_focus, resManager: resManager)
-                    await searchBy(center: right_focus, resManager: resManager)
+//                    await searchBy(center: right_focus, resManager: resManager)
                 }
         }
     }
@@ -122,7 +122,7 @@ func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager)
     
     for to_add in found {
         if let pre_existing = saved.first(where: {$0.googURI == to_add.googURI}) {
-            pre_existing.isCurrentSearch = true
+            resManager.considerCurrentSearch(googUri: pre_existing.googURI)
         } else {
             print("attempting add: ", to_add.name)
             to_add.isCurrentSearch = true
