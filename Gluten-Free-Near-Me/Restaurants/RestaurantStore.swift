@@ -188,6 +188,8 @@ class RestaurantManager : ObservableObject {
     init() {
         self.database = try! RestaurantStore()
         self.container = database.container
+        
+        wipe_search()
     }
     
     func getSaved() -> [Restaurant] {

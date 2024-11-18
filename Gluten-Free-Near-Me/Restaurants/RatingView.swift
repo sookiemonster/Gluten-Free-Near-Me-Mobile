@@ -25,38 +25,42 @@ struct RatingView: View {
     }
     
     var body: some View {
-        HStack {
-            ForEach(0..<5) { i in
-                if (i < whole) {
-                    Circle()
-                        .foregroundColor(color)
-                        .frame(width: size)
-                } else if (i == whole) {
-                    ZStack {
+        if (rating < 0) {
+            EmptyView()
+        } else {
+            HStack {
+                ForEach(0..<5) { i in
+                    if (i < whole) {
+                        Circle()
+                            .foregroundColor(color)
+                            .frame(width: size)
+                    } else if (i == whole) {
+                        ZStack {
+                            Circle()
+                                .stroke(color)
+                                .foregroundColor(color)
+                                .frame(width: size)
+                            Rectangle()
+                                .offset(CGSize(width: fractional * size, height: 0.0))
+                                .rotationEffect(.degrees(180))
+                                .frame(width: size, height: size)
+                                .clipShape(Circle())
+                                .foregroundColor(color)
+                        }
+                    } else {
                         Circle()
                             .stroke(color)
                             .foregroundColor(color)
                             .frame(width: size)
-                        Rectangle()
-                            .offset(CGSize(width: fractional * size, height: 0.0))
-                            .rotationEffect(.degrees(180))
-                            .frame(width: size, height: size)
-                            .clipShape(Circle())
-                            .foregroundColor(color)
                     }
-                } else {
-                    Circle()
-                        .stroke(color)
-                        .foregroundColor(color)
-                        .frame(width: size)
                 }
-            }
-            Text("\(rating, specifier: "%.1f")")
-                .foregroundColor(color)
-                .bold()
-                .font(.system(size: size))
-                .padding([.leading], size / 5)
-        }.frame(height: size)
+                Text("\(rating, specifier: "%.1f")")
+                    .foregroundColor(color)
+                    .bold()
+                    .font(.system(size: size))
+                    .padding([.leading], size / 5)
+            }.frame(height: size)
+        }
     }
 }
 
