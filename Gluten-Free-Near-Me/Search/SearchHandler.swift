@@ -72,7 +72,7 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async
                     "latitude": center.latitude,
                     "longitude": center.longitude
                 ],
-                "radius": 500
+                "radius": 300
             ]
         ]
     ] as [String : Any]
