@@ -74,7 +74,7 @@ func searchBy(center:CLLocationCoordinate2D) async -> Void {
             print(str)
             do {
                 let responseObject = try JSONDecoder().decode(PlacesResponse.self, from: data)
-                parse_response(response: responseObject)
+                extractRestaurants(response: responseObject)
                 if let error = responseObject.error {
                     print(error.message)
                 }
@@ -87,12 +87,14 @@ func searchBy(center:CLLocationCoordinate2D) async -> Void {
     task.resume()
 }
 
-func parse_response(response:PlacesResponse) -> Void{
-    guard let places = response.places else { return }
+func extractRestaurants(response:PlacesResponse) -> [Restaurant] {
+    guard let places = response.places else { return [] }
     
-    print(places[0].displayName.text)
-    print(places[0].id)
-    print(places[0].googleMapsUri)
-    print(places[0].rating)
-    print(places[0].id)
+    let place = places[0]
+    
+    // Lookup in DB
+    
+    let construct = Restaurant(googURI: place.googleMapsUri, name: place.displayName.text, googDescription: place.editorialSummary.text, rating: place.rating, ref: .none, lat: place.location.latitude, lng: place.location.longitude)
+    
+    return []
 }

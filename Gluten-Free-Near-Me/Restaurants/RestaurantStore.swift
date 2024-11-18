@@ -56,13 +56,13 @@ class Restaurant : Identifiable, Hashable {
     }
     
     let id:UUID
-    let googURI:String
+    @Attribute(.unique) let googURI:String
     let lat:Double
     let lng:Double
     let name:String
-    let googDescription:String
+    var googDescription:String
     let rating: Double
-    let ref:Mentioner
+    var ref:Mentioner
     let link:String
     var reviews:[Review]?
     var isSaved:Bool
