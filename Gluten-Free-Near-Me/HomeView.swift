@@ -12,6 +12,8 @@ struct HomeView: View {
     @State private var showRestaurants = true;
     private var platform:UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
+    @StateObject private var restaurantSheetController = SheetController()
+    
     @Environment(\.modelContext) var modelContext;
     @EnvironmentObject var observer:RestaurantObserver
     
@@ -53,7 +55,7 @@ struct HomeView: View {
                         .animation(.easeInOut(duration: 0.2), value: observer.isFocused())
                 }
                 Spacer()
-                PositionalSheet() {
+                PositionalSheet(controller: _restaurantSheetController) {
                     RestaurantStack(restaurants: savedRestaurants)
                 }
             }.animation(.easeInOut(duration: 0.2), value: observer.isFocused())
