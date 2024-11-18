@@ -23,11 +23,21 @@ extension LocationManager {
     func searchViewport(resManager:RestaurantManager) async -> Void {
         
         guard let viewportRegion = viewportRegion else { return ;}
+        resManager.wipe_search()
         print(viewportRegion.center)
+        
+        let center_focus = viewportRegion.center
+        
+        let left_focus = CLLocationCoordinate2D(latitude: center_focus.latitude - 0.003, longitude: center_focus.longitude)
+
+        let right_focus = CLLocationCoordinate2D(latitude: center_focus.latitude + 0.003, longitude: center_focus.longitude)
+        
         let searches = DispatchQueue(label: "searches")
             searches.async {
                 Task {
-                    await searchBy(center: viewportRegion.center, resManager: resManager)
+                    await searchBy(center: left_focus, resManager: resManager)
+                    await searchBy(center: center_focus, resManager: resManager)
+                    await searchBy(center: right_focus, resManager: resManager)
                 }
         }
     }
@@ -85,7 +95,7 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async
             print(error)
         } else if let data = data {
             let str = String(data: data, encoding: .utf8)
-            print(str)
+//            print(str)
             do {
                 let responseObject = try JSONDecoder().decode(PlacesResponse.self, from: data)
                 if let error = responseObject.error {
@@ -93,7 +103,7 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async
                     return
                 }
                 patchRestaurantModel(response: responseObject, resManager: resManager)
-                print("finished patchng")
+                print("finished patching")
             } catch {
                 print(error)
             }
@@ -105,9 +115,10 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async
 
 func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager) -> Void {
     guard let places = response.places else { return }
-    let found = places.map({rankRestaurant(placeInfo: $0)})
+    let found = places
+        .map({rankRestaurant(placeInfo: $0)})
+        .filter({$0.ref != .none})
     let saved = resManager.getSaved()
-    resManager.wipe_search()
     
     for to_add in found {
         if let pre_existing = saved.first(where: {$0.googURI == to_add.googURI}) {

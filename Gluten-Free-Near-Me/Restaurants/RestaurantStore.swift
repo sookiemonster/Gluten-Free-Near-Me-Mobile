@@ -37,7 +37,7 @@ class Restaurant : Identifiable, Hashable {
         hasher.combine(googURI)
     }
     
-    init(googURI:String, name:String, googDescription:String, rating:Double, ref:Mentioner, reviews:[Review] = [], lat:Double, lng:Double, link:String = "") {
+    init(googURI:String, name:String, googDescription:String, rating:Double, ref:Mentioner, reviews:[Review] = [], lat:Double, lng:Double) {
         self.googURI = googURI
         self.name = name
         self.lat = lat
@@ -47,7 +47,6 @@ class Restaurant : Identifiable, Hashable {
         self.rating = rating
         self.ref = ref
         self.reviews = reviews
-        self.link = link
         self.id = UUID()
     }
     
@@ -63,7 +62,6 @@ class Restaurant : Identifiable, Hashable {
     var googDescription:String
     let rating: Double
     var ref:Mentioner
-    let link:String
     var reviews:[Review]?
     var isSaved:Bool
     var isCurrentSearch = false;
@@ -97,7 +95,7 @@ extension Restaurant {
             Review(author: "Someone2", body: "Yeah lol it ain't gluten free."),
             Review(author: "Some3", body: "Yeah lol it ain't gluten free."),
             Review(author: "Somen4", body: "Yeah lol it ain't gluten free.")
-        ], lat: 40.70, lng: -73.87, link: "https://pizzahut.com"
+        ], lat: 40.70, lng: -73.87
         )
     }
 }

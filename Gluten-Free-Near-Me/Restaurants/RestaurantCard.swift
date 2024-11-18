@@ -97,7 +97,7 @@ struct CardHeader : View {
                 .bold()
             Spacer()
             SaveButton(restaurant: restaurant)
-            ShareButton(linkString: restaurant.link)
+            ShareButton(linkString: restaurant.googURI)
         }
     }
 }
