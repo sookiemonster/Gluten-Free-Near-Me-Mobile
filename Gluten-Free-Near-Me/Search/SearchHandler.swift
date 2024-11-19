@@ -28,9 +28,9 @@ extension LocationManager {
         
         Task {
             await withTaskGroup(of: Void.self) { group in
-                group.addTask{ await searchBy(center: left_focus, resManager: resManager, callback: callback) }
+//                group.addTask{ await searchBy(center: left_focus, resManager: resManager, callback: callback) }
                 group.addTask{ await searchBy(center: center_focus, resManager: resManager, callback: callback) }
-                group.addTask{ await searchBy(center: right_focus, resManager: resManager, callback: callback) }
+//                group.addTask{ await searchBy(center: right_focus, resManager: resManager, callback: callback) }
             }
         }
     }
@@ -83,29 +83,29 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager, callb
     request.allHTTPHeaderFields = headers
     request.httpBody = data as Data
     
-    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+    let fetchNearby = URLSession.shared.dataTask(with: request) { (data, response, error) in
         if let error = error {
             print(error)
-        } else if let data = data {
-            let str = String(data: data, encoding: .utf8)
-//            print(str)
-            do {
-                let responseObject = try JSONDecoder().decode(PlacesResponse.self, from: data)
-                if let error = responseObject.error {
-                    print(error.message)
-                    return
-                }
-                patchRestaurantModel(response: responseObject, resManager: resManager)
-                DispatchQueue.main.async {
-                    callback()
-                }
-                print("finished patching")
-            } catch {
-                print(error)
+            return
+        }
+        guard let data = data else {return; }
+//        let str = String(data: data, encoding: .utf8)
+        do {
+            let responseObject = try JSONDecoder().decode(PlacesResponse.self, from: data)
+            if let error = responseObject.error {
+                print(error.message)
+                return
             }
+            patchRestaurantModel(response: responseObject, resManager: resManager)
+            DispatchQueue.main.async {
+                callback()
+            }
+            print("finished patching")
+        } catch {
+            print(error)
         }
     }
-    task.resume()
+    fetchNearby.resume()
 }
 
 func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager) -> Void {
