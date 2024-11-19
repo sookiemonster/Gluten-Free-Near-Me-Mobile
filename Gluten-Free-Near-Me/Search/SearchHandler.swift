@@ -12,15 +12,9 @@ import SwiftUI
 
 extension LocationManager {
     
-    // Annotations
-    // Always render saved restaurants on Map.
+    // See: https://stackoverflow.com/questions/76781545/swift-async-awaiting-all-tasks-in-task-group
     
-    // Search RestaurantStack
-    // On search, check if any of the googURIs are in the db already
-    // If so, use this version within the stack. Then render these afterwards.
-    // Otherwise, get results via API
-    
-    func searchViewport(resManager:RestaurantManager, callback: @escaping () -> Void) async -> Void {
+    func searchViewport(resManager:RestaurantManager, callback: @escaping () -> Void) -> Void {
         
         guard let viewportRegion = viewportRegion else { return ;}
         resManager.wipe_search()
@@ -32,13 +26,12 @@ extension LocationManager {
 
         let right_focus = CLLocationCoordinate2D(latitude: center_focus.latitude + 0.003, longitude: center_focus.longitude)
         
-        let searches = DispatchQueue(label: "searches")
-            searches.async {
-                Task {
-//                    await searchBy(center: left_focus, resManager: resManager)
-                    await searchBy(center: center_focus, resManager: resManager, callback: callback)
-//                    await searchBy(center: right_focus, resManager: resManager)
-                }
+        Task {
+            await withTaskGroup(of: Void.self) { group in
+                group.addTask{ await searchBy(center: left_focus, resManager: resManager, callback: callback) }
+                group.addTask{ await searchBy(center: center_focus, resManager: resManager, callback: callback) }
+                group.addTask{ await searchBy(center: right_focus, resManager: resManager, callback: callback) }
+            }
         }
     }
 }
@@ -102,19 +95,21 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager, callb
                     print(error.message)
                     return
                 }
-                patchRestaurantModel(response: responseObject, resManager: resManager, callback: callback)
+                patchRestaurantModel(response: responseObject, resManager: resManager)
+                DispatchQueue.main.async {
+                    callback()
+                }
                 print("finished patching")
             } catch {
                 print(error)
             }
         }
     }
-
     task.resume()
 }
 
-func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager, callback: @escaping () -> Void) -> Void {
-    guard let places = response.places else { callback(); return; }
+func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager) -> Void {
+    guard let places = response.places else { return; }
     let found = places
         .map({rankRestaurant(placeInfo: $0)})
         .filter({$0.ref != .none})
@@ -129,6 +124,4 @@ func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager,
             resManager.add(restaurant: to_add)
         }
     }
-    
-    callback()
 }

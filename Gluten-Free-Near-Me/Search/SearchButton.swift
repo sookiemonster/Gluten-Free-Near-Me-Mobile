@@ -14,24 +14,17 @@ struct SearchButton: View {
     @EnvironmentObject var sheetController:SheetController
     @State private var isLoading = false;
     
-    let anim_config:Animation = .linear(duration: 0.3);
+    let anim_config:Animation = .bouncy(duration: 0.3);
 
     var body: some View {
         Button {
-            withAnimation(anim_config) {
-                isLoading = true;
-            }
-            DispatchQueue(label: "search").async {
-                resManager.clear_unsaved()
-                Task {
-                    await manager.searchViewport(resManager: resManager, callback: {
-                        print("finished")
-                        sheetController.grow()
-                        withAnimation(anim_config) {
-                            isLoading = false
-//                            sheetController.show()
-                        }
-                    })
+            resManager.clear_unsaved()
+            // We need the callback as the task in question really relies on the completion of the URL session task
+            manager.searchViewport(resManager: resManager) {
+                sheetController.grow()
+                withAnimation(anim_config) {
+                    isLoading = false
+                    sheetController.show()
                 }
             }
         } label: {

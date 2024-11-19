@@ -8,10 +8,10 @@
 import Foundation
 import SwiftUI
 
-class SheetController : ObservableObject {
+@MainActor class SheetController : ObservableObject {
     @Published var rendered_position:Int = 0
     @Published var positions:[CGFloat] = []
-    @Published private var isPresented = true
+    @Published private var isPresented = false
     
     let anim_config:Animation = .bouncy(duration: 0.3);
     

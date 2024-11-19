@@ -77,8 +77,10 @@ struct PositionalSheet<Content: View>: View {
                 .background(.thinMaterial)
                 .offset(y: -1 * handle_collision_height)
                 .offset(y: geometry.size.height * positions[controller.rendered_position])
+//                .transition(.move(edge: .bottom))
             }
             .onAppear { setPositions() }
+            .transition(.move(edge: .bottom))
         } else {
             EmptyView()
         }
