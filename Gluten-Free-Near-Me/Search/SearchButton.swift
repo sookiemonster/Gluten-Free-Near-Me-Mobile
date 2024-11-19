@@ -11,19 +11,37 @@ struct SearchButton: View {
 //    @Binding var restaurants:[Place];
     @EnvironmentObject var manager:LocationManager;
     @EnvironmentObject var resManager:RestaurantManager;
+    @EnvironmentObject var sheetController:SheetController
+    @State private var isLoading = false;
     
+    let anim_config:Animation = .linear(duration: 0.3);
+
     var body: some View {
         Button {
+            withAnimation(anim_config) {
+                isLoading = true;
+            }
             DispatchQueue(label: "search").async {
                 resManager.clear_unsaved()
                 Task {
-                    await manager.searchViewport(resManager: resManager)
+                    await manager.searchViewport(resManager: resManager, callback: {
+                        print("finished")
+                        sheetController.grow()
+                        withAnimation(anim_config) {
+                            isLoading = false
+//                            sheetController.show()
+                        }
+                    })
                 }
             }
         } label: {
-            Text("Search Here")
-                .fontWeight(.bold)
-                .tint(.text)
+            if (isLoading) {
+                Text("LOADING")
+            } else {
+                Text("Search Here")
+                    .fontWeight(.bold)
+                    .tint(.text)
+            }
         }
         .padding([.top, .bottom], 12)
         .padding([.leading, .trailing], 30)

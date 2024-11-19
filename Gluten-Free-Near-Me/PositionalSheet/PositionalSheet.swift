@@ -16,7 +16,7 @@ struct PositionalSheet<Content: View>: View {
     @State private var animating:Bool = false
     @ObservedObject private var controller:SheetController
     
-    init(positions: [CGFloat] = [1.0, 0.5, 0.3], controller:StateObject<SheetController>, @ViewBuilder content: () -> Content) {
+    init(positions: [CGFloat] = [1.0, 0.5, 0.3], controller:StateObject<SheetController>, isPresented:Binding<Bool> = .constant(true), @ViewBuilder content: () -> Content) {
         self.content = content()
         self.positions = positions
         
@@ -60,24 +60,28 @@ struct PositionalSheet<Content: View>: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Handle()
-                if (positions[controller.rendered_position] != 1.0) {
-                    ScrollView {
-                        content
+        if (controller.isVisible()) {
+            GeometryReader { geometry in
+                VStack {
+                    Handle()
+                    if (positions[controller.rendered_position] != 1.0) {
+                        ScrollView {
+                            content
+                        }
+                        .transition(.opacity.combined(with: .move(edge: .bottom)))
+                        .padding([.leading, .trailing], 10)
+                        .frame(width: geometry.size.width, height: geometry.size.height * (1 - positions[controller.rendered_position]))
                     }
-                    .transition(.opacity.combined(with: .move(edge: .bottom)))
-                    .padding([.leading, .trailing], 10)
-                    .frame(width: geometry.size.width, height: geometry.size.height * (1 - positions[controller.rendered_position]))
                 }
+                .fillWidth()
+                .background(.thinMaterial)
+                .offset(y: -1 * handle_collision_height)
+                .offset(y: geometry.size.height * positions[controller.rendered_position])
             }
-        .fillWidth()
-        .background(.thinMaterial)
-        .offset(y: -1 * handle_collision_height)
-        .offset(y: geometry.size.height * positions[controller.rendered_position])
+            .onAppear { setPositions() }
+        } else {
+            EmptyView()
         }
-        .onAppear { setPositions() }
     }
 }
 

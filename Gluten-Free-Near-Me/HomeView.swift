@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    @State private var showRestaurants = true;
     private var platform:UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     
     @StateObject private var restaurantSheetController = SheetController()
@@ -22,23 +21,7 @@ struct HomeView: View {
     @Query(filter: #Predicate<Restaurant> { place in
         place.isCurrentSearch
     }) var savedRestaurants:[Restaurant];
-    
-    
-    #if DEBUG
-    func addDebug() {
-        print("attempt")
-        print(modelContext.sqliteCommand)
-        
-        let newres:Restaurant = Restaurant.sample_place_1()
-        modelContext.insert(newres)
-        
-        do {
-            try modelContext.save()
-        } catch let err {
-            print(err.localizedDescription)
-        }
-    }
-    #endif
+
     
     var body: some View {
         ZStack {
@@ -49,7 +32,9 @@ struct HomeView: View {
                         .padding()
                         .transition(.opacity.combined(with: .move(edge: .leading)))
                 } else {
-                    Spacer()
+                    if (restaurantSheetController.isVisible()) {
+                        Spacer()
+                    }
                     SearchButton()
                         .padding()
                         .animation(.easeInOut(duration: 0.2), value: observer.isFocused())
@@ -60,6 +45,7 @@ struct HomeView: View {
                 }
             }.animation(.easeInOut(duration: 0.2), value: observer.isFocused())
         }
+        .environmentObject(restaurantSheetController)
     }
 }
 

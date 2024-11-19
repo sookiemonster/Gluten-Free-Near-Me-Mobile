@@ -20,7 +20,7 @@ extension LocationManager {
     // If so, use this version within the stack. Then render these afterwards.
     // Otherwise, get results via API
     
-    func searchViewport(resManager:RestaurantManager) async -> Void {
+    func searchViewport(resManager:RestaurantManager, callback: @escaping () -> Void) async -> Void {
         
         guard let viewportRegion = viewportRegion else { return ;}
         resManager.wipe_search()
@@ -36,7 +36,7 @@ extension LocationManager {
             searches.async {
                 Task {
 //                    await searchBy(center: left_focus, resManager: resManager)
-                    await searchBy(center: center_focus, resManager: resManager)
+                    await searchBy(center: center_focus, resManager: resManager, callback: callback)
 //                    await searchBy(center: right_focus, resManager: resManager)
                 }
         }
@@ -46,7 +46,7 @@ extension LocationManager {
 // https://www.swiftwithvincent.com/blog/how-to-write-your-first-api-call-in-swiftß
 // https://curlconverter.com/swift/
 //https://stackoverflow.com/questions/60803515/swift-5-how-to-read-variables-in-plist-files 
-func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async -> Void {
+func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager, callback: @escaping () -> Void) async -> Void {
     
     var API_KEY = ""
     guard let api_url = Bundle.main.url(forResource: "key", withExtension: "plist") else { return; }
@@ -102,7 +102,7 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async
                     print(error.message)
                     return
                 }
-                patchRestaurantModel(response: responseObject, resManager: resManager)
+                patchRestaurantModel(response: responseObject, resManager: resManager, callback: callback)
                 print("finished patching")
             } catch {
                 print(error)
@@ -113,8 +113,8 @@ func searchBy(center:CLLocationCoordinate2D, resManager:RestaurantManager) async
     task.resume()
 }
 
-func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager) -> Void {
-    guard let places = response.places else { return }
+func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager, callback: @escaping () -> Void) -> Void {
+    guard let places = response.places else { callback(); return; }
     let found = places
         .map({rankRestaurant(placeInfo: $0)})
         .filter({$0.ref != .none})
@@ -129,4 +129,6 @@ func patchRestaurantModel(response:PlacesResponse, resManager:RestaurantManager)
             resManager.add(restaurant: to_add)
         }
     }
+    
+    callback()
 }

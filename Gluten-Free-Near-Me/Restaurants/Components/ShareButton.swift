@@ -68,6 +68,7 @@ struct ShareButton: View {
         }
         .fullScreenCover(isPresented: $showSafari) {
             SafariView(url: url!)
+                .ignoresSafeArea()
         }
     }
 }
