@@ -58,7 +58,7 @@ struct ShareButton: View {
             print(url)
             open()
         } label: {
-            Image(systemName: "square.and.arrow.up").font(.title)
+            Image(systemName: "globe").font(.title)
                 .foregroundColor(.blue)
         }
         .alert(isPresented: $showAlert) {

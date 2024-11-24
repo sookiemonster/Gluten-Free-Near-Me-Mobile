@@ -85,6 +85,15 @@ extension Restaurant {
         case .none: return ""
         }
     }
+    
+    func getHeader() -> String {
+        switch ref {
+        case .reviews: return "Reviews Mention Gluten-Free";
+        case .description: return "Self-Described as Gluten-Free: "
+        case .menu: return "Menu Contains Gluten-Free Items"
+        case .none: return ""
+        }
+    }
 }
 
 
