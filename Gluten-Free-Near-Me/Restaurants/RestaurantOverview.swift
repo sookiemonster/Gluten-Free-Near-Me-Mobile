@@ -33,6 +33,8 @@ struct Briefing: View {
             Text(restaurant.name)
                 .font(.title3)
                 .fontWeight(.bold)
+                .lineLimit(3)
+                .truncationMode(.tail)
             Text(restaurant.googDescription)
                 .font(.subheadline)
                 .lineLimit(2)
