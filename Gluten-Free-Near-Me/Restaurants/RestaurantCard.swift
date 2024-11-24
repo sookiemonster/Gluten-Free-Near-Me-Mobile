@@ -14,6 +14,22 @@ extension Text {
     }
 }
 
+struct CardHeader : View {
+    let restaurant:Restaurant
+    var body: some View {
+        HStack{
+            Text(restaurant.name)
+                .font(.title2)
+                .bold()
+                .lineLimit(2)
+                .truncationMode(.tail)
+            Spacer()
+            SaveButton(restaurant: restaurant)
+            ShareButton(linkString: restaurant.googURI)
+        }
+    }
+}
+
 struct CardBody: View {
     @EnvironmentObject var prefManager:PreferenceManager
     let restaurant:Restaurant
@@ -28,18 +44,6 @@ struct CardBody: View {
     }
     
     @ViewBuilder
-    func renderReviews() -> some View {
-        ScrollView {
-            LazyVStack(alignment: .leading) {
-                ForEach(restaurant.reviews ?? []) { review in
-                    HStack(alignment: .top, spacing: 0) { Text(review.author + " - ").bold(); Text(review.body).quotation() }
-                }
-            }
-        }
-        .frame(maxHeight: 40)
-    }
-    
-    @ViewBuilder
     func renderDescription() -> some View {
         Text(restaurant.googDescription)
             .italic()
@@ -51,7 +55,7 @@ struct CardBody: View {
         renderLabel()
         Spacer().frame(height: 5)
         switch restaurant.ref {
-        case .reviews: renderReviews()
+        case .reviews: ReviewsView(place: restaurant)
         case .description : renderDescription()
         default: EmptyView()
         }
@@ -60,6 +64,7 @@ struct CardBody: View {
 
 struct RestaurantCard: View {
     let restaurant:Restaurant
+    @State private var showPage:Bool = false
     
     func getSquarePadding() -> CGFloat {
         // Cap padding at 10px or being responsive
@@ -69,9 +74,19 @@ struct RestaurantCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             CardHeader(restaurant: restaurant)
-            RatingView(rating: restaurant.rating, size: 18)
-            Spacer().frame(height: 20)
+            RatingView(rating: restaurant.rating, size: 16)
+            Spacer().frame(height: 15)
             CardBody(restaurant: restaurant)
+            HStack {
+                Spacer()
+                Button("View More") {
+                    showPage.toggle();
+                }
+                .padding(.top, 5)
+            }
+        }
+        .fullScreenCover(isPresented: $showPage) {
+            FullRestaurantPage(place: restaurant)
         }
         .padding(getSquarePadding())
         .background()
@@ -79,41 +94,23 @@ struct RestaurantCard: View {
     }
 }
 
-#Preview {
-    ZStack {
-        RestaurantCard(restaurant: .sample_place_1)
-    }
-    .padding()
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .background(.red)
-}
 
-struct CardHeader : View {
-    let restaurant:Restaurant
-    var body: some View {
-        HStack{
-            Text(restaurant.name)
-                .font(.title)
-                .bold()
-            Spacer()
-            SaveButton(restaurant: restaurant)
-            ShareButton(link: restaurant.link)
-        }
-    }
-}
-
-struct ShareButton: View {
-    let link:String?
+struct PreviewCard :  View {
+    @StateObject var prefManager = PreferenceManager()
+    @StateObject var resManager = RestaurantManager()
     
     var body : some View {
-        if let href = link {
-            Button {
-                // share link, or prompt to open on GGL maps
-                let redirect = URL(string: href);
-            } label: {
-                Image(systemName: "square.and.arrow.up").font(.title)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-            }
-        }
+        RestaurantCard(restaurant: .sample_place_1())
+            .environmentObject(prefManager)
+            .environmentObject(resManager)
+            .modelContainer(resManager.container)
     }
+}
+
+#Preview {
+    ZStack {
+        PreviewCard()
+    }
+    .fillParent()
+    .background(.white)
 }

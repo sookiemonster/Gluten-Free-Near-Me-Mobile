@@ -19,7 +19,7 @@ extension MapCameraBounds {
 
 struct MapView: View {
     @State private var position:MapCameraPosition = MapCameraPosition.userLocation(fallback: .automatic)
-    
+    @EnvironmentObject var prefManager:PreferenceManager
     @EnvironmentObject var manager:LocationManager;
     @EnvironmentObject var observer:RestaurantObserver;
     @Environment(\.modelContext) var modelContext;
@@ -36,7 +36,7 @@ struct MapView: View {
     func RestaurantAnnotations(toMap:[Restaurant]) -> some MapContent {
         ForEach (toMap) { place in
             Annotation(LocalizedStringKey(stringLiteral: place.name), coordinate: place.loc()) {
-                RestaurantMarker(restaurant: place)
+                RestaurantMarker(restaurant: place, prefManager: prefManager)
                     .onTapGesture {
                         manager.panTo(center: place.loc())
                         observer.select(target: place)
@@ -50,7 +50,8 @@ struct MapView: View {
             UserAnnotation()
             RestaurantAnnotations(toMap: savedRestaurants)
             
-        }.mapControls {
+        }.mapStyle(.standard(pointsOfInterest: .excludingAll))
+        .mapControls {
             MapUserLocationButton()
         }.onAppear {
             manager.setCameraPosition(position: $position)

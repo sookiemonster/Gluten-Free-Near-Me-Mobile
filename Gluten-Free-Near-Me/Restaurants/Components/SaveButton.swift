@@ -45,5 +45,5 @@ struct SaveButton: View {
 }
 
 #Preview {
-    SaveButton(restaurant: .sample_place_1)
+    SaveButton(restaurant: .sample_place_1())
 }

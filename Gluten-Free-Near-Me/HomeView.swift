@@ -9,8 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    @State private var showRestaurants = true;
     private var platform:UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    
+    @StateObject private var restaurantSheetController = SheetController()
     
     @Environment(\.modelContext) var modelContext;
     @EnvironmentObject var observer:RestaurantObserver
@@ -18,48 +19,33 @@ struct HomeView: View {
     // Reference: https://www.hackingwithswift.com/quick-start/swiftdata/how-to-use-query-to-read-swiftdata-objects-from-swiftui
     
     @Query(filter: #Predicate<Restaurant> { place in
-//        place.isSaved
-        true
+        place.isCurrentSearch
     }) var savedRestaurants:[Restaurant];
-    
-    
-    func addDebug() {
-        let newres = Restaurant.sample_place_1
-        modelContext.insert(newres)
-    }
+
     
     var body: some View {
         ZStack {
             MapView()
             VStack() {
-//                Button("RESET") {
-//                    do  {
-//                        try modelContext.delete(model: Restaurant.self)
-//                    } catch {
-//                        print("Failed to clear.")
-//                    }
-//                }.padding().background(.red).padding()
-//                
-//                Button("Add") {
-//                    addDebug()
-//                }.padding().background(.red).padding()
-                
                 if (observer.isFocused()) {
                     RestaurantCard(restaurant: observer.selected!)
                         .padding()
                         .transition(.opacity.combined(with: .move(edge: .leading)))
                 } else {
-                    Spacer()
+                    if (restaurantSheetController.isVisible()) {
+                        Spacer()
+                    }
                     SearchButton()
                         .padding()
                         .animation(.easeInOut(duration: 0.2), value: observer.isFocused())
                 }
                 Spacer()
-                PositionalSheet() {
+                PositionalSheet(controller: _restaurantSheetController) {
                     RestaurantStack(restaurants: savedRestaurants)
                 }
             }.animation(.easeInOut(duration: 0.2), value: observer.isFocused())
         }
+        .environmentObject(restaurantSheetController)
     }
 }
 

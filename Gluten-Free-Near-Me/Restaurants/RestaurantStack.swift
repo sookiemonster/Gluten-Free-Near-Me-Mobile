@@ -23,6 +23,9 @@ struct RestaurantStack: View {
     var body: some View {
         ScrollView {
             LazyVStack {
+                if (restaurants.isEmpty) {
+                    NotFoundView()
+                }
                 ForEach(restaurants) { place in
                     if (showUnsaved || place.isSaved) {
                         switch mode {
