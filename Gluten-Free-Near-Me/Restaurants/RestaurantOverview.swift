@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RestaurantOverview: View {
     @EnvironmentObject var prefManager:PreferenceManager
+    @State private var showPage:Bool = false
     let restaurant:Restaurant
     
     var body: some View {
@@ -22,6 +23,12 @@ struct RestaurantOverview: View {
         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
         .background(restaurant.getColor(prefManager: prefManager))
         .cornerRadius(10)
+        .onTapGesture {
+            showPage.toggle();
+        }
+        .fullScreenCover(isPresented: $showPage) {
+            FullRestaurantPage(place: restaurant)
+        }
     }
 }
 

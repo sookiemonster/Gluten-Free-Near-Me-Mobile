@@ -59,9 +59,9 @@ struct PageHeader: View {
             Text(place.name)
                 .font(.title)
                 .bold()
-            Text("Address")
-                .font(.subheadline)
-                .foregroundColor(.text.opacity(0.6))
+//            Text("Address")
+//                .font(.subheadline)
+//                .foregroundColor(.text.opacity(0.6))
             RatingView(rating: place.rating, size: 15)
         }
     }
@@ -86,15 +86,19 @@ struct PageBody : View {
         Text(place.googDescription)
             .font(.body)
             .foregroundColor(.text.opacity(0.7))
-        
         if showReviews {
-            
+            Spacer().frame(height:20)
+            Text("Reviews")
+                .font(.headline)
+            ReviewsView(place: place, condensed: false)
+                .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
         }
     }
 }
 
 
 struct FullRestaurantPage: View {
+//    @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var prefManager:PreferenceManager
     @State var color:Color = .black
     
@@ -112,10 +116,21 @@ struct FullRestaurantPage: View {
                 PageHeader(place: place)
                 Divider().opacity(0).padding(5)
                 HStack {
-                    MapSnippetView()
+                    MapSnippetView(place: place)
                         .padding(.bottom, 20)
                 }.fillWidth()
                 PageBody(place: place)
+                Spacer()
+                HStack {
+                    Spacer()
+                    SaveButton(restaurant: place)
+                        .background(color)
+                        .cornerRadius(15)
+                    ShareButton(linkString: place.googURI)
+                        .background(color)
+                        .cornerRadius(15)
+                    Spacer()
+                }
                 Spacer()
             }.fillParent()
                 .responsiveSquarePadding(scale: 0.1)

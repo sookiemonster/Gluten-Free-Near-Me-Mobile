@@ -71,7 +71,7 @@ struct ReviewsView: View {
                 }
             }
         }
-        .frame(maxHeight: 50)
+        .frame(maxHeight: (condensed) ? 50 : .infinity)
     }
 }
 

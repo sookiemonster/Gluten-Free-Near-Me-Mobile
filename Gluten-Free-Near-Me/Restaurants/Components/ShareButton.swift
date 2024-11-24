@@ -59,8 +59,8 @@ struct ShareButton: View {
             open()
         } label: {
             Image(systemName: "globe").font(.title)
-                .foregroundColor(.blue)
-        }
+                .foregroundColor(.white)
+        }.filled(color: .transparent, size: 50)
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Could not access Google Maps page"),
