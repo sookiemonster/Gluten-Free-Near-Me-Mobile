@@ -43,11 +43,25 @@ struct PageBackground<Content: View> : View {
 
 struct PageLabel : View {
     let text:String
+    let button_size:CGFloat = 30;
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
-        Text(text)
-            .bold()
-            .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
-            .center()
+        HStack {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.left")
+                    .tint(.text)
+            }
+            .filled(color: .text.opacity(0.2), size: button_size)
+            Spacer()
+            Text(text)
+                .bold()
+                .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+            Spacer()
+            Spacer().frame(width: button_size)
+        }
     }
 }
 
@@ -98,7 +112,7 @@ struct PageBody : View {
 
 
 struct FullRestaurantPage: View {
-//    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var prefManager:PreferenceManager
     @State var color:Color = .black
     

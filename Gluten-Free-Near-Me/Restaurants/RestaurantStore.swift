@@ -88,8 +88,8 @@ extension Restaurant {
     
     func getHeader() -> String {
         switch ref {
-        case .reviews: return "Reviews Mention Gluten-Free";
-        case .description: return "Self-Described as Gluten-Free: "
+        case .reviews: return "Reviews Mention GF";
+        case .description: return "Description Mentions GF"
         case .menu: return "Menu Contains Gluten-Free Items"
         case .none: return ""
         }

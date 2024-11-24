@@ -64,6 +64,7 @@ struct CardBody: View {
 
 struct RestaurantCard: View {
     let restaurant:Restaurant
+    @State private var showPage:Bool = false
     
     func getSquarePadding() -> CGFloat {
         // Cap padding at 10px or being responsive
@@ -76,6 +77,16 @@ struct RestaurantCard: View {
             RatingView(rating: restaurant.rating, size: 16)
             Spacer().frame(height: 15)
             CardBody(restaurant: restaurant)
+            HStack {
+                Spacer()
+                Button("View More") {
+                    showPage.toggle();
+                }
+                .padding(.top, 5)
+            }
+        }
+        .fullScreenCover(isPresented: $showPage) {
+            FullRestaurantPage(place: restaurant)
         }
         .padding(getSquarePadding())
         .background()
