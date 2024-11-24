@@ -27,19 +27,22 @@ struct SafariView: UIViewControllerRepresentable {
 }
 
 struct ShareButton: View {
-    let url:URL?
+    var url:URL?
     @State private var showSafari = false;
     @State private var showAlert = false;
     
     init(linkString: String) {
-        
+        self.url = nil
+        initLink(linkString: linkString)
+    }
+    
+    mutating func initLink(linkString:String)  {
         if let url = URL(string: linkString) {
-            do {
-                _ = try String(contentsOf: url)
-                self.url = url
-            } catch {
-                self.url = nil
+            Task {
+                let (_, _) = try await URLSession.shared.data(from: url)
             }
+    //                _ = try String(contentsOf: url)
+            self.url = url
         } else {
             self.url = nil
         }
