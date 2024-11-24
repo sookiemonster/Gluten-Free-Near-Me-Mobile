@@ -50,7 +50,8 @@ struct MapView: View {
             UserAnnotation()
             RestaurantAnnotations(toMap: savedRestaurants)
             
-        }.mapControls {
+        }.mapStyle(.standard(pointsOfInterest: .excludingAll))
+        .mapControls {
             MapUserLocationButton()
         }.onAppear {
             manager.setCameraPosition(position: $position)

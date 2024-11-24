@@ -12,22 +12,28 @@ import Foundation
 // Ref: https://www.hackingwithswift.com/quick-start/swiftui/how-to-add-advanced-text-styling-using-attributedstring
 struct ReviewsView: View {
     let condensed:Bool
-    let reviews:[Review]
+    var reviews:[Review] = []
     
     init(place:Restaurant, condensed:Bool = true) {
         self.condensed = condensed
-        guard let reviews = place.reviews else {
-            self.reviews = []
-            return
-        }
-        self.reviews = reviews
+        guard let reviews = place.reviews else { return }
         
+        if (!condensed) { self.reviews = reviews; return  }
+        self.reviews = reviews.map({
+            Review(author: $0.author, body: condense(text: trim_newlines(text: $0.body)))
+        })
     }
     
     let bold: [NSAttributedString.Key: Any] = [
         .foregroundColor: Color.text,
         .font: UIFont.boldSystemFont(ofSize: 36)
     ]
+    
+    func trim_newlines(text:String) -> String {
+        return String(text.filter { char in
+            !("\n\r".contains(char))
+        })
+    }
     
     func condense(text:String) -> String {
         // Condense a text into its mentioning of GF
@@ -67,7 +73,7 @@ struct ReviewsView: View {
         ScrollView {
             LazyVStack(alignment: .leading) {
                 ForEach(reviews) { review in
-                    Text(review.author).bold() + Text(" - \(condense(text: review.body))")
+                    Text(review.author).bold() + Text(" - \(review.body)")
                 }
             }
         }
