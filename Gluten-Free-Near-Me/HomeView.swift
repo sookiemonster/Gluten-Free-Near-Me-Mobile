@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    private var platform:UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
-    
     @StateObject private var restaurantSheetController = SheetController()
     
     @Environment(\.modelContext) var modelContext;

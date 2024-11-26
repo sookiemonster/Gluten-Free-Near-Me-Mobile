@@ -31,8 +31,8 @@ struct PageBackground<Content: View> : View {
             Rectangle()
             .foregroundStyle(
                 LinearGradient(stops: [
-                    .init(color: color, location: 0.2),
-                    .init(color: color.opacity(0), location: 1),
+                    .init(color: color.opacity(0), location: 0),
+                    .init(color: color, location: 0.4)
                 ], startPoint: .top, endPoint: .bottom)
             )
             .ignoresSafeArea()
@@ -151,8 +151,8 @@ struct FullRestaurantPage: View {
                 .onAppear {
                     init_color()
                 }
-            }
-        }
+        }.presentationBackground(.ultraThinMaterial.opacity(1))
+    }
 }
 
 struct PreviewFull :  View {

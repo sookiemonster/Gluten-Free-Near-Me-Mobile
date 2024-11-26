@@ -33,6 +33,7 @@ struct NavButton : View {
     }
 }
 
+// Ref: https://www.avanderlee.com/swiftui/disable-animations-transactions/
 extension View {
     func navigationToolbar() -> some View {
         self
@@ -42,6 +43,10 @@ extension View {
                     NavButton(name: "Home", iconString: "house", targetTab: .home)
                     NavButton(name: "Saved", iconString: "heart", targetTab: .saved)
                     NavButton(name: "Profile", iconString: "person", targetTab: .profile)
+                }.transaction { transaction in
+                    // Bug Fix: Prevent navigation bar from sliding in
+                    transaction.animation = nil
+                    
                 }
             }
         }
