@@ -31,8 +31,8 @@ struct PageBackground<Content: View> : View {
             Rectangle()
             .foregroundStyle(
                 LinearGradient(stops: [
-                    .init(color: color.opacity(0), location: 0),
-                    .init(color: color, location: 0.4)
+                    .init(color: color, location: 0.2),
+                    .init(color: color.opacity(0), location: 0.8),
                 ], startPoint: .top, endPoint: .bottom)
             )
             .ignoresSafeArea()
@@ -106,6 +106,7 @@ struct PageBody : View {
                 .font(.headline)
             ReviewsView(place: place, condensed: false)
                 .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+            Spacer().frame(height:10)
         }
     }
 }
@@ -151,7 +152,7 @@ struct FullRestaurantPage: View {
                 .onAppear {
                     init_color()
                 }
-        }.presentationBackground(.ultraThinMaterial.opacity(1))
+        }.presentationBackground(.regularMaterial)
     }
 }
 

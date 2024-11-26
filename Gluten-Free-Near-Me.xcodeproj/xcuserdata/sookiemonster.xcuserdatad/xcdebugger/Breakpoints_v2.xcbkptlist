@@ -84,5 +84,279 @@
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F13298F-62B8-407B-8687-8602F112399D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gluten-Free-Near-Me/Map/MapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "RestaurantAnnotations(toMap:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0F13298F-62B8-407B-8687-8602F112399D - 6be66eed82486837"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 (Gluten_Free_Near_Me.Restaurant) -&gt; _MapKit_SwiftUI.Annotation&lt;SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in Gluten_Free_Near_Me.MapView.RestaurantAnnotations(toMap: Swift.Array&lt;Gluten_Free_Near_Me.Restaurant&gt;) -&gt; some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+               <Location
+                  uuid = "0F13298F-62B8-407B-8687-8602F112399D - 6be66eed82486837"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 (Gluten_Free_Near_Me.Restaurant) -&gt; _MapKit_SwiftUI.Annotation&lt;SwiftUI.Text, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in Gluten_Free_Near_Me.MapView.RestaurantAnnotations(toMap: Swift.Array&lt;Gluten_Free_Near_Me.Restaurant&gt;) -&gt; some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1181EFD-B7DA-419A-9380-2739DD139B39"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gluten-Free-Near-Me/Map/MapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "B1181EFD-B7DA-419A-9380-2739DD139B39 - b571802f0b6895b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (_MapKit_SwiftUI.MapCameraUpdateContext) -&gt; () in Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60">
+               </Location>
+               <Location
+                  uuid = "B1181EFD-B7DA-419A-9380-2739DD139B39 - b571802f0b6895b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 (_MapKit_SwiftUI.MapCameraUpdateContext) -&gt; () in Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E137CDFE-4145-4820-AD46-C32F34AC6810"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gluten-Free-Near-Me/Map/MapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "E137CDFE-4145-4820-AD46-C32F34AC6810 - ccabd932a2d4effe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; _MapKit_SwiftUI.TupleMapContent&lt;(_MapKit_SwiftUI.UserAnnotation&lt;_MapKit_SwiftUI.DefaultUserAnnotationContent&gt;, &lt;&lt;opaque return type of Gluten_Free_Near_Me.MapView.RestaurantAnnotations(toMap: Swift.Array&lt;Gluten_Free_Near_Me.Restaurant&gt;) -&gt; some&gt;&gt;.0)&gt; in Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50">
+               </Location>
+               <Location
+                  uuid = "E137CDFE-4145-4820-AD46-C32F34AC6810 - ccabd932a2d4effe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; _MapKit_SwiftUI.TupleMapContent&lt;(_MapKit_SwiftUI.UserAnnotation&lt;_MapKit_SwiftUI.DefaultUserAnnotationContent&gt;, &lt;&lt;opaque return type of Gluten_Free_Near_Me.MapView.RestaurantAnnotations(toMap: Swift.Array&lt;Gluten_Free_Near_Me.Restaurant&gt;) -&gt; some&gt;&gt;.0)&gt; in Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA48AE8B-7CDD-4A15-9F1E-884140E138FF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gluten-Free-Near-Me/Map/MapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "EA48AE8B-7CDD-4A15-9F1E-884140E138FF - 3d04c44321b05a4f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49">
+               </Location>
+               <Location
+                  uuid = "EA48AE8B-7CDD-4A15-9F1E-884140E138FF - ccabd932a2d4effe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; _MapKit_SwiftUI.TupleMapContent&lt;(_MapKit_SwiftUI.UserAnnotation&lt;_MapKit_SwiftUI.DefaultUserAnnotationContent&gt;, &lt;&lt;opaque return type of Gluten_Free_Near_Me.MapView.RestaurantAnnotations(toMap: Swift.Array&lt;Gluten_Free_Near_Me.Restaurant&gt;) -&gt; some&gt;&gt;.0)&gt; in Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50">
+               </Location>
+               <Location
+                  uuid = "EA48AE8B-7CDD-4A15-9F1E-884140E138FF - 3d04c44321b05a4f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49">
+               </Location>
+               <Location
+                  uuid = "EA48AE8B-7CDD-4A15-9F1E-884140E138FF - ccabd932a2d4effe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; _MapKit_SwiftUI.TupleMapContent&lt;(_MapKit_SwiftUI.UserAnnotation&lt;_MapKit_SwiftUI.DefaultUserAnnotationContent&gt;, &lt;&lt;opaque return type of Gluten_Free_Near_Me.MapView.RestaurantAnnotations(toMap: Swift.Array&lt;Gluten_Free_Near_Me.Restaurant&gt;) -&gt; some&gt;&gt;.0)&gt; in Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7083CA4A-B9C7-403A-AE43-7E09C9937270"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gluten-Free-Near-Me/Map/MapView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "7083CA4A-B9C7-403A-AE43-7E09C9937270 - ccabd932a2d4ef99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; _MapKit_SwiftUI.TupleMapContent&lt;(_MapKit_SwiftUI.UserAnnotation&lt;_MapKit_SwiftUI.DefaultUserAnnotationContent&gt;, &lt;&lt;opaque return type of Gluten_Free_Near_Me.MapView.RestaurantAnnotations(toMap: Swift.Array&lt;Gluten_Free_Near_Me.Restaurant&gt;) -&gt; some&gt;&gt;.0)&gt; in Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51">
+               </Location>
+               <Location
+                  uuid = "7083CA4A-B9C7-403A-AE43-7E09C9937270 - ccabd932a2d4ef99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; _MapKit_SwiftUI.TupleMapContent&lt;(_MapKit_SwiftUI.UserAnnotation&lt;_MapKit_SwiftUI.DefaultUserAnnotationContent&gt;, &lt;&lt;opaque return type of Gluten_Free_Near_Me.MapView.RestaurantAnnotations(toMap: Swift.Array&lt;Gluten_Free_Near_Me.Restaurant&gt;) -&gt; some&gt;&gt;.0)&gt; in Gluten_Free_Near_Me.MapView.body.getter : some"
+                  moduleName = "Gluten-Free-Near-Me"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sookiemonster/Documents/iOS%20Development/Gluten-Free-Near-Me/Gluten-Free-Near-Me/Map/MapView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E5C6E16-2608-4490-A487-544624816A8C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gluten-Free-Near-Me/Map/LocationManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

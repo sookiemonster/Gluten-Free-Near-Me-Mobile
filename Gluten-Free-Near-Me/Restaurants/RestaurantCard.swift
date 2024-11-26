@@ -89,7 +89,7 @@ struct RestaurantCard: View {
             FullRestaurantPage(place: restaurant)
         }
         .padding(getSquarePadding())
-        .background()
+        .background(.thinMaterial)
         .cornerRadius(30)
     }
 }

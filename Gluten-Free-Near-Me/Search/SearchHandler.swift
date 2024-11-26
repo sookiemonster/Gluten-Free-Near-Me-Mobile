@@ -28,9 +28,9 @@ extension LocationManager {
         
         Task {
             await withTaskGroup(of: Void.self) { group in
-//                group.addTask{ await searchBy(center: left_focus, resManager: resManager, callback: callback) }
+                group.addTask{ await searchBy(center: left_focus, resManager: resManager, callback: callback) }
                 group.addTask{ await searchBy(center: center_focus, resManager: resManager, callback: callback) }
-//                group.addTask{ await searchBy(center: right_focus, resManager: resManager, callback: callback) }
+                group.addTask{ await searchBy(center: right_focus, resManager: resManager, callback: callback) }
             }
         }
     }
