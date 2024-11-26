@@ -41,7 +41,6 @@ struct ShareButton: View {
             Task {
                 let (_, _) = try await URLSession.shared.data(from: url)
             }
-    //                _ = try String(contentsOf: url)
             self.url = url
         } else {
             self.url = nil

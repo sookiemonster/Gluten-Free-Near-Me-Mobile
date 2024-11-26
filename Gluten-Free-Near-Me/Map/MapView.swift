@@ -46,7 +46,7 @@ struct MapView: View {
     }
 
     var body: some View {
-        Map(position: $position, bounds: .config, interactionModes: .all) {
+        Map(position: $position, bounds: .config, interactionModes: [.rotate, .pan, .zoom]) {
             UserAnnotation()
             RestaurantAnnotations(toMap: savedRestaurants)
             

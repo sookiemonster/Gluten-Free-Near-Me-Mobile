@@ -22,14 +22,15 @@ struct MapSnippetView: View {
 
     
     var body: some View {
-        Map(initialPosition: self.camera) {
+        Map(initialPosition: self.camera, interactionModes: []) {
             Annotation(LocalizedStringKey(stringLiteral: place.name), coordinate: place.loc()) {
                 RestaurantMarker(restaurant: place, prefManager: prefManager)
             }
         }
-            .fillWidth()
-            .frame(height: height)
-            .cornerRadius(15)
+        
+        .fillWidth()
+        .frame(height: height)
+        .cornerRadius(15)
     }
 }
 
